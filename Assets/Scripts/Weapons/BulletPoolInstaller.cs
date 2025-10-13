@@ -1,9 +1,8 @@
-using UnityEngine;
 using Zenject;
 
 public class BulletPoolInstaller : MonoInstaller
 {
-    [SerializeField]
+    [UnityEngine.SerializeField]
     private BulletPool _bulletPool;
 
     public override void InstallBindings()

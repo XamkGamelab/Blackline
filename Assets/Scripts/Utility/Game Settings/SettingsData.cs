@@ -16,6 +16,9 @@ public class SettingsData
     // Weapon Interaction //
     public KeyCode ShootKey = KeyCode.Mouse0;
     public KeyCode AimKey = KeyCode.Mouse1;
+
+    // Utils //
+    public KeyCode PauseKey = KeyCode.Escape;
     #endregion
 
     #region Values
