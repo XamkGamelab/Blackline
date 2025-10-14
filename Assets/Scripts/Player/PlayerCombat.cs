@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class PlayerWeaponManager : MonoBehaviour
+public class PlayerCombat : MonoBehaviour
 {
     [SerializeField]
     private PlayerInventory _playerInventory;

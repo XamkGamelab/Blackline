@@ -1,6 +1,6 @@
 public class PlayerRunState : PlayerGroundedState
 {
-    public PlayerRunState (PlayerController controller) : base(controller) { }
+    public PlayerRunState (PlayerMovement controller) : base(controller) { }
 
     public override void HandleInput()
     {

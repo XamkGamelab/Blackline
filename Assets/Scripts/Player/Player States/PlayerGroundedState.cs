@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerGroundedState : PlayerBaseState
 {
-    public PlayerGroundedState (PlayerController controller) : base(controller) { }
+    public PlayerGroundedState (PlayerMovement controller) : base(controller) { }
 
     public override void HandleInput()
     {

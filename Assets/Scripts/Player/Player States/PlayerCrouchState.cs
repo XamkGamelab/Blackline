@@ -1,6 +1,6 @@
 public class PlayerCrouchState : PlayerGroundedState
 {
-    public PlayerCrouchState (PlayerController controller) : base(controller) { }
+    public PlayerCrouchState (PlayerMovement controller) : base(controller) { }
 
     public override void HandleInput()
     {

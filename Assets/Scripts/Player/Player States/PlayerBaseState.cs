@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class PlayerBaseState : MonoBehaviour
 {
-    protected PlayerController _playerController;
+    protected PlayerMovement _playerController;
 
-    public PlayerBaseState(PlayerController controller)
+    public PlayerBaseState(PlayerMovement controller)
     {
         this._playerController = controller;
     }

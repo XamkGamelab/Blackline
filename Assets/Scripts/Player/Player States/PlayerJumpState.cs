@@ -1,6 +1,6 @@
 public class PlayerJumpState : PlayerAirborneState
 {
-    public PlayerJumpState (PlayerController controller) : base(controller) { }
+    public PlayerJumpState (PlayerMovement controller) : base(controller) { }
 
     public override void HandleInput()
     {
