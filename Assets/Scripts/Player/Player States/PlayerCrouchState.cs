@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class PlayerCrouchState : PlayerBaseState
+public class PlayerCrouchState : PlayerGroundedState
 {
     public PlayerCrouchState (PlayerController controller) : base(controller) { }
 

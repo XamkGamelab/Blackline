@@ -9,23 +9,38 @@ public class PlayerController : MonoBehaviour
     private CharacterController _characterController;
 
     // Zenject dependency injection. //
-    private PlayerDataSheet _playerData;
-    private SettingsHolder _settings;
+    [HideInInspector]
+    public PlayerDataSheet PlayerData;
+    public SettingsHolder Settings;
 
-    private PlayerBaseState _currentState;
+    [HideInInspector]
+    public PlayerBaseState CurrentState;
 
-    private PlayerWalkState _walkState;
-    private PlayerRunState _runState;
-    private PlayerCrouchState _crouchState;
-
-    public PlayerDataSheet PlayerData => _playerData;
-    public SettingsHolder Settings => _settings;
+    [HideInInspector]
+    public PlayerWalkState WalkState;
+    [HideInInspector]
+    public PlayerRunState RunState;
+    [HideInInspector]
+    public PlayerCrouchState CrouchState;
+    [HideInInspector]
+    public PlayerJumpState JumpState;
+    [HideInInspector]
+    public PlayerFallingState FallingState; 
 
     [Inject]
     public void Construct(SettingsHolder settings, PlayerDataSheet playerDataSheet)
     {
-        _settings = settings;
-        _playerData = playerDataSheet;
+        Settings = settings;
+        PlayerData = playerDataSheet;
+    }
+
+    private void Awake()
+    {
+        WalkState = new PlayerWalkState(this);
+        RunState = new PlayerRunState(this);
+        CrouchState = new PlayerCrouchState(this);
+        JumpState = new PlayerJumpState(this);
+        FallingState = new PlayerFallingState(this);
     }
 
     private void Update()
@@ -41,29 +56,29 @@ public class PlayerController : MonoBehaviour
         {
             _moveVector = Vector3.zero;
 
-            if (Input.GetKey(_settings.Data.ForwardKey)) _moveVector += transform.forward;
-            if (Input.GetKey(_settings.Data.StrafeLeftKey)) _moveVector -= transform.right;
-            if (Input.GetKey(_settings.Data.BackwardKey)) _moveVector -= transform.forward;
-            if (Input.GetKey(_settings.Data.StrafeRightKey)) _moveVector += transform.right;
+            if (Input.GetKey(Settings.Data.ForwardKey)) _moveVector += transform.forward;
+            if (Input.GetKey(Settings.Data.StrafeLeftKey)) _moveVector -= transform.right;
+            if (Input.GetKey(Settings.Data.BackwardKey)) _moveVector -= transform.forward;
+            if (Input.GetKey(Settings.Data.StrafeRightKey)) _moveVector += transform.right;
 
             // Chooses player speed based on Shift key input. -Shad //
-            _currentPlayerSpeed = Input.GetKey(_settings.Data.RunKey) ? _playerData.RunSpeed : _playerData.WalkSpeed;
+            _currentPlayerSpeed = Input.GetKey(Settings.Data.RunKey) ? PlayerData.RunSpeed : PlayerData.WalkSpeed;
         }
 
         // Makes sure the vector magnitude is never greater than 1f. -Shad //
         _moveVector.Normalize();
 
-        _smoothMoveVector = Vector3.SmoothDamp(_smoothMoveVector, _moveVector, ref _refVector, _playerData.MovementSmoothingTime);
+        _smoothMoveVector = Vector3.SmoothDamp(_smoothMoveVector, _moveVector, ref _refVector, PlayerData.MovementSmoothingTime);
 
         _characterController.Move(_smoothMoveVector * _currentPlayerSpeed * Time.deltaTime);
 
-        _gravityVector.z = Mathf.Clamp(_gravityVector.z, 0f, _playerData.RunJumpSpeedMultiplier);
-        _gravityVector.z += 0.5f * _playerData.Gravity * Time.deltaTime;
+        _gravityVector.z = Mathf.Clamp(_gravityVector.z, 0f, PlayerData.RunJumpSpeedMultiplier);
+        _gravityVector.z += 0.5f * PlayerData.Gravity * Time.deltaTime;
 
         // Gravity logic. Keeps the character grounded even if not midair. -Shad //
         if (!_characterController.isGrounded)
         {
-            _gravityVector.y += _playerData.Gravity * Time.deltaTime;
+            _gravityVector.y += PlayerData.Gravity * Time.deltaTime;
         }
         else if(_gravityVector.y < 0f)
         {
@@ -73,17 +88,17 @@ public class PlayerController : MonoBehaviour
         _characterController.Move(transform.TransformDirection(_gravityVector) * Time.deltaTime);
 
         // Triggers Jump() once. -Shad //
-        if (_characterController.isGrounded && Input.GetKeyDown(_settings.Data.JumpKey)) Jump();
+        if (_characterController.isGrounded && Input.GetKeyDown(Settings.Data.JumpKey)) Jump();
 
         // Crouching shouldn't behave like Jump(), like a trigger. Which is why it's like this. -Shad //
-        HandleCrouch(Input.GetKey(_settings.Data.CrouchKey));
+        HandleCrouch(Input.GetKey(Settings.Data.CrouchKey));
     }
 
     private void Jump()
     {
-        _gravityVector.y = Mathf.Sqrt(2f * -_playerData.Gravity * _playerData.JumpHeight);
+        _gravityVector.y = Mathf.Sqrt(2f * -PlayerData.Gravity * PlayerData.JumpHeight);
 
-        if(_currentPlayerSpeed == _playerData.RunSpeed) _gravityVector.z = _playerData.RunSpeed * _playerData.RunJumpSpeedMultiplier;
+        if(_currentPlayerSpeed == PlayerData.RunSpeed) _gravityVector.z = PlayerData.RunSpeed * PlayerData.RunJumpSpeedMultiplier;
     }
 
     private bool _hasSlided = false;
@@ -93,20 +108,20 @@ public class PlayerController : MonoBehaviour
         {
             if (!_hasSlided)
             {
-                if(Input.GetKey(_settings.Data.RunKey))
+                if(Input.GetKey(Settings.Data.RunKey))
 
                 Slide();
 
                 _hasSlided = true;
             }
 
-            _characterController.center.Set(0f, _playerData.CharControlCrouchCenterY, 0f);
-            _characterController.height = _playerData.CharControlCrouchHeight;
+            _characterController.center.Set(0f, PlayerData.CharControlCrouchCenterY, 0f);
+            _characterController.height = PlayerData.CharControlCrouchHeight;
         }
         else
         {
-            _characterController.center.Set(0f, _playerData.CharControlDefaultCenterY, 0f);
-            _characterController.height = _playerData.CharControlDefaultHeight;            
+            _characterController.center.Set(0f, PlayerData.CharControlDefaultCenterY, 0f);
+            _characterController.height = PlayerData.CharControlDefaultHeight;            
         }
     }
 
@@ -115,9 +130,9 @@ public class PlayerController : MonoBehaviour
     {
         _slideTimer = 0f;
 
-        _gravityVector.z = _playerData.RunSpeed * _playerData.SlideSpeedMultiplier;
+        _gravityVector.z = PlayerData.RunSpeed * PlayerData.SlideSpeedMultiplier;
 
-        while (_slideTimer < _playerData.SlideCooldown)
+        while (_slideTimer < PlayerData.SlideCooldown)
         {
             _slideTimer += Time.deltaTime;
 
@@ -129,8 +144,11 @@ public class PlayerController : MonoBehaviour
         _hasSlided = false;
     }
 
-    private bool CanSlide()
+    public void UpdateState(PlayerBaseState newState)
     {
-        return _characterController.isGrounded && _slideTimer > _playerData.SlideCooldown;
+        if (CurrentState != null) CurrentState.Exit();
+
+        CurrentState = newState;
+        newState.Enter();
     }
 }

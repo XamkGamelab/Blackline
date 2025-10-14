@@ -2,11 +2,11 @@ using UnityEngine;
 
 public abstract class PlayerBaseState : MonoBehaviour
 {
-    protected PlayerController _controller;
+    protected PlayerController _playerController;
 
     public PlayerBaseState(PlayerController controller)
     {
-        this._controller = controller;
+        this._playerController = controller;
     }
 
     public virtual void Enter() { }

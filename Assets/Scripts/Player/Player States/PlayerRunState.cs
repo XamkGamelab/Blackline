@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class PlayerRunState : PlayerBaseState
+public class PlayerRunState : PlayerGroundedState
 {
     public PlayerRunState (PlayerController controller) : base(controller) { }
 
