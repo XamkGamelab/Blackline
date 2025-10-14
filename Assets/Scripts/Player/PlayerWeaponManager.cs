@@ -20,7 +20,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private void Update()
     {
         // This is bad because Primary Weapon slot might be null. But fuck it for now. -Davoth //
-        HandleWeapon(_playerInventory.PrimaryWeapon);
+        HandleWeapon(_playerInventory.SecondaryWeapon);
     }
 
     private void HandleWeapon(BaseWeapon weapon)

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a65277c47591de42ad58aeaed230207, type: 3}
-  m_Name: RevolverDataSheet
+  m_Name: ShotgunData
   m_EditorClassIdentifier: 
-  _itemID: 0
-  _weaponName: Revolver
-  _weaponType: 1
+  _itemID: 2
+  _weaponName: Shotgun
+  _weaponType: 0
   _weaponPrefab: {fileID: 0}
   _roundsPerSecondFromHip: 1.6
-  _roundsPerSecondAimed: 3
-  _maxAmmo: 6
-  _projectilesPerShot: 1
-  _projectileSpeed: 15
+  _roundsPerSecondAimed: 2
+  _maxAmmo: 7
+  _projectilesPerShot: 10
+  _projectileSpeed: 5
   _projectileRange: 100
-  _projectileSpreadX: 0.15
-  _projectileSpreadY: 0.15
+  _projectileSpreadX: 0
+  _projectileSpreadY: 0
