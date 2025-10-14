@@ -7,20 +7,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject pauseMenuUI;
 
-    // Inject this. -Shad //
-    private SettingsHolder _settings;
-
     private GameState _gameState;
-
-    [Inject]
-    public void Construct(SettingsHolder settings)
-    {
-        _settings = settings;
-    }
 
     private void Update()
     {
-        if(Input.GetKeyDown(_settings.Data.PauseKey)) TogglePause();
+        if(Input.GetKeyDown(SettingsHolder.Data.PauseKey)) TogglePause();
     }
 
     // Hides the Pause Menu on start. Very clever Veeti. -Shad //

@@ -13197,7 +13197,6 @@ MonoBehaviour:
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 984e3b8b7e3366644a2461ac18e63303, type: 2}
   _monoInstallers:
-  - {fileID: 2010185137}
   - {fileID: 1683348637}
   - {fileID: 256797829}
   - {fileID: 69925114}
@@ -19057,10 +19056,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284027933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2cf68bd829313c4da089059c7cd59fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 72f9ec4dad171234dbb7ddecbcf49ed1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1284027935}
+  PlayerData: {fileID: 0}
+  MoveVector: {x: 0, y: 0, z: 0}
+  Velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &1284027937
 MonoBehaviour:
   m_ObjectHideFlags: 0

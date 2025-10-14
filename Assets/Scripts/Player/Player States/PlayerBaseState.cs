@@ -1,12 +1,10 @@
-using UnityEngine;
-
-public abstract class PlayerBaseState : MonoBehaviour
+public abstract class PlayerBaseState
 {
-    protected PlayerMovement _playerController;
+    protected PlayerMovement PlayerMovement;
 
-    public PlayerBaseState(PlayerMovement controller)
+    public PlayerBaseState(PlayerMovement playerMovement)
     {
-        this._playerController = controller;
+        this.PlayerMovement = playerMovement;
     }
 
     public virtual void Enter() { }
