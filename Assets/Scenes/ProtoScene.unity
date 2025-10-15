@@ -12066,7 +12066,7 @@ GameObject:
   - component: {fileID: 735605425}
   - component: {fileID: 735605424}
   - component: {fileID: 735605423}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas_DevConsole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13276,7 +13276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 874157944}
   - component: {fileID: 874157945}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13397,7 +13397,7 @@ GameObject:
   - component: {fileID: 884569021}
   - component: {fileID: 884569019}
   - component: {fileID: 884569020}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17991,6 +17991,7 @@ GameObject:
   - component: {fileID: 1108374865}
   - component: {fileID: 1108374864}
   - component: {fileID: 1108374866}
+  - component: {fileID: 1108374867}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18038,8 +18039,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ba103f56fb23644be24613ad0d4a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showConsole: 0
-  input: 
+--- !u!114 &1108374867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108374863}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc3b5c90b00ed78499407562329164ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToSetInactive: []
 --- !u!1 &1113183534
 GameObject:
   m_ObjectHideFlags: 0
@@ -18058,7 +18070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1113183535
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20021,7 +20033,7 @@ GameObject:
   - component: {fileID: 1409548088}
   - component: {fileID: 1409548087}
   - component: {fileID: 1409548085}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InputField DeveloperConsole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20089,7 +20101,31 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2097397577}
+        m_TargetAssemblyTypeName: Scripts.DevConsole.DeveloperConsoleBehaviour, Assembly-CSharp
+        m_MethodName: ProcessCommand
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1409548085}
+        m_TargetAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+        m_MethodName: ActivateInputField
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -25753,7 +25789,7 @@ GameObject:
   - component: {fileID: 1820117090}
   - component: {fileID: 1820117089}
   - component: {fileID: 1820117088}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32717,7 +32753,7 @@ GameObject:
   - component: {fileID: 2097397578}
   - component: {fileID: 2097397577}
   - component: {fileID: 2097397576}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DeveloperConsole
   m_TagString: Untagged
   m_Icon: {fileID: 0}

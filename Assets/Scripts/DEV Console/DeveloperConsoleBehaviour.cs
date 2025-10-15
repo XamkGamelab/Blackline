@@ -25,7 +25,7 @@ namespace Scripts.DevConsole
         {
             get
             {
-                if (developerConsole == null) { return developerConsole; } // If already initialized, return it -Veeti//
+                if (developerConsole != null) { return developerConsole; } // If already initialized, return it -Veeti//
                 return developerConsole = new DeveloperConsole(prefix, commands); // Otherwise, create a new instance -Veeti//
             }
         }

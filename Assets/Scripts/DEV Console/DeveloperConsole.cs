@@ -2,15 +2,11 @@ using Scripts.DevConsole.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Scripts.DevConsole //DONT TOUCH ANY OF THIS -Veeti//
 {
-
-    [AttributeUsage(AttributeTargets.Class)]
-    public sealed class ExtensionOfNativeClassAttribute : Attribute
-    {
-    }
-    public class DeveloperConsole //Main class for the developer console -Veeti//
+    public class DeveloperConsole : MonoBehaviour //Main class for the developer console -Veeti//
     {
         private readonly string prefix;
         private readonly IEnumerable<IConsoleCommand> commands;
@@ -31,6 +27,8 @@ namespace Scripts.DevConsole //DONT TOUCH ANY OF THIS -Veeti//
 
             string commandInput = inputSplit[0]; //Get the command input -Veeti//
             string[] args = inputSplit.Skip(1).ToArray(); //Get the arguments -Veeti//
+
+            ProcessCommand(commandInput, args); //Process the command input and arguments -Veeti//
         }
 
         public void ProcessCommand(string commandInput, string[] args) //Process the command input and arguments -Veeti//
@@ -48,5 +46,10 @@ namespace Scripts.DevConsole //DONT TOUCH ANY OF THIS -Veeti//
             }
 
         }
+    }
+
+    [AttributeUsage(AttributeTargets.Class)]
+    public sealed class ExtensionOfNativeClassAttribute : Attribute
+    {
     }
 }
