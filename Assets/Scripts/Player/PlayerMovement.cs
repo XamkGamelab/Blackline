@@ -3,9 +3,9 @@ using TMPro;
 using UnityEngine;
 using Zenject;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("References")]
     [SerializeField]
     private CharacterController _characterController;
 
@@ -32,7 +32,11 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public Vector3 MoveVector;
     [HideInInspector]
-    public Vector3 Velocity;
+    public Vector3 SmoothMoveVector;
+    [HideInInspector]
+    public Vector3 GravityVector;
+    [HideInInspector]
+    public Vector3 BoostMoveVector;
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         CurrentState.HandleUpdate();
 
         print(CurrentState);
-        print(Velocity);
+        print(GravityVector);
     }
 
     public void UpdateState(PlayerBaseState newState)

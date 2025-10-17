@@ -11866,7 +11866,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 875440363}
-  - {fileID: 2010185135}
   - {fileID: 256797828}
   - {fileID: 69925113}
   - {fileID: 1683348636}
@@ -19062,7 +19061,8 @@ MonoBehaviour:
   _characterController: {fileID: 1284027935}
   PlayerData: {fileID: 0}
   MoveVector: {x: 0, y: 0, z: 0}
-  Velocity: {x: 0, y: 0, z: 0}
+  SmoothMoveVector: {x: 0, y: 0, z: 0}
+  VelocityVector: {x: 0, y: 0, z: 0}
 --- !u!114 &1284027937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31855,50 +31855,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &2010185134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2010185135}
-  - component: {fileID: 2010185137}
-  m_Layer: 0
-  m_Name: SettingsInstaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2010185135
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010185134}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 699472128}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2010185137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010185134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31bcc505a52712f4993b31c3f4122af3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2026808645
 GameObject:
   m_ObjectHideFlags: 0

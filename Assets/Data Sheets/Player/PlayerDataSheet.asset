@@ -29,8 +29,8 @@ MonoBehaviour:
   _charControlDefaultHeight: 2
   _charControlCrouchCenterY: 0.5
   _charControlCrouchHeight: 1
-  _movementSmoothingTime: 0.2
+  _movementSmoothingTime: 0.5
   _slideCooldown: 1
-  _slideSpeedMultiplier: 5
-  _runJumpSpeedMultiplier: 5
+  _slideSpeedMultiplier: 2
+  _runJumpSpeedMultiplier: 2
   _perks: []

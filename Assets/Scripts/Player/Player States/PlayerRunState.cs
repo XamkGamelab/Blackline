@@ -8,7 +8,7 @@ public class PlayerRunState : PlayerGroundedState
     {
         base.HandleInput();
 
-        if(!Input.GetKey(SettingsHolder.Data.RunKey)) PlayerMovement.UpdateState(PlayerMovement.WalkState);
+        if (!Input.GetKey(SettingsHolder.Data.RunKey)) PlayerMovement.UpdateState(PlayerMovement.WalkState);
     }
 
     public override void HandleUpdate()

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerGroundedState : PlayerBaseState
 {
-    public PlayerGroundedState (PlayerMovement controller) : base(controller) { }
+    public PlayerGroundedState (PlayerMovement movement) : base(movement) { }
 
     public override void HandleInput()
     {
@@ -12,9 +12,20 @@ public class PlayerGroundedState : PlayerBaseState
     public override void HandleUpdate()
     {
         if(!PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.FallingState);
+
+        HandleBoost();
     }
 
-    private Vector3 _smoothMoveVector, _refVector;
+    protected void HandleBoost()
+    {
+        PlayerMovement.BoostMoveVector.z = Mathf.Clamp(PlayerMovement.BoostMoveVector.z, 0f, 100f);
+
+        PlayerMovement.BoostMoveVector.z -= PlayerMovement.PlayerData.MovementSmoothingTime * Time.deltaTime;
+
+        PlayerMovement.CharacterController.Move(PlayerMovement.transform.TransformDirection(PlayerMovement.BoostMoveVector) * Time.deltaTime);
+    }
+
+    private Vector3 _refVector;
     protected void HandleMove(float playerSpeed)
     {
         float horizontalInput = PlayerInput.GetAxis("Horizontal");
@@ -25,12 +36,14 @@ public class PlayerGroundedState : PlayerBaseState
         // Makes sure the vector magnitude is never greater than 1f. -Shad //
         inputVector.Normalize();
 
-        _smoothMoveVector = Vector3.SmoothDamp(_smoothMoveVector, inputVector, ref _refVector, PlayerMovement.PlayerData.MovementSmoothingTime);
+        PlayerMovement.SmoothMoveVector = Vector3.SmoothDamp(PlayerMovement.SmoothMoveVector, inputVector, ref _refVector, PlayerMovement.PlayerData.MovementSmoothingTime);
 
-        PlayerMovement.CharacterController.Move(PlayerMovement.transform.TransformDirection(_smoothMoveVector) * playerSpeed * Time.deltaTime);
+        PlayerMovement.CharacterController.Move(PlayerMovement.transform.TransformDirection(PlayerMovement.SmoothMoveVector) * playerSpeed * Time.deltaTime);
 
-        PlayerMovement.Velocity.y = PlayerMovement.PlayerData.Gravity;
+        PlayerMovement.GravityVector.y = PlayerMovement.PlayerData.Gravity;        
+        PlayerMovement.CharacterController.Move(PlayerMovement.transform.TransformDirection(PlayerMovement.GravityVector) * Time.deltaTime);
 
-        PlayerMovement.CharacterController.Move(PlayerMovement.transform.TransformDirection(PlayerMovement.Velocity) * Time.deltaTime);
+        PlayerMovement.BoostMoveVector.z = 0f;
+        PlayerMovement.CharacterController.Move(PlayerMovement.transform.TransformDirection(PlayerMovement.BoostMoveVector) * Time.deltaTime);
     }
 }

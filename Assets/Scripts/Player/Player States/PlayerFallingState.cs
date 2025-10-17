@@ -1,6 +1,6 @@
 public class PlayerFallingState : PlayerAirborneState
 {
-    public PlayerFallingState (PlayerMovement controller) : base(controller) { }
+    public PlayerFallingState (PlayerMovement movement) : base(movement) { }
 
     public override void HandleUpdate()
     {
