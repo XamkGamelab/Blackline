@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -32,11 +30,15 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public Vector3 MoveVector;
     [HideInInspector]
+    public Vector3 DirMoveVector;
+    [HideInInspector]
     public Vector3 SmoothMoveVector;
     [HideInInspector]
     public Vector3 GravityVector;
     [HideInInspector]
     public Vector3 BoostMoveVector;
+    [HideInInspector]
+    public Vector3 TempDirectionVector;
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)
@@ -61,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         CurrentState.HandleUpdate();
 
         print(CurrentState);
-        print(GravityVector);
     }
 
     public void UpdateState(PlayerBaseState newState)
