@@ -13,6 +13,8 @@ public class PlayerRunState : PlayerGroundedState
 
     public override void HandleUpdate()
     {
+        base.HandleUpdate();
+
         HandleMove(PlayerMovement.PlayerData.RunSpeed);
     }
 }

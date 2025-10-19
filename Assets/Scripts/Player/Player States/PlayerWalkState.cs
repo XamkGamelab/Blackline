@@ -13,6 +13,8 @@ public class PlayerWalkState : PlayerGroundedState
 
     public override void HandleUpdate()
     {
+        base.HandleUpdate();
+
         HandleMove(PlayerMovement.PlayerData.WalkSpeed);
     }
 }

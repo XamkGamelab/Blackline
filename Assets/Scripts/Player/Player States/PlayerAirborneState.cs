@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerAirborneState : PlayerBaseState
+public class PlayerAirborneState : PlayerMasterState
 {
     public PlayerAirborneState (PlayerMovement movement) : base(movement) { }
 
@@ -11,25 +11,19 @@ public class PlayerAirborneState : PlayerBaseState
 
     public override void HandleUpdate()
     {
+        base.HandleUpdate();
+
         if (PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.WalkState);
 
-        HandleGravity();
-        HandleBoost();
+        HandleMove();
     }
 
-    protected void HandleGravity()
+    protected void HandleMove()
     {
-        PlayerMovement.GravityVector.y += PlayerMovement.PlayerData.Gravity * Time.deltaTime;
+        Vector3 refVector = Vector3.zero;
 
-        PlayerMovement.CharacterController.Move(PlayerMovement.GravityVector * Time.deltaTime);
-    }
+        PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref refVector, PlayerMovement.PlayerData.MovementSmoothingTime);
 
-    protected void HandleBoost()
-    {
-        PlayerMovement.BoostMoveVector.z = Mathf.Clamp(PlayerMovement.BoostMoveVector.z, 0f, 100f);
-
-        PlayerMovement.BoostMoveVector.z -= PlayerMovement.PlayerData.MovementSmoothingTime * Time.deltaTime;
-
-        PlayerMovement.CharacterController.Move(PlayerMovement.BoostMoveVector.z * Time.deltaTime * PlayerMovement.TempDirectionVector);
+        PlayerMovement.MoveVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.TempDirectionVector;
     }
 }

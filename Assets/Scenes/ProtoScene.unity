@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 77961670}
   - component: {fileID: 77961672}
   - component: {fileID: 77961671}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 120448615}
   - component: {fileID: 120448614}
   - component: {fileID: 120448613}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 139431323}
   - component: {fileID: 139431322}
   - component: {fileID: 139431321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7092,7 +7092,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -8141,7 +8141,7 @@ GameObject:
   - component: {fileID: 473916241}
   - component: {fileID: 473916240}
   - component: {fileID: 473916239}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8289,7 +8289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 549713922}
   - component: {fileID: 549713926}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Pause Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11550,7 +11550,7 @@ GameObject:
   - component: {fileID: 644303265}
   - component: {fileID: 644303264}
   - component: {fileID: 644303263}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11990,7 +11990,7 @@ GameObject:
   - component: {fileID: 722517803}
   - component: {fileID: 722517805}
   - component: {fileID: 722517804}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16347,7 +16347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 933127409}
   - component: {fileID: 933127410}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: ButtonController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17379,7 +17379,7 @@ GameObject:
   - component: {fileID: 1089834214}
   - component: {fileID: 1089834216}
   - component: {fileID: 1089834215}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17726,7 +17726,7 @@ GameObject:
   - component: {fileID: 1113183538}
   - component: {fileID: 1113183537}
   - component: {fileID: 1113183536}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Settings Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18400,7 +18400,7 @@ GameObject:
   - component: {fileID: 1171923999}
   - component: {fileID: 1171924001}
   - component: {fileID: 1171924000}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18537,7 +18537,7 @@ GameObject:
   - component: {fileID: 1259044532}
   - component: {fileID: 1259044531}
   - component: {fileID: 1259044530}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: PlayerHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18995,7 +18995,7 @@ GameObject:
   - component: {fileID: 1284027937}
   - component: {fileID: 1284027939}
   - component: {fileID: 1284027938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19011,7 +19011,7 @@ Transform:
   m_GameObject: {fileID: 1284027933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 28.38, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -19039,13 +19039,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.9
+  m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.1
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.05, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1284027936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19059,6 +19059,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1284027935}
+  _ignoreCollisonLayer:
+    serializedVersion: 2
+    m_Bits: 63
   PlayerData: {fileID: 0}
   MoveVector: {x: 0, y: 0, z: 0}
   DirMoveVector: {x: 0, y: 0, z: 0}
@@ -19201,7 +19204,7 @@ GameObject:
   - component: {fileID: 1305279349}
   - component: {fileID: 1305279351}
   - component: {fileID: 1305279350}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19337,7 +19340,7 @@ GameObject:
   - component: {fileID: 1311757124}
   - component: {fileID: 1311757127}
   - component: {fileID: 1311757126}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19667,7 +19670,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1389771622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19810,7 +19813,7 @@ GameObject:
   - component: {fileID: 1448663393}
   - component: {fileID: 1448663395}
   - component: {fileID: 1448663394}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: SettingTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23837,7 +23840,7 @@ GameObject:
   - component: {fileID: 1556185317}
   - component: {fileID: 1556185320}
   - component: {fileID: 1556185319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28628,7 +28631,7 @@ GameObject:
   - component: {fileID: 1927832485}
   - component: {fileID: 1927832487}
   - component: {fileID: 1927832486}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35079,6 +35082,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1389771622}
     m_Modifications:
+    - target: {fileID: 692097140423611866, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420178412084832876, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2836853584939404643, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -35119,13 +35130,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3345003611106735915, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6353042838826401455, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
       propertyPath: m_Name
       value: Revolver
       objectReference: {fileID: 0}
     - target: {fileID: 6353042838826401455, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353042838826401455, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9102988998033491739, guid: dc4465a5b1e706343a0ddbf619ffc30b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -4,7 +4,7 @@ public class PlayerFallingState : PlayerAirborneState
 
     public override void Enter()
     {
-        base.Enter();
+        // DO NOTHING! //
     }
 
     public override void HandleUpdate()

@@ -1,3 +1,4 @@
+using System.Transactions;
 using UnityEngine;
 using Zenject;
 
@@ -28,17 +29,17 @@ public class PlayerMovement : MonoBehaviour
     // Public, but hidden references. //
     public CharacterController CharacterController => _characterController;
     [HideInInspector]
+    public Vector3 InputVector;
+    [HideInInspector]
     public Vector3 MoveVector;
-    [HideInInspector]
-    public Vector3 DirMoveVector;
-    [HideInInspector]
-    public Vector3 SmoothMoveVector;
     [HideInInspector]
     public Vector3 GravityVector;
     [HideInInspector]
     public Vector3 BoostMoveVector;
     [HideInInspector]
     public Vector3 TempDirectionVector;
+
+    private Vector3 _finalSumVector;
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)
@@ -62,7 +63,12 @@ public class PlayerMovement : MonoBehaviour
         CurrentState.HandleInput();
         CurrentState.HandleUpdate();
 
-        print(CurrentState);
+        print(CurrentState);    
+        print($"isGrounded: {CharacterController.isGrounded}");
+
+        _finalSumVector = MoveVector + GravityVector + BoostMoveVector;
+
+        CharacterController.Move(_finalSumVector * Time.deltaTime);
     }
 
     public void UpdateState(PlayerBaseState newState)
