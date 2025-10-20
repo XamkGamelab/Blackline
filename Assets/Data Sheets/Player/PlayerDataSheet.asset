@@ -32,5 +32,5 @@ MonoBehaviour:
   _movementSmoothingTime: 0.5
   _slideCooldown: 1
   _slideSpeedMultiplier: 2
-  _runJumpSpeedMultiplier: 1.2
+  _runJumpSpeedMultiplier: 1
   _perks: []

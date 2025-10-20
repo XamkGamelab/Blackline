@@ -1,13 +1,8 @@
 using UnityEngine;
 
-public class PlayerGroundedState : PlayerMasterState
+public abstract class PlayerGroundedState : PlayerBaseState
 {
     public PlayerGroundedState (PlayerMovement movement) : base(movement) { }
-
-    public override void Enter()
-    {
-        PlayerMovement.BoostMoveVector = Vector3.zero;
-    }
 
     public override void HandleInput()
     {
@@ -16,9 +11,24 @@ public class PlayerGroundedState : PlayerMasterState
 
     public override void HandleUpdate()
     {
-        base.HandleUpdate();
-
         if(!PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.FallingState);
+
+        HandleGravity();
+        HandleBoost();
+    }
+
+    protected void HandleGravity()
+    {
+        if(PlayerMovement.CharacterController.isGrounded) PlayerMovement.GravityVector.y = PlayerMovement.PlayerData.Gravity;
+    }
+
+    protected void HandleBoost()
+    {
+        PlayerMovement.BoostMoveVector.z = Mathf.Clamp(PlayerMovement.BoostMoveVector.z, 0f, 100f);
+
+        if(PlayerMovement.BoostMoveVector.z > 0f) PlayerMovement.BoostMoveVector.z -= PlayerMovement.PlayerData.MovementSmoothingTime * Time.deltaTime * 10f;
+
+        PlayerMovement.BoostMoveVector = PlayerMovement.BoostMoveVector.magnitude * PlayerMovement.TempDirectionVector;
     }
 
     protected void HandleMove(float playerSpeed)

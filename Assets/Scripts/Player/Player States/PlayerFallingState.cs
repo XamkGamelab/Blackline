@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class PlayerFallingState : PlayerAirborneState
 {
     public PlayerFallingState (PlayerMovement movement) : base(movement) { }
@@ -5,10 +7,5 @@ public class PlayerFallingState : PlayerAirborneState
     public override void Enter()
     {
         // DO NOTHING! //
-    }
-
-    public override void HandleUpdate()
-    {
-        base.HandleUpdate();
     }
 }

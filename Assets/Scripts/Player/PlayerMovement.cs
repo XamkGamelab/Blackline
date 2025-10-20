@@ -63,10 +63,9 @@ public class PlayerMovement : MonoBehaviour
         CurrentState.HandleInput();
         CurrentState.HandleUpdate();
 
-        print(CurrentState);    
-        print($"isGrounded: {CharacterController.isGrounded}");
-
         _finalSumVector = MoveVector + GravityVector + BoostMoveVector;
+
+        print(BoostMoveVector.z);
 
         CharacterController.Move(_finalSumVector * Time.deltaTime);
     }

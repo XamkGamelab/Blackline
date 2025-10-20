@@ -8,7 +8,11 @@ public class PlayerJumpState : PlayerAirborneState
     {
         base.Enter();
 
-        if (Input.GetKey(SettingsHolder.Data.RunKey)) PlayerMovement.BoostMoveVector.z = PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.RunJumpSpeedMultiplier;
+        if (Input.GetKey(SettingsHolder.Data.RunKey))
+        {
+            Debug.Log("Boost!");
+            PlayerMovement.BoostMoveVector.z = PlayerMovement.MoveVector.magnitude * PlayerMovement.PlayerData.RunJumpSpeedMultiplier;
+        }
         
         PlayerMovement.GravityVector.y = Mathf.Sqrt(PlayerMovement.PlayerData.JumpHeight * -2f * PlayerMovement.PlayerData.Gravity);
     }
