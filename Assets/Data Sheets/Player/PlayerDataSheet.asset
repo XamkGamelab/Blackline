@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 3
   _runSpeed: 6
-  _crouchSpeed: 1.5
+  _crouchSpeed: 2
   _gravity: -9.81
   _jumpHeight: 1.2
   _maxHealth: 200
@@ -29,8 +29,12 @@ MonoBehaviour:
   _charControlDefaultHeight: 2
   _charControlCrouchCenterY: 0.5
   _charControlCrouchHeight: 1
-  _movementSmoothingTime: 0.5
+  _movementSmoothingRateGrounded: 5
+  _movementSmoothingRateAirborne: 0.75
+  _slideSpeedMultiplier: 1
+  _slideSmoothingRate: 1.5
   _slideCooldown: 1
-  _slideSpeedMultiplier: 2
-  _runJumpSpeedMultiplier: 1
+  _bunnyHopSpeedMultiplier: 0.7
+  _bunnyHopSmoothingRateGrounded: 3
+  _bunnyHopSmoothingRateAirborne: 0.5
   _perks: []

@@ -16,11 +16,13 @@ public abstract class PlayerAirborneState : PlayerBaseState
 
     public override void HandleUpdate()
     {
+        base.HandleUpdate();
+
         if (PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.WalkState);
 
         HandleGravity();
-        HandleBoost();
-        HandleMove();        
+        HandleBunnyhop();
+        FadeMoveVector();        
     }
 
     protected void HandleGravity()
@@ -28,26 +30,19 @@ public abstract class PlayerAirborneState : PlayerBaseState
         PlayerMovement.GravityVector.y += PlayerMovement.PlayerData.Gravity * Time.deltaTime;
     }
 
-    protected void HandleBoost()
+    protected void HandleBunnyhop()
     {
-        PlayerMovement.BoostMoveVector.z = Mathf.Clamp(PlayerMovement.BoostMoveVector.z, 0f, 100f);
+        PlayerMovement.BunnyhopVector = PlayerMovement.BunnyhopVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if (PlayerMovement.BoostMoveVector.z > 0f) PlayerMovement.BoostMoveVector.z -= PlayerMovement.PlayerData.MovementSmoothingTime * Time.deltaTime * 10f;
+        PlayerMovement.BunnyhopVector = Vector3.Lerp(PlayerMovement.BunnyhopVector, Vector3.zero, PlayerMovement.PlayerData.BunnyHopSmoothingRateAirborne * Time.deltaTime);
 
-        PlayerMovement.BoostMoveVector = PlayerMovement.BoostMoveVector.magnitude * PlayerMovement.TempDirectionVector;
+        PlayerMovement.BunnyhopVector = Vector3.ClampMagnitude(PlayerMovement.BunnyhopVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier);
     }
 
-    protected void HandleMove()
+    protected void FadeMoveVector()
     {
-        Vector3 refVector = Vector3.zero;
-
-        PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref refVector, PlayerMovement.PlayerData.MovementSmoothingTime);
+        PlayerMovement.MoveVector = Vector3.Lerp(PlayerMovement.MoveVector, Vector3.zero, PlayerMovement.PlayerData.MovementSmoothingRateAirborne * Time.deltaTime);
 
         PlayerMovement.MoveVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.TempDirectionVector;
-    }
-
-    protected Vector3 GetDirectionVector()
-    {
-        return PlayerMovement.MoveVector.normalized;
     }
 }

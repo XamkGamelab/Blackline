@@ -11,10 +11,12 @@ public abstract class PlayerGroundedState : PlayerBaseState
 
     public override void HandleUpdate()
     {
+        base.HandleUpdate();
+
         if(!PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.FallingState);
 
         HandleGravity();
-        HandleBoost();
+        HandleBunnyhop();
     }
 
     protected void HandleGravity()
@@ -22,13 +24,13 @@ public abstract class PlayerGroundedState : PlayerBaseState
         if(PlayerMovement.CharacterController.isGrounded) PlayerMovement.GravityVector.y = PlayerMovement.PlayerData.Gravity;
     }
 
-    protected void HandleBoost()
+    protected void HandleBunnyhop()
     {
-        PlayerMovement.BoostMoveVector.z = Mathf.Clamp(PlayerMovement.BoostMoveVector.z, 0f, 100f);
+        PlayerMovement.BunnyhopVector = PlayerMovement.BunnyhopVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if(PlayerMovement.BoostMoveVector.z > 0f) PlayerMovement.BoostMoveVector.z -= PlayerMovement.PlayerData.MovementSmoothingTime * Time.deltaTime * 10f;
+        PlayerMovement.BunnyhopVector = Vector3.Lerp(PlayerMovement.BunnyhopVector, Vector3.zero, PlayerMovement.PlayerData.BunnyHopSmoothingRateGrounded * Time.deltaTime);        
 
-        PlayerMovement.BoostMoveVector = PlayerMovement.BoostMoveVector.magnitude * PlayerMovement.TempDirectionVector;
+        PlayerMovement.BunnyhopVector = Vector3.ClampMagnitude(PlayerMovement.BunnyhopVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier);
     }
 
     protected void HandleMove(float playerSpeed)
@@ -41,8 +43,10 @@ public abstract class PlayerGroundedState : PlayerBaseState
         // Makes sure the vector magnitude is never greater than 1f. -Shad //
         PlayerMovement.InputVector.Normalize();
 
-        PlayerMovement.MoveVector = PlayerMovement.InputVector;
+        Vector3 targetVector = PlayerMovement.transform.TransformDirection(PlayerMovement.InputVector);
 
-        PlayerMovement.MoveVector = PlayerMovement.transform.TransformDirection(PlayerMovement.MoveVector) * playerSpeed;
+        PlayerMovement.MoveVector = Vector3.Lerp(PlayerMovement.MoveVector, targetVector * playerSpeed, PlayerMovement.PlayerData.MovementSmoothingRateGrounded * Time.deltaTime);
+
+        PlayerMovement.MoveVector = Vector3.ClampMagnitude(PlayerMovement.MoveVector, PlayerMovement.PlayerData.RunSpeed);
     }
 }

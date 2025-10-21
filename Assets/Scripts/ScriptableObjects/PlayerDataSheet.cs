@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Player Data Sheet", menuName = "Data Sheets/Create Player Data Sheet")]
@@ -24,13 +25,25 @@ public class PlayerDataSheet : CharacterDataSheet
 
     [Header("Player Movement")]
     [SerializeField]
-    private float _movementSmoothingTime;
+    private float _movementSmoothingRateGrounded;
     [SerializeField]
-    private float _slideCooldown;
+    private float _movementSmoothingRateAirborne;
+
+    [Header("Sliding")]
     [SerializeField]
     private float _slideSpeedMultiplier;
     [SerializeField]
-    private float _runJumpSpeedMultiplier;
+    private float _slideSmoothingRate;
+    [SerializeField]
+    private float _slideCooldown;
+
+    [Header("Bunnyhopping")]
+    [SerializeField]
+    private float _bunnyHopSpeedMultiplier;
+    [SerializeField]
+    private float _bunnyHopSmoothingRateGrounded;
+    [SerializeField]
+    private float _bunnyHopSmoothingRateAirborne;
 
     [Header("Perks")]
     [SerializeField]
@@ -44,10 +57,16 @@ public class PlayerDataSheet : CharacterDataSheet
     public float CharControlCrouchCenterY => _charControlCrouchCenterY;
     public float CharControlCrouchHeight => _charControlCrouchHeight;
 
-    public float MovementSmoothingTime => _movementSmoothingTime;
-    public float SlideCooldown => _slideCooldown;
+    public float MovementSmoothingRateGrounded => _movementSmoothingRateGrounded;
+    public float MovementSmoothingRateAirborne => _movementSmoothingRateAirborne;
+
     public float SlideSpeedMultiplier => _slideSpeedMultiplier;
-    public float RunJumpSpeedMultiplier => _runJumpSpeedMultiplier;
+    public float SlideSmoothingRate => _slideSmoothingRate;
+    public float SlideCooldown => _slideCooldown;    
+
+    public float BunnyHopSpeedMultiplier => _bunnyHopSpeedMultiplier;
+    public float BunnyHopSmoothingRateGrounded => _bunnyHopSmoothingRateGrounded;
+    public float BunnyHopSmoothingRateAirborne => _bunnyHopSmoothingRateAirborne;
 
     public Perk[] Perks => _perks;
 }
