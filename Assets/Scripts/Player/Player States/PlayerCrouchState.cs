@@ -5,16 +5,12 @@ public class PlayerCrouchState : PlayerGroundedState
     public PlayerCrouchState (PlayerMovement movement) : base(movement) { }
 
     public override void Enter()
-    {
-        base.Enter();
-
+    {       
         PlayerMovement.SetControllerSize(true);
     }
 
     public override void HandleInput()
     {
-        base.HandleInput();
-
         if (!Input.GetKey(SettingsHolder.Data.CrouchKey)) PlayerMovement.UpdateState(PlayerMovement.WalkState);
     }
 

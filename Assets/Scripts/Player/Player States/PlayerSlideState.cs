@@ -18,8 +18,6 @@ public class PlayerSlideState : PlayerGroundedState
 
     public override void HandleInput()
     {
-        base.HandleInput();
-
         if (!Input.GetKey(SettingsHolder.Data.CrouchKey)) PlayerMovement.UpdateState(PlayerMovement.WalkState);
     }
 

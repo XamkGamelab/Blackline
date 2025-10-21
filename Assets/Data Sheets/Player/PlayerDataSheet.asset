@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkSpeed: 3
   _runSpeed: 6
-  _crouchSpeed: 2
+  _crouchSpeed: 1.5
   _gravity: -9.81
   _jumpHeight: 1.2
   _maxHealth: 200

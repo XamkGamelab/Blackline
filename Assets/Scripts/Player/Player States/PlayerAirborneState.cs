@@ -16,8 +16,6 @@ public abstract class PlayerAirborneState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        base.HandleUpdate();
-
         if (PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.WalkState);
 
         HandleGravity();
