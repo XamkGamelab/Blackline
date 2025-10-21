@@ -33,9 +33,9 @@ public class PlayerSlideState : PlayerGroundedState
     // This slowly fades the normal movement vector to zero. -Shad //
     protected void FadeMoveVector()
     {
-        PlayerMovement.MoveVector = Vector3.Lerp(PlayerMovement.MoveVector, Vector3.zero, PlayerMovement.PlayerData.MovementSmoothingRateAirborne * Time.deltaTime);
-
         PlayerMovement.MoveVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.TempDirectionVector;
+
+        if (PlayerMovement.MoveVector.magnitude > 0f) PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingRateAirborne);
     }
 
     // Exiting Slide, this resizes the CharacterController to its normal size. -Shad //

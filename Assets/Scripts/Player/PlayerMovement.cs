@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 TempDirectionVector;
 
     [HideInInspector]
-    public Vector3 RefVector;
+    public Vector3 RefVector = Vector3.zero;
 
     private Vector3 _finalSumVector;
 
@@ -72,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
         CurrentState.HandleUpdate();
 
         _finalSumVector = MoveVector + GravityVector + BunnyhopVector + SlideVector;
+
+        print(MoveVector);
 
         CharacterController.Move(_finalSumVector * Time.deltaTime);
     }

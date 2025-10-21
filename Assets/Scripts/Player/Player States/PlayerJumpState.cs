@@ -11,7 +11,7 @@ public class PlayerJumpState : PlayerAirborneState
         if (Input.GetKey(SettingsHolder.Data.RunKey))
         {
             Debug.Log("Bunnyhop Boost!");
-            PlayerMovement.BunnyhopVector.z = PlayerMovement.MoveVector.magnitude * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier;
+            PlayerMovement.BunnyhopVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier * PlayerMovement.TempDirectionVector;
         }
         
         PlayerMovement.GravityVector.y = Mathf.Sqrt(PlayerMovement.PlayerData.JumpHeight * -2f * PlayerMovement.PlayerData.Gravity);
