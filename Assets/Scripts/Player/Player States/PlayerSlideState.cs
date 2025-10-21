@@ -4,9 +4,12 @@ public class PlayerSlideState : PlayerGroundedState
 {
     public PlayerSlideState (PlayerMovement movement) : base(movement) { }
 
+    // Entering Slide, this resizes the CharacterController to a smaller size and adds a small boost. -Shad //
     public override void Enter()
     {
         PlayerMovement.SetControllerSize(true);
+
+        Debug.Log("Slide Boost!");
 
         PlayerMovement.TempDirectionVector = GetDirectionVector();
 
@@ -26,19 +29,10 @@ public class PlayerSlideState : PlayerGroundedState
 
         if (PlayerMovement.SlideVector.magnitude < 1f) PlayerMovement.UpdateState(PlayerMovement.CrouchState);
 
-        HandleSlide();
         FadeMoveVector();
     }
 
-    protected void HandleSlide()
-    {
-        PlayerMovement.SlideVector = PlayerMovement.SlideVector.magnitude * PlayerMovement.TempDirectionVector;
-
-        PlayerMovement.SlideVector = Vector3.Lerp(PlayerMovement.SlideVector, Vector3.zero, PlayerMovement.PlayerData.SlideSmoothingRate * Time.deltaTime);
-
-        PlayerMovement.SlideVector = Vector3.ClampMagnitude(PlayerMovement.SlideVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.SlideSpeedMultiplier);
-    }
-
+    // This slowly fades the normal movement vector to zero. -Shad //
     protected void FadeMoveVector()
     {
         PlayerMovement.MoveVector = Vector3.Lerp(PlayerMovement.MoveVector, Vector3.zero, PlayerMovement.PlayerData.MovementSmoothingRateAirborne * Time.deltaTime);
@@ -46,6 +40,7 @@ public class PlayerSlideState : PlayerGroundedState
         PlayerMovement.MoveVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.TempDirectionVector;
     }
 
+    // Exiting Slide, this resizes the CharacterController to its normal size. -Shad //
     public override void Exit()
     {
         PlayerMovement.SetControllerSize(false);

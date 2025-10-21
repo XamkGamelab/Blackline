@@ -6,7 +6,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
 
     public override void HandleInput()
     {
-        if (Input.GetKeyDown(SettingsHolder.Data.JumpKey)) PlayerMovement.UpdateState(PlayerMovement.JumpState); // MOTHERJUMPER //
+        if (Input.GetKeyDown(SettingsHolder.Data.JumpKey)) PlayerMovement.UpdateState(PlayerMovement.JumpState); // MOTHERJUMPER. -Shad //
     }
 
     public override void HandleUpdate()
@@ -17,13 +17,16 @@ public abstract class PlayerGroundedState : PlayerBaseState
 
         HandleGravity();
         HandleBunnyhop();
+        HandleSlide();
     }
 
+    // Since in this state the player is already grounded, we will still add a constant gravity, to make the player stick to the ground. -Shad //
     protected void HandleGravity()
     {
         if(PlayerMovement.CharacterController.isGrounded) PlayerMovement.GravityVector.y = PlayerMovement.PlayerData.Gravity;
     }
 
+    // This slowly fades the bunnyhop vector to zero. -Shad //
     protected void HandleBunnyhop()
     {
         PlayerMovement.BunnyhopVector = PlayerMovement.BunnyhopVector.magnitude * PlayerMovement.TempDirectionVector;
@@ -31,6 +34,16 @@ public abstract class PlayerGroundedState : PlayerBaseState
         PlayerMovement.BunnyhopVector = Vector3.Lerp(PlayerMovement.BunnyhopVector, Vector3.zero, PlayerMovement.PlayerData.BunnyHopSmoothingRateGrounded * Time.deltaTime);        
 
         PlayerMovement.BunnyhopVector = Vector3.ClampMagnitude(PlayerMovement.BunnyhopVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier);
+    }
+
+    // This slowly fades the slide vector to zero. -Shad //
+    protected void HandleSlide()
+    {
+        PlayerMovement.SlideVector = PlayerMovement.SlideVector.magnitude * PlayerMovement.TempDirectionVector;
+
+        PlayerMovement.SlideVector = Vector3.Lerp(PlayerMovement.SlideVector, Vector3.zero, PlayerMovement.PlayerData.SlideSmoothingRate * Time.deltaTime);
+
+        PlayerMovement.SlideVector = Vector3.ClampMagnitude(PlayerMovement.SlideVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.SlideSpeedMultiplier);
     }
 
     protected void HandleMove(float playerSpeed)

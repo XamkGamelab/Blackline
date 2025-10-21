@@ -9,6 +9,8 @@ public abstract class PlayerBaseState
         this.PlayerMovement = playerMovement;
     }
 
+    // This is the base, the foundation for all the player states. Every state will inherit this class, with these methods. -Shad //
+
     public virtual void Enter() { }
     public virtual void Exit() { }
     public virtual void HandleInput() { }

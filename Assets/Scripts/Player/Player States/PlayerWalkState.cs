@@ -17,16 +17,6 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.HandleUpdate();
 
-        HandleSlide();
         HandleMove(PlayerMovement.PlayerData.WalkSpeed);
-    }
-
-    protected void HandleSlide()
-    {
-        PlayerMovement.SlideVector = PlayerMovement.SlideVector.magnitude * PlayerMovement.TempDirectionVector;
-
-        PlayerMovement.SlideVector = Vector3.Lerp(PlayerMovement.SlideVector, Vector3.zero, PlayerMovement.PlayerData.SlideSmoothingRate * Time.deltaTime);
-
-        PlayerMovement.SlideVector = Vector3.ClampMagnitude(PlayerMovement.SlideVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.SlideSpeedMultiplier);
     }
 }
