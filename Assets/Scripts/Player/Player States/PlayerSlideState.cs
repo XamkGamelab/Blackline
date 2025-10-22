@@ -35,7 +35,7 @@ public class PlayerSlideState : PlayerGroundedState
     {
         PlayerMovement.MoveVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if (PlayerMovement.MoveVector.magnitude > 0f) PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingRateAirborne);
+        if (PlayerMovement.MoveVector.magnitude > 0f) PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingTimeAirborne);
     }
 
     // Exiting Slide, this resizes the CharacterController to its normal size. -Shad //

@@ -25,15 +25,15 @@ public class PlayerDataSheet : CharacterDataSheet
 
     [Header("Player Movement")]
     [SerializeField]
-    private float _movementSmoothingRateGrounded;
+    private float _movementSmoothingTimeGrounded;
     [SerializeField]
-    private float _movementSmoothingRateAirborne;
+    private float _movementSmoothingTimeAirborne;
 
     [Header("Sliding")]
     [SerializeField]
     private float _slideSpeedMultiplier;
     [SerializeField]
-    private float _slideSmoothingRate;
+    private float _slideSmoothingTime;
     [SerializeField]
     private float _slideCooldown;
 
@@ -41,9 +41,9 @@ public class PlayerDataSheet : CharacterDataSheet
     [SerializeField]
     private float _bunnyHopSpeedMultiplier;
     [SerializeField]
-    private float _bunnyHopSmoothingRateGrounded;
+    private float _bunnyHopSmoothingTimeGrounded;
     [SerializeField]
-    private float _bunnyHopSmoothingRateAirborne;
+    private float _bunnyHopSmoothingTimeAirborne;
 
     [Header("Perks")]
     [SerializeField]
@@ -57,16 +57,16 @@ public class PlayerDataSheet : CharacterDataSheet
     public float CharControlCrouchCenterY => _charControlCrouchCenterY;
     public float CharControlCrouchHeight => _charControlCrouchHeight;
 
-    public float MovementSmoothingRateGrounded => _movementSmoothingRateGrounded;
-    public float MovementSmoothingRateAirborne => _movementSmoothingRateAirborne;
+    public float MovementSmoothingTimeGrounded => _movementSmoothingTimeGrounded;
+    public float MovementSmoothingTimeAirborne => _movementSmoothingTimeAirborne;
 
     public float SlideSpeedMultiplier => _slideSpeedMultiplier;
-    public float SlideSmoothingRate => _slideSmoothingRate;
+    public float SlideSmoothingTime => _slideSmoothingTime;
     public float SlideCooldown => _slideCooldown;    
 
     public float BunnyHopSpeedMultiplier => _bunnyHopSpeedMultiplier;
-    public float BunnyHopSmoothingRateGrounded => _bunnyHopSmoothingRateGrounded;
-    public float BunnyHopSmoothingRateAirborne => _bunnyHopSmoothingRateAirborne;
+    public float BunnyHopSmoothingTimeGrounded => _bunnyHopSmoothingTimeGrounded;
+    public float BunnyHopSmoothingTimeAirborne => _bunnyHopSmoothingTimeAirborne;
 
     public Perk[] Perks => _perks;
 }

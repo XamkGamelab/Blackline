@@ -73,8 +73,6 @@ public class PlayerMovement : MonoBehaviour
 
         _finalSumVector = MoveVector + GravityVector + BunnyhopVector + SlideVector;
 
-        print(MoveVector);
-
         CharacterController.Move(_finalSumVector * Time.deltaTime);
     }
 

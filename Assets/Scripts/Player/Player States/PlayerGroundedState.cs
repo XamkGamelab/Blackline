@@ -29,7 +29,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
     {
         PlayerMovement.BunnyhopVector = PlayerMovement.BunnyhopVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if(PlayerMovement.BunnyhopVector.magnitude > 0f) PlayerMovement.BunnyhopVector = Vector3.SmoothDamp(PlayerMovement.BunnyhopVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.BunnyHopSmoothingRateGrounded);        
+        if(PlayerMovement.BunnyhopVector.magnitude > 0f) PlayerMovement.BunnyhopVector = Vector3.SmoothDamp(PlayerMovement.BunnyhopVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.BunnyHopSmoothingTimeGrounded);        
 
         PlayerMovement.BunnyhopVector = Vector3.ClampMagnitude(PlayerMovement.BunnyhopVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier);
     }
@@ -39,7 +39,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
     {
         PlayerMovement.SlideVector = PlayerMovement.SlideVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if (PlayerMovement.SlideVector.magnitude > 0f) PlayerMovement.SlideVector = Vector3.SmoothDamp(PlayerMovement.SlideVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.SlideSmoothingRate);
+        if (PlayerMovement.SlideVector.magnitude > 0f) PlayerMovement.SlideVector = Vector3.SmoothDamp(PlayerMovement.SlideVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.SlideSmoothingTime);
 
         PlayerMovement.SlideVector = Vector3.ClampMagnitude(PlayerMovement.SlideVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.SlideSpeedMultiplier);
     }
@@ -58,11 +58,11 @@ public abstract class PlayerGroundedState : PlayerBaseState
 
         if(PlayerMovement.InputVector.magnitude == 0f)
         {
-            if (PlayerMovement.MoveVector.magnitude > 0f) PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingRateGrounded);
+            if (PlayerMovement.MoveVector.magnitude > 0f) PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingTimeGrounded);
         }
         else
         {
-            PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, targetVector, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingRateGrounded);
+            PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, targetVector, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingTimeGrounded);
         }
 
         PlayerMovement.MoveVector = Vector3.ClampMagnitude(PlayerMovement.MoveVector, PlayerMovement.PlayerData.RunSpeed);
