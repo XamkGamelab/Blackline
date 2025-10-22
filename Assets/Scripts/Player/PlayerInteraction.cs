@@ -1,17 +1,16 @@
 using UnityEngine;
-using Zenject;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField]
     private PlayerInventory _playerInventory;
 
-    // The current weapon the player is holding. -Davoth //
+    // The current weapon the player is holding. -Shad //
     private BaseWeapon _equippedWeapon;
 
     private void Update()
     {
-        // This is bad because slot might be null. But fuck it for now. -Davoth //
+        // This is bad because weapon might be null. But fuck it for now. -Shad //
         HandleWeapon(_playerInventory.SecondaryWeapon);
     }
 

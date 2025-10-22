@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletPool : BasePool<Bullet>
+public class BulletPool : BasePool<BulletTracerFX>
 {
 
 }

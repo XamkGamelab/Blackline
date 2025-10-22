@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item Data Sheet", menuName = "Data Sheets/Create Item Data Sheet")]
-public class BaseItemDataSheet : ScriptableObject
+public abstract class BaseItemDataSheet : ScriptableObject
 {
     // This base item data sheet will contain very primitive data, such as an ItemID. //
     // That's good for things like multiplayer later on, so we can use a library of ItemIDs //

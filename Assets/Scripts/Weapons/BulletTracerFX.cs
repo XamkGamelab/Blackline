@@ -1,13 +1,12 @@
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IPoolable
+public class BulletTracerFX : MonoBehaviour, IPoolable
 {
     [SerializeField]
     private TrailRenderer _trail;
 
-    private BasePool<Bullet> _pool;
+    private BasePool<BulletTracerFX> _pool;
 
     public void OnSpawned()
     {
@@ -22,16 +21,16 @@ public class Bullet : MonoBehaviour, IPoolable
 
     public void SetPool<T>(BasePool<T> pool) where T : Component, IPoolable
     {
-        _pool = pool as BasePool<Bullet>;
+        _pool = pool as BasePool<BulletTracerFX>;
     }
 
-    public void Fire(Vector3 targetPos, BulletWeaponDataSheet dataSheet)
+    public void Fire(Vector3 targetPos, BaseAmmoDataSheet dataSheet)
     {
         // This is purely FX. It moves the bullet with it's "tracer" to the target pos. -Shad //
         _ = MoveTowardsTargetPos(targetPos, dataSheet);
     }
 
-    private async Task MoveTowardsTargetPos(Vector3 targetPos, BulletWeaponDataSheet dataSheet)
+    private async Task MoveTowardsTargetPos(Vector3 targetPos, BaseAmmoDataSheet dataSheet)
     {
         Vector3 startPos = transform.position;
 

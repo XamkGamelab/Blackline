@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class BulletWeapon : BaseWeapon
+public class RaycastWeapon : BaseWeapon
 {
     [SerializeField]
     private Transform _bulletSpawnPoint;
@@ -10,15 +10,22 @@ public class BulletWeapon : BaseWeapon
 
     private BulletPool _bulletPool;
 
-    private BulletWeaponDataSheet _dataSheet => (BulletWeaponDataSheet)WeaponData;
+    private RaycastWeaponDataSheet _dataSheet => (RaycastWeaponDataSheet)WeaponData;
 
     private bool _isAiming;
     private int _currentAmmo;
+
+    private BaseAmmoDataSheet _currentAmmoType;
 
     [Inject]
     public void Construct(BulletPool bulletPool)
     {
         _bulletPool = bulletPool;
+    }
+
+    public void Awake()
+    {
+        //_currentAmmoType = (BallisticAmmoDataSheet)_currentAmmoType;
     }
 
     public override void PrimaryFunction()
@@ -30,16 +37,16 @@ public class BulletWeapon : BaseWeapon
             Ray bulletRay = new(_bulletSpawnPoint.position, _bulletSpawnPoint.forward);
             RaycastHit bulletHit = new RaycastHit();
 
-            Bullet bullet = _bulletPool.Spawn(_bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+            BulletTracerFX bullet = _bulletPool.Spawn(_bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
 
             // If it hits something, use the hit position. Else, use a dummy position if the player shoots in the sky for example. -Davoth //
-            if (Physics.Raycast(bulletRay, out bulletHit, _dataSheet.ProjectileRange, _raycastLayers))
+            if (Physics.Raycast(bulletRay, out bulletHit, _dataSheet.ProjectileMaxRange, _raycastLayers))
             {
-                bullet.Fire(bulletHit.point, _dataSheet);
+                bullet.Fire(bulletHit.point, _currentAmmoType);
             }
             else
             {
-                bullet.Fire(_bulletSpawnPoint.forward * _dataSheet.ProjectileRange, _dataSheet);
+                bullet.Fire(_bulletSpawnPoint.forward * _dataSheet.ProjectileMaxRange, _currentAmmoType);
             }
         }
     }
