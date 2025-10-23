@@ -37,16 +37,16 @@ public class RaycastWeapon : BaseWeapon
             Ray bulletRay = new(_bulletSpawnPoint.position, _bulletSpawnPoint.forward);
             RaycastHit bulletHit = new RaycastHit();
 
-            BulletTracerFX bullet = _bulletPool.Spawn(_bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+            BulletTracerFX bulletFX = _bulletPool.Spawn(_bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
 
             // If it hits something, use the hit position. Else, use a dummy position if the player shoots in the sky for example. -Davoth //
             if (Physics.Raycast(bulletRay, out bulletHit, _dataSheet.ProjectileMaxRange, _raycastLayers))
             {
-                bullet.Fire(bulletHit.point, _currentAmmoType);
+                bulletFX.Fire(bulletHit.point, _currentAmmoType);
             }
             else
             {
-                bullet.Fire(_bulletSpawnPoint.forward * _dataSheet.ProjectileMaxRange, _currentAmmoType);
+                bulletFX.Fire(_bulletSpawnPoint.forward * _dataSheet.ProjectileMaxRange, _currentAmmoType);
             }
         }
     }

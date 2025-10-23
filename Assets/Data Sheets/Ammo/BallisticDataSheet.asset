@@ -15,6 +15,7 @@ MonoBehaviour:
   _ammoName: 
   _damage: 15
   _armorPenetration: 0.1
-  _speed: 150
+  _projectileRange: 1
+  _projectileSpeed: 0
   _damageType: 0
-  _source: {fileID: 0}
+  Source: {fileID: 0}

@@ -7,8 +7,11 @@ public abstract class BaseAmmoDataSheet : ScriptableObject
     [SerializeField]
     private float _damage;
     [SerializeField]
-    [Range(0, 1f)]
+    [Range(0f, 1f)]
     private float _armorPenetration;
+    [Range(0f, 1f)]
+    [SerializeField]
+    private float _projectileRange;
     [SerializeField]
     private float _projectileSpeed;
     [SerializeField]
@@ -20,6 +23,7 @@ public abstract class BaseAmmoDataSheet : ScriptableObject
     public string AmmoName => _ammoName;
     public float Damage => _damage;
     public float ArmorPenetration => _armorPenetration;
+    public float ProjectileRange => _projectileRange;
     public float ProjectileSpeed => _projectileSpeed;
     public DamageType DamageType => _damageType;
 
