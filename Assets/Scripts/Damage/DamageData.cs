@@ -1,8 +1,12 @@
 public class DamageData
 {
-    public static float HealthDamage(float damage, float armorPenetration, float maxArmor, float currentArmor)
+    public static float HealthDamage(float damage, float armorPenetration, float currentArmor)
     {
-        return 0f;
+        if (currentArmor <= 0f) return damage;
+        else
+        {
+            return damage * (armorPenetration * GlobalSettingsHolder.Instance.CurrentDifficultyData.PlayerArmorDamageMitigation);
+        }
     }
 
     public static float ArmorDamage(float damage, float armorPenetration)

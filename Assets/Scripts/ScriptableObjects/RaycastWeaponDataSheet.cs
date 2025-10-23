@@ -19,10 +19,12 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     private float _projectileSpreadX;
     [SerializeField]
     private float _projectileSpreadY;
+    [SerializeField]
+    private float _accuracySpreadMultiplier;
 
     [Header("Ballistics")]
     [SerializeField]
-    private List<BaseAmmoDataSheet> _ammoTypes;
+    private List<BaseAmmoDataSheet> _compatibleAmmo;
 
     // This effectively sets the values as read only, but available from other classes. -Shad //
     public float RoundsPerSecondFromHip => _roundsPerSecondFromHip;
@@ -32,6 +34,7 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     public float ProjectileMaxRange => _projectileMaxRange;
     public float ProjectileSpreadX => _projectileSpreadX;
     public float ProjectileSpreadY => _projectileSpreadY;
+    public float AccuracySpreadMultiplier => _accuracySpreadMultiplier;
 
-    public List<BaseAmmoDataSheet> AmmoTypes => _ammoTypes;
+    public List<BaseAmmoDataSheet> CompatibleAmmo => _compatibleAmmo;
 }

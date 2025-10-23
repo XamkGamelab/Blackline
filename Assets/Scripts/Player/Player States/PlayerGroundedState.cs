@@ -6,7 +6,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
 
     public override void HandleInput()
     {
-        if (Input.GetKeyDown(SettingsHolder.Data.JumpKey)) PlayerMovement.UpdateState(PlayerMovement.JumpState); // MOTHERJUMPER. -Shad //
+        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.JumpKey)) PlayerMovement.UpdateState(PlayerMovement.JumpState); // MOTHERJUMPER. -Shad //
     }
 
     public override void HandleUpdate()

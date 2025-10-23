@@ -27,6 +27,6 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 
     public void ApplyDamage(float damage, float armorPenetration)
     {
-        _currentHealth -= damage;
+        _currentHealth -= DamageData.HealthDamage(damage, armorPenetration, _currentArmor);
     }
 }

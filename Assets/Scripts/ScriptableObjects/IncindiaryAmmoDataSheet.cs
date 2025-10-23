@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Ballistic Ammo Data Sheet", menuName = "Data Sheets/Ammo/Create Dragons Breath Ammo Data Sheet")]
-public class DragonsBreathAmmoDataSheet : BaseAmmoDataSheet
+public class IncindiaryAmmoDataSheet : BaseAmmoDataSheet
 {
     [SerializeField]
     private float _burnDuration;

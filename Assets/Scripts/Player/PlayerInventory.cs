@@ -5,8 +5,8 @@ public class PlayerInventory : BaseInventory
     private void Initialize()
     {
         // Set the maximum capacity of these two list according to the player data sheet. -Davoth //
-        MeleeWeapons.Capacity = CharDataSheet.MaxMeleeWeapons;
-        UtilityWeapons.Capacity = CharDataSheet.MaxUtilityWeapons;
+        MeleeWeapons.Capacity = CharacterDataSheet.MaxMeleeWeapons;
+        UtilityWeapons.Capacity = CharacterDataSheet.MaxUtilityWeapons;
 
         // Go through the Weaponholder transform's children to find out what weapons are //
         // already in the inventory. -Davoth //

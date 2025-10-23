@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30110cd071597b44099184ce59319b3a, type: 3}
-  m_Name: BallisticDataSheet
+  m_Script: {fileID: 11500000, guid: 1b86bd4a5ac3cbc4c813f4f886ade265, type: 3}
+  m_Name: GameDifficultyHolder
   m_EditorClassIdentifier: 
-  _ammoName: 
-  _damage: 15
-  _armorPenetration: 0.1
-  _projectileRange: 1
-  _projectileSpeed: 0
-  _damageType: 0
-  Source: {fileID: 0}
+  _difficulties:
+  - {fileID: 11400000, guid: 3bf5422fa04104144ba5ca990561b14a, type: 2}

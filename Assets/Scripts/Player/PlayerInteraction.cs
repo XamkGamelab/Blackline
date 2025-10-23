@@ -16,12 +16,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleWeapon(BaseWeapon weapon)
     {
-        if (Input.GetKeyDown(SettingsHolder.Data.ShootKey))
+        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
         {
             weapon.PrimaryFunction();
         }
 
-        if (Input.GetKeyDown(SettingsHolder.Data.AimKey))
+        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey))
         {
             weapon.SecondaryFunction();
         }

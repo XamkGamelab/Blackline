@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab180d40e3d4df4d9b6439a6ab20c17, type: 3}
-  m_Name: DragonsBreathDataSheet
+  m_Script: {fileID: 11500000, guid: ba73c17d7bb3171459f91af0dceb2009, type: 3}
+  m_Name: GunslingerDifficulty
   m_EditorClassIdentifier: 
-  _ammoName: 
-  _damage: 25
-  _armorPenetration: 0
-  _projectileRange: 0.5
-  _projectileSpeed: 0
-  _damageType: 1
-  Source: {fileID: 0}
-  _burnDuration: 5
-  _damageOverTime: 2
+  _difficultyName: Gunslinger
+  _playerArmorDamageMitigation: 0.5

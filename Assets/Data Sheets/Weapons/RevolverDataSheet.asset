@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: RevolverDataSheet
   m_EditorClassIdentifier: 
   _itemID: 0
-  _weaponName: 
+  _weaponName: Revolver
   _weaponType: 1
   _weaponPrefab: {fileID: 0}
-  _roundsPerSecondFromHip: 0
-  _roundsPerSecondAimed: 0
-  _maxAmmo: 0
-  _projectilesPerShot: 0
-  _projectileMaxRange: 0
-  _projectileSpreadX: 0
-  _projectileSpreadY: 0
-  _ammoTypes: []
+  _roundsPerSecondFromHip: 1
+  _roundsPerSecondAimed: 1
+  _maxAmmo: 8
+  _projectilesPerShot: 1
+  _projectileMaxRange: 100
+  _projectileSpreadX: 0.01
+  _projectileSpreadY: 0.02
+  _compatibleAmmo:
+  - {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
+  - {fileID: 11400000, guid: f7e0701b1c4072a468080afc5fa1ff48, type: 2}

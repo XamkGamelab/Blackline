@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(SettingsHolder.Data.PauseKey)) TogglePause();
+        if(Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.PauseKey)) TogglePause();
     }
 
     // Hides the Pause Menu on start. Very clever Veeti. -Shad //

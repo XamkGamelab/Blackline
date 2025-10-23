@@ -8,9 +8,9 @@ public class PlayerWalkState : PlayerGroundedState
     {
         base.HandleInput();
 
-        if (Input.GetKey(SettingsHolder.Data.RunKey)) PlayerMovement.UpdateState(PlayerMovement.RunState);
+        if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.RunKey)) PlayerMovement.UpdateState(PlayerMovement.RunState);
 
-        if (Input.GetKey(SettingsHolder.Data.CrouchKey)) PlayerMovement.UpdateState(PlayerMovement.CrouchState);
+        if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.CrouchKey)) PlayerMovement.UpdateState(PlayerMovement.CrouchState);
     }
 
     public override void HandleUpdate()

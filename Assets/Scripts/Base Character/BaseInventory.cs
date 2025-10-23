@@ -6,7 +6,7 @@ public abstract class BaseInventory : MonoBehaviour
     [SerializeField]
     private Transform _weaponHolder;
     [SerializeField]
-    private CharacterDataSheet _charDataSheet;
+    private CharacterDataSheet _characterDataSheet;
 
     private BaseWeapon _unarmed;
     private BaseWeapon _primaryWeapon;
@@ -14,14 +14,18 @@ public abstract class BaseInventory : MonoBehaviour
     private List<BaseWeapon> _meleeWeapons = new List<BaseWeapon>();
     private List<BaseWeapon> _utilityWeapons = new List<BaseWeapon>();
 
+    private Dictionary<BaseAmmoDataSheet, int> _ammoStorage = new();
+
     public Transform WeaponHolder => _weaponHolder;
-    public CharacterDataSheet CharDataSheet => _charDataSheet;
+    public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
 
     public BaseWeapon Unarmed => _unarmed;
     public BaseWeapon PrimaryWeapon => _primaryWeapon;
     public BaseWeapon SecondaryWeapon => _secondaryWeapon;
     public List<BaseWeapon> MeleeWeapons => _meleeWeapons;
     public List<BaseWeapon> UtilityWeapons => _utilityWeapons;
+
+    public Dictionary<BaseAmmoDataSheet, int> AmmoStorage => _ammoStorage;
 
     #region Setting Weapons
     public void SetPrimaryWeapon(BaseWeapon newWeapon)
@@ -67,7 +71,7 @@ public abstract class BaseInventory : MonoBehaviour
             // If the melee weapon slots are not full, just add the new melee weapon as is. //
             // If the above is NOT true, then drop the *current* melee of that index and //
             // replace it with the new one. -Davoth //
-            if (_meleeWeapons.Count != _charDataSheet.MaxMeleeWeapons)
+            if (_meleeWeapons.Count != _characterDataSheet.MaxMeleeWeapons)
             {
                 _meleeWeapons.Add(newMelee);
             }
@@ -90,7 +94,7 @@ public abstract class BaseInventory : MonoBehaviour
         }
         else
         {
-            if (_utilityWeapons.Count != _charDataSheet.MaxUtilityWeapons)
+            if (_utilityWeapons.Count != _characterDataSheet.MaxUtilityWeapons)
             {
                 _utilityWeapons.Add(newUtility);
             }
@@ -122,6 +126,38 @@ public abstract class BaseInventory : MonoBehaviour
     public void DropUtilityWeapon(BaseWeapon dropWeapon)
     {
 
+    }
+    #endregion
+
+    #region Ammo
+    public bool HasAmmo(BaseAmmoDataSheet ammo) => GetAmmoCount(ammo) > 0;
+
+    public int GetAmmoCount(BaseAmmoDataSheet ammo)
+    {
+        return _ammoStorage.TryGetValue(ammo, out int count) ? count : 0;
+    }
+
+    public void AddAmmo(BaseAmmoDataSheet ammo, int amount)
+    {
+        // If the ammotype isn't in the storage, add the key & value pair and then add the amount. -Shad //
+        if (!_ammoStorage.ContainsKey(ammo))
+            _ammoStorage[ammo] = amount;
+
+        _ammoStorage[ammo] += amount;
+    }
+
+    public void ConsumeAmmo(BaseAmmoDataSheet ammo, int amount)
+    {
+        if (_ammoStorage.TryGetValue(ammo, out int current))
+        {
+            current -= amount;
+
+            if (current <= 0)
+            {
+                // Remove the ammotype from the storage completely if depleted. -Shad //
+                _ammoStorage.Remove(ammo);
+            }
+        }
     }
     #endregion
 }

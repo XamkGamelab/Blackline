@@ -18128,6 +18128,7 @@ GameObject:
   - component: {fileID: 1108374865}
   - component: {fileID: 1108374864}
   - component: {fileID: 1108374867}
+  - component: {fileID: 1108374868}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18177,6 +18178,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToSetInactive: []
+--- !u!114 &1108374868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108374863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9087348e4c78c4c43a4f02e1c0304f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerSettingsData:
+    ForwardKey: 119
+    BackwardKey: 115
+    StrafeLeftKey: 97
+    StrafeRightKey: 100
+    JumpKey: 32
+    RunKey: 304
+    CrouchKey: 99
+    ShootKey: 323
+    AimKey: 324
+    PauseKey: 27
+    MouseSensitivity: 175
+    AimSensitivityMultiplier: 0.8
+  _difficultySettings: {fileID: 11400000, guid: 97a6bea6058985349bce41fdb99d5585, type: 2}
+  _currentDifficultyData: {fileID: 0}
 --- !u!1 &1113183534
 GameObject:
   m_ObjectHideFlags: 0
@@ -19571,7 +19599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 1389771622}
-  _charDataSheet: {fileID: 11400000, guid: 22ceebdccf6073549bb4ccc2b085ec49, type: 2}
+  _characterDataSheet: {fileID: 11400000, guid: 22ceebdccf6073549bb4ccc2b085ec49, type: 2}
 --- !u!114 &1284027940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20204,7 +20232,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1372965805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3988f667dbdd9bb48b9ed82d5df31d66, type: 3}
+  m_Script: {fileID: 11500000, guid: 27a09561c4bd697449e4a9f85b135885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 8600081089612257836, guid: 4547388dc28814e4e8bc7fcf0355e7eb, type: 3}

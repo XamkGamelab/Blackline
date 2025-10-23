@@ -8,7 +8,7 @@ public class PlayerJumpState : PlayerAirborneState
     {
         base.Enter();
 
-        if (Input.GetKey(SettingsHolder.Data.RunKey))
+        if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.RunKey))
         {
             Debug.Log("Bunnyhop Boost!");
             PlayerMovement.BunnyhopVector = PlayerMovement.MoveVector.magnitude * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier * PlayerMovement.TempDirectionVector;
