@@ -9,8 +9,7 @@ public class BallisticAmmoDataSheet : BaseAmmoDataSheet
         
         if(damagable != null)
         {
-            DamageInfo damageInfo = new(DamageType.Ballistic, Damage, ArmorPenetration, hit.point, hit.normal);
-            damagable.ApplyDamage(damageInfo);
+            damagable.ApplyDamage(Damage, ArmorPenetration);
         }
     }
 }

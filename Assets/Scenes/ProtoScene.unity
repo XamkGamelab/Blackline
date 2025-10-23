@@ -20174,7 +20174,7 @@ GameObject:
   - component: {fileID: 1372965806}
   - component: {fileID: 1372965807}
   m_Layer: 0
-  m_Name: Bullet Pool
+  m_Name: BulletTracerFX Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33148,7 +33148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2097397576
 MonoBehaviour:
   m_ObjectHideFlags: 0

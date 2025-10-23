@@ -1,6 +1,6 @@
 public interface IDamageble
 {
-    void ApplyDamage(DamageInfo damageInfo);
+    void ApplyDamage(float damage, float armorPenetration);
 }
 
 public interface IFlammable

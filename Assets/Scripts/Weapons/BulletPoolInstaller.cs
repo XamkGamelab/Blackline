@@ -3,10 +3,10 @@ using Zenject;
 public class BulletPoolInstaller : MonoInstaller
 {
     [UnityEngine.SerializeField]
-    private BulletPool _bulletPool;
+    private BulletTracerFXPool _bulletPool;
 
     public override void InstallBindings()
     {
-        Container.Bind<BulletPool>().FromInstance(_bulletPool).NonLazy();
+        Container.Bind<BulletTracerFXPool>().FromInstance(_bulletPool).NonLazy();
     }
 }

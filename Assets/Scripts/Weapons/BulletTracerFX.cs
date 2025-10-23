@@ -24,9 +24,9 @@ public class BulletTracerFX : MonoBehaviour, IPoolable
         _pool = pool as BasePool<BulletTracerFX>;
     }
 
-    public void Fire(Vector3 targetPos, BaseAmmoDataSheet dataSheet)
+    public void Engage(Vector3 targetPos, BaseAmmoDataSheet dataSheet)
     {
-        // This is purely FX. It moves the bullet with it's "tracer" to the target pos. -Shad //
+        // This is purely FX. It moves the bullet with its "tracer" to the target pos. -Shad //
         _ = MoveTowardsTargetPos(targetPos, dataSheet);
     }
 

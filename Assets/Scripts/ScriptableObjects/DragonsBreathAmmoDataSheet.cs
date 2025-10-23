@@ -17,8 +17,7 @@ public class DragonsBreathAmmoDataSheet : BaseAmmoDataSheet
         
         if(damagable != null)
         {
-            DamageInfo damageInfo = new(DamageType.Ballistic, Damage, ArmorPenetration, hit.point, hit.normal);
-            damagable.ApplyDamage(damageInfo);
+            damagable.ApplyDamage(Damage, ArmorPenetration);
         }
 
         var flammable = hit.collider.GetComponent<IFlammable>();

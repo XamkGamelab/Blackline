@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6367288177455594343}
   - component: {fileID: 8600081089612257836}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletTracerFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3726979063609722004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58a9a7c4c3514074380d77773f24142b, type: 3}
+  m_Script: {fileID: 11500000, guid: aaa7bbfddc648814795ead08f4262536, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _trail: {fileID: 6367288177455594343}

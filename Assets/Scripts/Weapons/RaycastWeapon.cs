@@ -8,7 +8,7 @@ public class RaycastWeapon : BaseWeapon
     [SerializeField]
     private LayerMask _raycastLayers;
 
-    private BulletPool _bulletPool;
+    private BulletTracerFXPool _bulletTracerFXPool;
 
     private RaycastWeaponDataSheet _dataSheet => (RaycastWeaponDataSheet)WeaponData;
 
@@ -18,9 +18,9 @@ public class RaycastWeapon : BaseWeapon
     private BaseAmmoDataSheet _currentAmmoType;
 
     [Inject]
-    public void Construct(BulletPool bulletPool)
+    public void Construct(BulletTracerFXPool bulletTracerFXPool)
     {
-        _bulletPool = bulletPool;
+        _bulletTracerFXPool = bulletTracerFXPool;
     }
 
     public void Awake()
@@ -30,30 +30,31 @@ public class RaycastWeapon : BaseWeapon
 
     public override void PrimaryFunction()
     {
-        print("Pew!");
-
         for(int i = 0; i < _dataSheet.ProjectilesPerShot; i++)
         {
             Ray bulletRay = new(_bulletSpawnPoint.position, _bulletSpawnPoint.forward);
             RaycastHit bulletHit = new RaycastHit();
 
-            BulletTracerFX bulletFX = _bulletPool.Spawn(_bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
+            BulletTracerFX bulletTracerFX = _bulletTracerFXPool.Spawn(_bulletSpawnPoint.position, _bulletSpawnPoint.rotation);
 
-            // If it hits something, use the hit position. Else, use a dummy position if the player shoots in the sky for example. -Davoth //
+            // If it hits something, use the hit position. Else, use a dummy position if the player shoots in the sky for example. -Shad //
             if (Physics.Raycast(bulletRay, out bulletHit, _dataSheet.ProjectileMaxRange, _raycastLayers))
             {
-                bulletFX.Fire(bulletHit.point, _currentAmmoType);
+                _currentAmmoType.OnHit(bulletHit, gameObject);
+
+                bulletTracerFX.Engage(bulletHit.point, _currentAmmoType); // Only FX! -Shad //
             }
             else
             {
-                bulletFX.Fire(_bulletSpawnPoint.forward * _dataSheet.ProjectileMaxRange, _currentAmmoType);
+
+                bulletTracerFX.Engage(_bulletSpawnPoint.forward * _dataSheet.ProjectileMaxRange, _currentAmmoType); // Only FX! -Shad //
             }
         }
     }
 
     public override void SecondaryFunction() 
     {
-        print("The other pew!");
+        
     }
 
     public void RefillAmmo()
