@@ -8,6 +8,11 @@ public class BulletTracerFX : MonoBehaviour, IPoolable
 
     private BasePool<BulletTracerFX> _pool;
 
+    public void SetPool<T>(BasePool<T> pool) where T : Component, IPoolable
+    {
+        _pool = pool as BasePool<BulletTracerFX>;
+    }
+
     public void OnSpawned()
     {
         _trail.Clear();
@@ -17,11 +22,6 @@ public class BulletTracerFX : MonoBehaviour, IPoolable
     {
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
-    }
-
-    public void SetPool<T>(BasePool<T> pool) where T : Component, IPoolable
-    {
-        _pool = pool as BasePool<BulletTracerFX>;
     }
 
     public void Engage(Vector3 targetPos, BaseAmmoDataSheet dataSheet)

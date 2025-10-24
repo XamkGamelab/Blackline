@@ -1,5 +1,6 @@
 public interface IDamageble
 {
+    SurfaceMaterial SurfaceMaterial { get; }
     void ApplyDamage(float damage, float armorPenetration);
 }
 

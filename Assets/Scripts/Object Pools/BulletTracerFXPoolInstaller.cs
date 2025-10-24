@@ -1,6 +1,6 @@
 using Zenject;
 
-public class BulletPoolInstaller : MonoInstaller
+public class BulletTracerFXPoolInstaller : MonoInstaller
 {
     [UnityEngine.SerializeField]
     private BulletTracerFXPool _bulletPool;

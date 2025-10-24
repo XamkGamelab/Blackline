@@ -3,10 +3,15 @@ using Zenject;
 
 public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 {
+    [SerializeField]
+    private SurfaceMaterial _surfaceMaterial;
+
     private float _currentArmor;
     private float _currentHealth;
 
     private PlayerDataSheet PlayerData;
+
+    public SurfaceMaterial SurfaceMaterial => _surfaceMaterial;
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)
