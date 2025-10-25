@@ -46,6 +46,7 @@ public class RaycastWeapon : BaseWeapon
                 //_currentAmmoType.OnHit(bulletHit, gameObject);
 
                 bulletTracerFX.Engage(bulletHit.point, _currentAmmoType); // Only FX! -Shad //
+                SurfaceImpactLibrary.Instance.SpawnImpactFX(bulletHit); // Only FX! -Shad //
             }
             else
             {

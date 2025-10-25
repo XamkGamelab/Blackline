@@ -14,7 +14,12 @@ public class BulletImpactFX : MonoBehaviour, IPoolable
 
     public void OnSpawned()
     {
-        
+
+    }
+
+    public void OnParticleSystemStopped()
+    {
+        OnDespawned();
     }
 
     public void OnDespawned()
