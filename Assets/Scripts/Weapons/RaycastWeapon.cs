@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -7,6 +9,8 @@ public class RaycastWeapon : BaseWeapon
     private Transform _bulletSpawnPoint;
     [SerializeField]
     private LayerMask _raycastLayers;
+    [SerializeField]
+    private FiringMode _currentFiringMode;
 
     private BulletTracerFXPool _bulletTracerFXPool;
 
@@ -61,8 +65,40 @@ public class RaycastWeapon : BaseWeapon
         
     }
 
+    public override void ThirdFunction()
+    {
+        CycleFiringMode();
+
+        print(_currentFiringMode);
+    }
+
     public void RefillAmmo()
     {
-        _currentAmmo = _dataSheet.MaxAmmo;
+        _currentAmmo = _dataSheet.MaxAmmoInWeapon;
+    }
+
+    // This is all a bunch of ChatGPT black magic. -Shad //
+    private void CycleFiringMode()
+    {
+        // quick safety: nothing to cycle through
+        if (_dataSheet.FiringModes == 0)
+            return;
+
+        // Gather all flag values that are single-bit (1,2,4,8...) and also present in availableFireModes
+        var validModes = Enum.GetValues(typeof(FiringMode))
+                             .Cast<FiringMode>()
+                             .Where(m => m != (FiringMode)0 && ((int)m & ((int)m - 1)) == 0) // single-bit check
+                             .Where(m => (_dataSheet.FiringModes & m) != 0)
+                             .OrderBy(m => (int)m)
+                             .ToArray();
+
+        if (validModes.Length == 0)
+            return; // nothing available
+
+        // Find index of current mode in the valid list; if not found, start from -1
+        int currentIndex = Array.IndexOf(validModes, _currentFiringMode);
+        int nextIndex = (currentIndex + 1) % validModes.Length;
+
+        _currentFiringMode = validModes[nextIndex];
     }
 }

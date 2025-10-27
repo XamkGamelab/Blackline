@@ -18,11 +18,13 @@ MonoBehaviour:
   _weaponPrefab: {fileID: 0}
   _roundsPerSecondFromHip: 1
   _roundsPerSecondAimed: 1
-  _maxAmmo: 8
+  _maxAmmoInWeapon: 0
   _projectilesPerShot: 1
+  _firingModes: 1
   _projectileMaxRange: 100
   _projectileSpreadX: 0.01
   _projectileSpreadY: 0.02
+  _accuracySpreadMultiplier: 0
   _compatibleAmmo:
   - {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
   - {fileID: 11400000, guid: f7e0701b1c4072a468080afc5fa1ff48, type: 2}

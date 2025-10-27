@@ -16,6 +16,7 @@ public class PlayerSettingsData
     // Weapon Interaction //
     public KeyCode ShootKey = KeyCode.Mouse0;
     public KeyCode AimKey = KeyCode.Mouse1;
+    public KeyCode WeaponAction = KeyCode.Q;
 
     // Utils //
     public KeyCode PauseKey = KeyCode.Escape;

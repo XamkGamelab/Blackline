@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,9 +11,11 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [SerializeField]
     private float _roundsPerSecondAimed;
     [SerializeField]
-    private int _maxAmmo;
+    private int _maxAmmoInWeapon;
     [SerializeField]
     private int _projectilesPerShot;
+    [SerializeField]
+    private FiringMode _firingModes;
     [SerializeField]
     private float _projectileMaxRange;
     [SerializeField]
@@ -29,12 +32,22 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     // This effectively sets the values as read only, but available from other classes. -Shad //
     public float RoundsPerSecondFromHip => _roundsPerSecondFromHip;
     public float RoundsPerSecondAimed => _roundsPerSecondAimed;
-    public int MaxAmmo => _maxAmmo;
+    public int MaxAmmoInWeapon => _maxAmmoInWeapon;
     public int ProjectilesPerShot => _projectilesPerShot;
+    public FiringMode FiringModes => _firingModes;
     public float ProjectileMaxRange => _projectileMaxRange;
     public float ProjectileSpreadX => _projectileSpreadX;
     public float ProjectileSpreadY => _projectileSpreadY;
     public float AccuracySpreadMultiplier => _accuracySpreadMultiplier;
 
     public List<BaseAmmoDataSheet> CompatibleAmmo => _compatibleAmmo;
+}
+
+[Flags]
+public enum FiringMode
+{
+    None = 0,
+    Single = 1 << 0,
+    Burst = 1 << 1,
+    Automatic = 1 << 2,
 }
