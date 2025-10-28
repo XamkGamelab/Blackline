@@ -3,6 +3,8 @@ using UnityEngine;
 public abstract class BaseAmmoDataSheet : ScriptableObject
 {
     [SerializeField]
+    private int _projectilesPerShot;
+    [SerializeField]
     private string _ammoName;
     [SerializeField]
     private float _damage;
@@ -20,6 +22,7 @@ public abstract class BaseAmmoDataSheet : ScriptableObject
     [HideInInspector]
     public GameObject Source;
 
+    public int ProjectilesPerShot;
     public string AmmoName => _ammoName;
     public float Damage => _damage;
     public float ArmorPenetration => _armorPenetration;

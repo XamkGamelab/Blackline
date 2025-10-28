@@ -13,16 +13,17 @@ MonoBehaviour:
   m_Name: ShotgunData
   m_EditorClassIdentifier: 
   _itemID: 0
-  _weaponName: 
+  _weaponName: Pump Shotgun
   _weaponType: 0
   _weaponPrefab: {fileID: 0}
-  _roundsPerSecondFromHip: 0
-  _roundsPerSecondAimed: 0
-  _maxAmmo: 0
-  _projectilesPerShot: 0
-  _projectileMaxRange: 0
-  _projectileSpreadX: 0
-  _projectileSpreadY: 0
-  _ammoTypes:
-  - {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
-  - {fileID: 11400000, guid: f7e0701b1c4072a468080afc5fa1ff48, type: 2}
+  _roundsPerSecondFromHip: 1
+  _roundsPerSecondAimed: 1
+  _maxAmmoInWeapon: 8
+  _firingModes: 1
+  _projectileMaxRange: 50
+  _projectileSpreadX: 0.125
+  _projectileSpreadY: 0.125
+  _accuracySpreadMultiplier: 1
+  _aimZoom: 1.2
+  _compatibleAmmo:
+  - {fileID: 11400000, guid: 549904d1a31d5c84ca9ca2ac93259a36, type: 2}

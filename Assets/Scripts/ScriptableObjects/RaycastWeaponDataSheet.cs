@@ -13,9 +13,9 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [SerializeField]
     private int _maxAmmoInWeapon;
     [SerializeField]
-    private int _projectilesPerShot;
-    [SerializeField]
     private FiringMode _firingModes;
+
+    [Header("Ballistics")]
     [SerializeField]
     private float _projectileMaxRange;
     [SerializeField]
@@ -24,8 +24,9 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     private float _projectileSpreadY;
     [SerializeField]
     private float _accuracySpreadMultiplier;
-
-    [Header("Ballistics")]
+    [Header("Aiming")]
+    [SerializeField]
+    private float _aimZoom;
     [SerializeField]
     private List<BaseAmmoDataSheet> _compatibleAmmo;
 
@@ -33,7 +34,6 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     public float RoundsPerSecondFromHip => _roundsPerSecondFromHip;
     public float RoundsPerSecondAimed => _roundsPerSecondAimed;
     public int MaxAmmoInWeapon => _maxAmmoInWeapon;
-    public int ProjectilesPerShot => _projectilesPerShot;
     public FiringMode FiringModes => _firingModes;
     public float ProjectileMaxRange => _projectileMaxRange;
     public float ProjectileSpreadX => _projectileSpreadX;
