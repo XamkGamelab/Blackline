@@ -4,8 +4,7 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "SceneLoad_ASMB",
-        "ActiveInactive_AMSB"
+        "NewAssembly"
     ],
     "includePlatforms": [
         "Editor"
