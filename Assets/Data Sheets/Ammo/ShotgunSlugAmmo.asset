@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30110cd071597b44099184ce59319b3a, type: 3}
-  m_Name: ShotgunBuckshotAmmo
+  m_Name: ShotgunSlugAmmo
   m_EditorClassIdentifier: 
-  _projectilesPerShot: 10
-  _ammoName: Buckshot Shell
-  _damage: 7
-  _armorPenetration: 0.1
+  _projectilesPerShot: 1
+  _ammoName: Slug Shell
+  _damage: 75
+  _armorPenetration: 1
   _projectileRange: 1
-  _projectileSpeed: 8
+  _projectileSpeed: 10
   _damageType: 0
   Source: {fileID: 0}
