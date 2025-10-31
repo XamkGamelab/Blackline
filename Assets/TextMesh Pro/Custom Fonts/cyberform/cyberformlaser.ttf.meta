@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0751dbf0b980ff949b37d916f734f5d2
+guid: 012f3d8c3fcc4754d947eb8c4b5a645f
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Vanilla Whale
+  - Cyberform Laser
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
