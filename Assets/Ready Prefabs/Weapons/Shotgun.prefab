@@ -486,7 +486,10 @@ MonoBehaviour:
   _raycastLayers:
     serializedVersion: 2
     m_Bits: 9
-  _currentFiringMode: 0
+  _currentFiringMode: 1
+  WeaponZoomEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6682705271536737441
 GameObject:
   m_ObjectHideFlags: 0

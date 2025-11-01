@@ -16,10 +16,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleWeapon(BaseWeapon weapon)
     {
-        weapon.PrimaryFunction();
-
-        weapon.SecondaryFunction();
-
-        weapon.ThirdFunction();
+        weapon.HandleUpdate();
     }
 }

@@ -13,16 +13,23 @@ public class RaycastWeapon : BaseWeapon
     [SerializeField]
     private FiringMode _currentFiringMode;
 
-    private BulletTracerFXPool _bulletTracerFXPool;
-
+    private BulletTracerFXPool _bulletTracerFXPool;    
     private RaycastWeaponDataSheet _dataSheet => (RaycastWeaponDataSheet)WeaponData;
 
-    private bool _isAiming;
-    private int _currentAmmo;
-
-    public UnityEvent WeaponZoom;
-
     private BaseAmmoDataSheet _currentAmmoType;
+
+    [HideInInspector] public UnityEvent WeaponZoomEvent;
+
+    public FiringMode CurrentFiringMode => _currentFiringMode;
+
+    public RaycastWeaponBaseState CurrentState;
+    public RaycastWeaponIdleState IdleState;
+    public RaycastWeaponFiringState FiringState;
+
+    private int _loadedAmmoCount;
+    public int BurstShotsRemaining { get; private set; }
+
+    public float NextShotTime { get; private set; }
 
     [Inject]
     public void Construct(BulletTracerFXPool bulletTracerFXPool)
@@ -31,13 +38,22 @@ public class RaycastWeapon : BaseWeapon
     }
 
     public void Awake()
-    {
+    {        
+        IdleState = new RaycastWeaponIdleState(this);
+        FiringState = new RaycastWeaponFiringState(this);
+        NextShotTime = Time.time;
+
+        UpdateState(IdleState);
+
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
     }
 
+    #region Main Functions
     public override void PrimaryFunction()
     {
-        if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey)) return;
+        if (CurrentFiringMode == FiringMode.Burst) BurstShotsRemaining--;
+
+        NextShotTime = Time.time + _dataSheet.ShotCooldownFromHip;
 
         // Logic behind the actual shooting. -Shad //
         for(int i = 0; i < _currentAmmoType.ProjectilesPerShot; i++)
@@ -71,23 +87,19 @@ public class RaycastWeapon : BaseWeapon
 
     public override void SecondaryFunction() 
     {
-        WeaponZoom?.Invoke();
+        WeaponZoomEvent?.Invoke();
 
         // if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey)) return;
     }
 
     public override void ThirdFunction()
     {
+        if (CurrentState != IdleState) return;
         if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.WeaponAction)) return;
 
         CycleFiringMode();
 
         print(_currentFiringMode);
-    }
-
-    public void RefillAmmo()
-    {
-        _currentAmmo = _dataSheet.MaxAmmoInWeapon;
     }
 
     // This is all a bunch of ChatGPT black magic. //
@@ -114,5 +126,31 @@ public class RaycastWeapon : BaseWeapon
         int nextIndex = (currentIndex + 1) % validModes.Length;
 
         _currentFiringMode = validModes[nextIndex];
+    }
+    #endregion
+   
+    public void CalculateBurstCount()
+    {
+        /*if (_loadedAmmoCount < _dataSheet.BurstCount) BurstShotsRemaining = _loadedAmmoCount;
+        else
+        {
+            BurstShotsRemaining = _dataSheet.BurstCount;
+        }*/
+
+        BurstShotsRemaining = _dataSheet.BurstCount;
+    }
+
+    public override void HandleUpdate()
+    {
+        CurrentState.HandleInput();
+        CurrentState.HandleUpdate();
+        ThirdFunction();
+    }
+
+    public void UpdateState(RaycastWeaponBaseState newState)
+    {
+        CurrentState?.Exit();
+        CurrentState = newState;
+        newState.Enter();
     }
 }

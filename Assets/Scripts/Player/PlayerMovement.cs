@@ -12,19 +12,12 @@ public class PlayerMovement : MonoBehaviour
     public PlayerDataSheet PlayerData;
 
     // Player States. //
-    [HideInInspector]
     public PlayerBaseState CurrentState;
-    [HideInInspector]
     public PlayerWalkState WalkState;
-    [HideInInspector]
     public PlayerRunState RunState;
-    [HideInInspector]
     public PlayerCrouchState CrouchState;
-    [HideInInspector]
     public PlayerSlideState SlideState;
-    [HideInInspector]
     public PlayerJumpState JumpState;
-    [HideInInspector]
     public PlayerFallingState FallingState;
 
     // Public, but hidden references. //
@@ -41,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 SlideVector;
     [HideInInspector]
     public Vector3 TempDirectionVector;
-
     [HideInInspector]
     public Vector3 RefVector = Vector3.zero;
 
@@ -77,8 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateState(PlayerBaseState newState)
     {
-        if (CurrentState != null) CurrentState.Exit();
-
+        CurrentState?.Exit();
         CurrentState = newState;
         newState.Enter();
     }
