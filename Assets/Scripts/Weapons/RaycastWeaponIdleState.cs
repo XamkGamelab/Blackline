@@ -9,6 +9,8 @@ public class RaycastWeaponIdleState : RaycastWeaponBaseState
         Debug.Log("Idle!");
     }
 
+    // Switch case loop for the different firing modes. Not very scalable, //
+    // but fuck it. -Shad //
     public override void HandleInput()
     {
         switch (Weapon.CurrentFiringMode)
@@ -32,6 +34,11 @@ public class RaycastWeaponIdleState : RaycastWeaponBaseState
                     Weapon.CalculateBurstCount();
                 }
                 break;
+        }
+
+        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ReloadKey))
+        {
+            Weapon.UpdateState(Weapon.ReloadState);
         }
     }
 }

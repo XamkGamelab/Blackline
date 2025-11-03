@@ -25,6 +25,7 @@ public class RaycastWeapon : BaseWeapon
     public RaycastWeaponBaseState CurrentState;
     public RaycastWeaponIdleState IdleState;
     public RaycastWeaponFiringState FiringState;
+    public RaycastWeaponReloadState ReloadState;
 
     private int _loadedAmmoCount;
     public int BurstShotsRemaining { get; private set; }
@@ -41,6 +42,7 @@ public class RaycastWeapon : BaseWeapon
     {        
         IdleState = new RaycastWeaponIdleState(this);
         FiringState = new RaycastWeaponFiringState(this);
+        ReloadState = new RaycastWeaponReloadState(this);
         NextShotTime = Time.time;
 
         UpdateState(IdleState);
