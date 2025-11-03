@@ -14,7 +14,9 @@ public class RaycastWeapon : BaseWeapon
     private FiringMode _currentFiringMode;
 
     private BulletTracerFXPool _bulletTracerFXPool;    
+
     private RaycastWeaponDataSheet _dataSheet => (RaycastWeaponDataSheet)WeaponData;
+    public RaycastWeaponDataSheet DataSheet => _dataSheet;
 
     private BaseAmmoDataSheet _currentAmmoType;
 
@@ -27,7 +29,7 @@ public class RaycastWeapon : BaseWeapon
     public RaycastWeaponFiringState FiringState;
     public RaycastWeaponReloadState ReloadState;
 
-    private int _loadedAmmoCount;
+    public int _loadedAmmoCount;
     public int BurstShotsRemaining { get; private set; }
 
     public float NextShotTime { get; private set; }
@@ -48,12 +50,15 @@ public class RaycastWeapon : BaseWeapon
         UpdateState(IdleState);
 
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
+        _loadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
     }
 
     #region Main Functions
     public override void PrimaryFunction()
     {
         if (CurrentFiringMode == FiringMode.Burst) BurstShotsRemaining--;
+
+        _loadedAmmoCount--;
 
         NextShotTime = Time.time + _dataSheet.ShotCooldownFromHip;
 
@@ -105,7 +110,7 @@ public class RaycastWeapon : BaseWeapon
     }
 
     // This is all a bunch of ChatGPT black magic. //
-    // Even Neo couldn't understand this shit. -Shad //
+    // Even Neo Anderson couldn't understand this shit. -Shad //
     private void CycleFiringMode()
     {
         // Quick safety: nothing to cycle through. -ChatGPT //
@@ -129,18 +134,25 @@ public class RaycastWeapon : BaseWeapon
 
         _currentFiringMode = validModes[nextIndex];
     }
+
+    public void ReloadWeapon()
+    {
+        _loadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
+    }
     #endregion
    
     public void CalculateBurstCount()
     {
-        /*if (_loadedAmmoCount < _dataSheet.BurstCount) BurstShotsRemaining = _loadedAmmoCount;
+        if (_loadedAmmoCount < _dataSheet.BurstCount) BurstShotsRemaining = _loadedAmmoCount;
         else
         {
             BurstShotsRemaining = _dataSheet.BurstCount;
-        }*/
+        }
 
         BurstShotsRemaining = _dataSheet.BurstCount;
     }
+
+    public bool AmmoLeftInWeapon() { return _loadedAmmoCount > 0; }
 
     public override void HandleUpdate()
     {

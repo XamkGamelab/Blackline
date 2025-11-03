@@ -9,6 +9,8 @@ public class RaycastWeaponReloadState : RaycastWeaponBaseState
     public override void Enter()
     {
         Debug.Log("Reload!");
+
+        _reloadTimer = 0f;
     }
 
     public override void HandleInput()
@@ -18,6 +20,12 @@ public class RaycastWeaponReloadState : RaycastWeaponBaseState
 
     public override void HandleUpdate()
     {
-        // Enter reload timer here please. -Shad //
+        if (_reloadTimer >= Weapon.DataSheet.ReloadTime)
+        {
+            Weapon.ReloadWeapon();
+            Weapon.UpdateState(Weapon.IdleState);
+        }
+        
+        _reloadTimer += Time.deltaTime;
     }
 }

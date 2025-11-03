@@ -1,6 +1,16 @@
-public class BaseWeapon : BaseItem
+using UnityEngine;
+
+public class BaseWeapon : MonoBehaviour
 {
-    public BaseWeaponDataSheet WeaponData => (BaseWeaponDataSheet)BaseItemDataSheet;
+    [SerializeField]
+    private BaseWeaponDataSheet _baseWeaponDataSheet;
+    public BaseWeaponDataSheet WeaponData => _baseWeaponDataSheet;
+
+    private IAmmoProvider _ammoProvider;
+    public IAmmoProvider AmmoProvider => _ammoProvider;
+
+    // Inventory scripts can set the provider with this method. -Shad //
+    public void SetAmmoProvider(IAmmoProvider ammoProvider) => _ammoProvider = ammoProvider;
 
     // For things like shooting a weapon, or swinging an axe. -Shad //
     public virtual void PrimaryFunction() { }

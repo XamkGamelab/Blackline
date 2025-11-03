@@ -21,7 +21,7 @@ public class RaycastWeaponFiringState : RaycastWeaponBaseState
                 Weapon.UpdateState(Weapon.IdleState);
                 break;
             case FiringMode.Automatic:
-                if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
+                if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey) && Weapon.AmmoLeftInWeapon())
                 {
                     Weapon.PrimaryFunction();
                 }

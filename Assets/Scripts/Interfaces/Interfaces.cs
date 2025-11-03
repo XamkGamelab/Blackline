@@ -15,3 +15,14 @@ public interface IExplosive
 {
     void Explode();
 }
+
+public interface IAmmoProvider
+{
+    void ConsumeAmmo(BaseAmmoDataSheet ammo, int amount);
+    int GetAmmoCount(BaseAmmoDataSheet ammo);
+}
+
+public interface IPickup
+{
+    void Pickup();
+}

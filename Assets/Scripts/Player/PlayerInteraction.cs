@@ -11,7 +11,36 @@ public class PlayerInteraction : MonoBehaviour
     private void Update()
     {
         // This is bad because weapon might be null. But fuck it for now. -Shad //
-        HandleWeapon(_playerInventory.PrimaryWeapon);
+        if(_equippedWeapon != null) HandleWeapon(_equippedWeapon);
+    }
+
+    private void Start()
+    {
+        EquipPrimaryWeapon();
+    }
+
+    public void EquipPrimaryWeapon()
+    {
+        if (_playerInventory.PrimaryWeapon == null) return;
+
+        _equippedWeapon = _playerInventory.PrimaryWeapon;
+    }
+
+    public void EquipSecondaryWeapon()
+    {
+        if (_playerInventory.SecondaryWeapon == null) return;
+
+        _equippedWeapon = _playerInventory.SecondaryWeapon;
+    }
+
+    public void EquipMeleeWeapon()
+    {
+        if (_playerInventory.MeleeWeapons.Count == 0) return;
+    }
+
+    public void EquipUtilityWeapon()
+    {
+        if (_playerInventory.UtilityWeapons.Count == 0) return;
     }
 
     private void HandleWeapon(BaseWeapon weapon)

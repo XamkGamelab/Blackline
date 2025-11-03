@@ -35,6 +35,12 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [SerializeField]
     private List<BaseAmmoDataSheet> _compatibleAmmo;
 
+    [Header("Reloading")]
+    [SerializeField]
+    private float _reloadTime;
+    [SerializeField]
+    private float _tacticalReloadTime;
+
     // This effectively sets the values as read only, but available from other classes. -Shad //
     public float ShotCooldownFromHip => _shotCooldownFromHip;
     public float ShotCooldownAimed => _shotCooldownAimed;
@@ -50,6 +56,9 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
 
     public int MaxAmmoInWeapon => _maxAmmoInWeapon;
     public List<BaseAmmoDataSheet> CompatibleAmmo => _compatibleAmmo;
+
+    public float ReloadTime => _reloadTime;
+    public float TacticalReloadTime => _tacticalReloadTime;
 }
 
 [Flags]

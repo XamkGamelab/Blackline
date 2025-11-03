@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseInventory : MonoBehaviour
+public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
 {
     [SerializeField]
     private Transform _weaponHolder;
@@ -39,6 +39,7 @@ public abstract class BaseInventory : MonoBehaviour
         else 
         {
             _primaryWeapon = newWeapon;
+            _primaryWeapon.SetAmmoProvider(this);
         }
     }
 
@@ -53,14 +54,15 @@ public abstract class BaseInventory : MonoBehaviour
         else
         {
             _secondaryWeapon = newWeapon;
+            _secondaryWeapon.SetAmmoProvider(this);
         }
     }
 
     public void SetMeleeWeapon(BaseWeapon newMelee, int currentMeleeIndex)
     {
-        // This one is a bit more fucked. Please read carefully. -Davoth //
+        // This one is a bit more fucked. Please read carefully. -Shad //
 
-        // First, the same filter with the previous ones. -Davoth //
+        // First, the same filter with the previous ones. -Shad //
         if (newMelee.WeaponData.WeaponType != WeaponType.Melee)
         {
             print("That's not a Melee. Goofball.");
@@ -85,7 +87,7 @@ public abstract class BaseInventory : MonoBehaviour
 
     public void SetUtilityWeapon(BaseWeapon newUtility, int currentUtilityIndex)
     {
-        // Complete copy of the SetMeleeWeapon method, but for utility. -Davoth //
+        // Complete copy of the SetMeleeWeapon method, but for utility. -Shad //
 
         if (newUtility.WeaponData.WeaponType != WeaponType.Utility)
         {
@@ -110,12 +112,12 @@ public abstract class BaseInventory : MonoBehaviour
     #region Dropping Weapons
     public void DropPrimaryWeapon(BaseWeapon dropWeapon)
     {
-
+        _primaryWeapon.SetAmmoProvider(null);
     }
 
     public void DropSecondaryWeapon(BaseWeapon dropWeapon)
     {
-
+        _secondaryWeapon.SetAmmoProvider(null);
     }
     
     public void DropMeleeWeapon(BaseWeapon dropWeapon)

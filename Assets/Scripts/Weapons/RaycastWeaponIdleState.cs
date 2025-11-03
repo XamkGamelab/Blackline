@@ -16,19 +16,19 @@ public class RaycastWeaponIdleState : RaycastWeaponBaseState
         switch (Weapon.CurrentFiringMode)
         {
             case FiringMode.Single:
-                if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey)) 
+                if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey) && Weapon.AmmoLeftInWeapon()) 
                 {
                     Weapon.UpdateState(Weapon.FiringState);
                 }
                 break;
             case FiringMode.Automatic:
-                if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey)) 
+                if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey) && Weapon.AmmoLeftInWeapon()) 
                 {
                     Weapon.UpdateState(Weapon.FiringState);
                 }
                 break;
             case FiringMode.Burst:
-                if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
+                if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey) && Weapon.AmmoLeftInWeapon())
                 {
                     Weapon.UpdateState(Weapon.FiringState);
                     Weapon.CalculateBurstCount();

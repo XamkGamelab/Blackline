@@ -19,6 +19,10 @@ public class PlayerSettingsData
     public KeyCode ReloadKey = KeyCode.R;
     public KeyCode WeaponAction = KeyCode.Q;
 
+    // Inventory Interaction //
+    public KeyCode PrimaryWeaponKey = KeyCode.Alpha1;
+    public KeyCode SecondaryWeaponKey = KeyCode.Alpha2;
+
     // Utils //
     public KeyCode PauseKey = KeyCode.Escape;
     #endregion

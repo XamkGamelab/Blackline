@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a7cd4180a59454abcf273c0f146f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseItemDataSheet: {fileID: 11400000, guid: fd310cae0d6e8f4499324f04c7c3a29a, type: 2}
+  _baseWeaponDataSheet: {fileID: 11400000, guid: fd310cae0d6e8f4499324f04c7c3a29a, type: 2}
   _bulletSpawnPoint: {fileID: 9181885729789639812}
   _raycastLayers:
     serializedVersion: 2
