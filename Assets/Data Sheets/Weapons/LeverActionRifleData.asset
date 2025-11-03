@@ -16,11 +16,14 @@ MonoBehaviour:
   _weaponName: 
   _weaponType: 0
   _weaponPrefab: {fileID: 0}
-  _roundsPerSecondFromHip: 0
-  _roundsPerSecondAimed: 0
-  _maxAmmo: 0
-  _projectilesPerShot: 0
+  _shotCooldownFromHip: 0
+  _shotCooldownAimed: 0
+  _firingModes: 0
+  _burstCount: 0
   _projectileMaxRange: 0
   _projectileSpreadX: 0
   _projectileSpreadY: 0
-  _ammoTypes: []
+  _accuracySpreadMultiplier: 0
+  _aimZoom: 0
+  _maxAmmoInWeapon: 0
+  _compatibleAmmo: []

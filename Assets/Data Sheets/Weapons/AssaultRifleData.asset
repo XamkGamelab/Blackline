@@ -10,22 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 731e4a34fd26fba479712b11311b229e, type: 3}
-  m_Name: AssaultRifleData
+  m_Name: assaultrifledata
   m_EditorClassIdentifier: 
   _itemID: 0
-  _weaponName: Assault Rifle
+  _weaponName: ARC-16
   _weaponType: 0
   _weaponPrefab: {fileID: 0}
-  _shotCooldownFromHip: 0
-  _shotCooldownAimed: 0
-  _firingModes: 1
+  _shotCooldownFromHip: 0.3
+  _shotCooldownAimed: 0.2
+  _firingModes: 4
   _burstCount: 0
-  _projectileMaxRange: 100
+  _projectileMaxRange: 120
   _projectileSpreadX: 0.01
-  _projectileSpreadY: 0.02
-  _accuracySpreadMultiplier: 0
-  _aimZoom: 0
-  _maxAmmoInWeapon: 0
+  _projectileSpreadY: 0.01
+  _accuracySpreadMultiplier: 0.001
+  _aimZoom: 1.5
+  _maxAmmoInWeapon: 30
   _compatibleAmmo:
-  - {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
-  - {fileID: 11400000, guid: f7e0701b1c4072a468080afc5fa1ff48, type: 2}
+  - {fileID: 0}
