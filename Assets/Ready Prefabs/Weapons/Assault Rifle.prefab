@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 2836853584939404643}
   - component: {fileID: 3026424204105124194}
   m_Layer: 0
-  m_Name: Lever Action Rifle
+  m_Name: Assault Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,6 +485,10 @@ MonoBehaviour:
   _raycastLayers:
     serializedVersion: 2
     m_Bits: 9
+  _currentFiringMode: 0
+  WeaponZoomEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9102988998033491739
 GameObject:
   m_ObjectHideFlags: 0
