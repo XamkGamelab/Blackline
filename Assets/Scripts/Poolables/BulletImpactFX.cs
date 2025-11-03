@@ -19,7 +19,7 @@ public class BulletImpactFX : MonoBehaviour, IPoolable
 
     public void OnParticleSystemStopped()
     {
-        OnDespawned();
+        _pool.Despawn(this);
     }
 
     public void OnDespawned()

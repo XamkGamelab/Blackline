@@ -17,6 +17,6 @@ MonoBehaviour:
   _damage: 35
   _armorPenetration: 0.1
   _projectileRange: 0
-  _projectileSpeed: 0
+  _projectileSpeed: 10
   _damageType: 0
   Source: {fileID: 0}
