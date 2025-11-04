@@ -5,8 +5,16 @@ public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
 {
     [SerializeField]
     private Transform _weaponHolder;
+
     [SerializeField]
     private CharacterDataSheet _characterDataSheet;
+    public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
+
+    private Dictionary<BaseWeaponDataSheet, int> _ownedWeapons = new();
+    public Dictionary<BaseWeaponDataSheet, int> OwnedWeapons => _ownedWeapons;
+
+    private Dictionary<BaseAmmoDataSheet, int> _ammoStorage = new();
+    public Dictionary<BaseAmmoDataSheet, int> AmmoStorage => _ammoStorage;
 
     private BaseWeapon _unarmed;
     private BaseWeapon _primaryWeapon;
@@ -14,120 +22,59 @@ public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
     private List<BaseWeapon> _meleeWeapons = new List<BaseWeapon>();
     private List<BaseWeapon> _utilityWeapons = new List<BaseWeapon>();
 
-    private Dictionary<BaseAmmoDataSheet, int> _ammoStorage = new();
-
-    public Transform WeaponHolder => _weaponHolder;
-    public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
-
     public BaseWeapon Unarmed => _unarmed;
     public BaseWeapon PrimaryWeapon => _primaryWeapon;
     public BaseWeapon SecondaryWeapon => _secondaryWeapon;
     public List<BaseWeapon> MeleeWeapons => _meleeWeapons;
     public List<BaseWeapon> UtilityWeapons => _utilityWeapons;
 
-    public Dictionary<BaseAmmoDataSheet, int> AmmoStorage => _ammoStorage;
+    private void Awake() => Initialize();
+
+    private void Initialize()
+    {
+        // Set the maximum capacity of these two list according to the player data sheet. -Shad //
+        MeleeWeapons.Capacity = CharacterDataSheet.MaxMeleeWeapons;
+        UtilityWeapons.Capacity = CharacterDataSheet.MaxUtilityWeapons;
+
+        // Go through the Weaponholder transform's children to find out what weapons are //
+        // already in the inventory. -Shad //
+        for (int i = 0; i < _weaponHolder.childCount; i++)
+        {
+            // Setup an index. We know for sure that there can be only weapons in these objects. -Shad //
+            // WeaponType _indexWeaponType = _weaponHolder.GetChild(i).GetComponent<BaseWeapon>().WeaponData.WeaponType;
+
+            // if (_indexWeaponType == WeaponType.Primary) AddWeapon(_weaponHolder.GetChild(i).GetComponent<BaseWeapon>());
+            // if (_indexWeaponType == WeaponType.Secondary) AddWeapon(_weaponHolder.GetChild(i).GetComponent<BaseWeapon>());
+
+            // Since these two WeaponTypes can be carried in different amounts, they will have to be //
+            // assigned in a different way. -Shad //
+            // if (_index.WeaponData.WeaponType == WeaponType.Melee) _primaryWeapon = _index;
+            // if (_index.WeaponData.WeaponType == WeaponType.Primary) _primaryWeapon = _index;
+        }
+    }
 
     #region Setting Weapons
-    public void SetPrimaryWeapon(BaseWeapon newWeapon)
+    public void AddWeapon(BaseWeaponDataSheet newWeapon)
     {
-        // This is effectively just a filter to check if it really is a primary weapon. -Davoth //
-        if (newWeapon.WeaponData.WeaponType != WeaponType.Primary)
+        if (!_ownedWeapons.ContainsKey(newWeapon))
         {
-            print("That's not a primary. Moron."); 
-            return;
-        }
-        else 
-        {
-            _primaryWeapon = newWeapon;
-            _primaryWeapon.SetAmmoProvider(this);
-        }
-    }
-
-    public void SetSecondaryWeapon(BaseWeapon newWeapon)
-    {
-        // This is effectively just a filter to check if it really is a secondary weapon. -Davoth //
-        if (newWeapon.WeaponData.WeaponType != WeaponType.Secondary)
-        {
-            print("That's not a secondary. Idiot.");
-            return;
+            _ownedWeapons.Add(newWeapon, 1);
+            //newWeapon.SetAmmoProvider(this);
         }
         else
         {
-            _secondaryWeapon = newWeapon;
-            _secondaryWeapon.SetAmmoProvider(this);
-        }
-    }
-
-    public void SetMeleeWeapon(BaseWeapon newMelee, int currentMeleeIndex)
-    {
-        // This one is a bit more fucked. Please read carefully. -Shad //
-
-        // First, the same filter with the previous ones. -Shad //
-        if (newMelee.WeaponData.WeaponType != WeaponType.Melee)
-        {
-            print("That's not a Melee. Goofball.");
-            return;
-        }
-        else
-        {
-            // If the melee weapon slots are not full, just add the new melee weapon as is. //
-            // If the above is NOT true, then drop the *current* melee of that index and //
-            // replace it with the new one. -Davoth //
-            if (_meleeWeapons.Count != _characterDataSheet.MaxMeleeWeapons)
-            {
-                _meleeWeapons.Add(newMelee);
-            }
-            else
-            {
-                DropMeleeWeapon(_meleeWeapons[currentMeleeIndex]);
-                _meleeWeapons.Add(newMelee);
-            }
-        }
-    }
-
-    public void SetUtilityWeapon(BaseWeapon newUtility, int currentUtilityIndex)
-    {
-        // Complete copy of the SetMeleeWeapon method, but for utility. -Shad //
-
-        if (newUtility.WeaponData.WeaponType != WeaponType.Utility)
-        {
-            print("That's not a Utility. Bastard.");
-            return;
-        }
-        else
-        {
-            if (_utilityWeapons.Count != _characterDataSheet.MaxUtilityWeapons)
-            {
-                _utilityWeapons.Add(newUtility);
-            }
-            else
-            {
-                DropUtilityWeapon(_utilityWeapons[currentUtilityIndex]);
-                _utilityWeapons.Add(newUtility);
-            }
+            if (newWeapon.CanAkimbo) _ownedWeapons[newWeapon]++;
         }
     }
     #endregion
 
     #region Dropping Weapons
-    public void DropPrimaryWeapon(BaseWeapon dropWeapon)
+    public void DropWeapon(BaseWeaponDataSheet dropWeapon)
     {
-        _primaryWeapon.SetAmmoProvider(null);
-    }
+        //dropWeapon.SetAmmoProvider(null);
 
-    public void DropSecondaryWeapon(BaseWeapon dropWeapon)
-    {
-        _secondaryWeapon.SetAmmoProvider(null);
-    }
-    
-    public void DropMeleeWeapon(BaseWeapon dropWeapon)
-    {
-
-    }
-    
-    public void DropUtilityWeapon(BaseWeapon dropWeapon)
-    {
-
+        _ownedWeapons[dropWeapon]--;
+        if (_ownedWeapons[dropWeapon] == 0) _ownedWeapons.Remove(dropWeapon);
     }
     #endregion
 

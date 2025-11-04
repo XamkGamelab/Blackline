@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponName: ARC-16
   _weaponType: 0
+  _canAkimbo: 0
   _shotCooldownFromHip: 0.1
   _shotCooldownAimed: 0.1
   _firingModes: 5
@@ -26,5 +27,5 @@ MonoBehaviour:
   _maxAmmoInWeapon: 30
   _compatibleAmmo:
   - {fileID: 11400000, guid: 4eb8cf6399b5f5e45a47dbd6d96b95b8, type: 2}
-  _reloadTime: 1
+  _emergencyReloadTime: 1
   _tacticalReloadTime: 1.15

@@ -8,56 +8,52 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [Header("Weapon Features")]
     [SerializeField]
     private float _shotCooldownFromHip;
+    public float ShotCooldownFromHip => ShotCooldownFromHip;
     [SerializeField]
     private float _shotCooldownAimed;
+    public float ShotCooldownAimed => _shotCooldownAimed;
     [SerializeField]
     private FiringMode _firingModes;
+    public FiringMode FiringModes => _firingModes;
     [SerializeField]
     private int _burstCount;
+    public int BurstCount => _burstCount;
 
     [Header("Ballistics")]
     [SerializeField]
     private float _projectileMaxRange;
+    public float ProjectileMaxRange => _projectileMaxRange;
     [SerializeField]
     private float _projectileSpreadX;
+    public float ProjectileSpreadX => _projectileSpreadX;
     [SerializeField]
     private float _projectileSpreadY;
+    public float ProjectileSpreadY => _projectileSpreadY;
     [SerializeField]
     private float _accuracySpreadMultiplier;
+    public float AccuracySpreadMultiplier => _accuracySpreadMultiplier;
 
     [Header("Aiming")]
     [SerializeField]
     private float _aimZoom;
+    public float AimZoom => _aimZoom;
 
     [Header("Ammo")]
     [SerializeField]
     private int _maxAmmoInWeapon;
+    public int MaxAmmoInWeapon => _maxAmmoInWeapon;
     [SerializeField]
     private List<BaseAmmoDataSheet> _compatibleAmmo;
+    public List<BaseAmmoDataSheet> CompatibleAmmo => _compatibleAmmo;
 
     [Header("Reloading")]
     [SerializeField]
-    private float _reloadTime;
+    [Tooltip("Reload time when weapon is empty.")]
+    private float _emergencyReloadTime;
+    public float EmergencyReloadTime => _emergencyReloadTime;
     [SerializeField]
+    [Tooltip("Reload time when weapon is still loaded.")]
     private float _tacticalReloadTime;
-
-    // This effectively sets the values as read only, but available from other classes. -Shad //
-    public float ShotCooldownFromHip => _shotCooldownFromHip;
-    public float ShotCooldownAimed => _shotCooldownAimed;
-    public FiringMode FiringModes => _firingModes;
-    public int BurstCount => _burstCount;
-
-    public float ProjectileMaxRange => _projectileMaxRange;
-    public float ProjectileSpreadX => _projectileSpreadX;
-    public float ProjectileSpreadY => _projectileSpreadY;
-    public float AccuracySpreadMultiplier => _accuracySpreadMultiplier;
-
-    public float AimZoom => _aimZoom;
-
-    public int MaxAmmoInWeapon => _maxAmmoInWeapon;
-    public List<BaseAmmoDataSheet> CompatibleAmmo => _compatibleAmmo;
-
-    public float ReloadTime => _reloadTime;
     public float TacticalReloadTime => _tacticalReloadTime;
 }
 

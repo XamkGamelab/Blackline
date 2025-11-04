@@ -20,7 +20,7 @@ public class RaycastWeaponReloadState : RaycastWeaponBaseState
 
     public override void HandleUpdate()
     {
-        if (_reloadTimer >= Weapon.DataSheet.ReloadTime)
+        if (_reloadTimer >= Weapon.DataSheet.EmergencyReloadTime)
         {
             Weapon.ReloadWeapon();
             Weapon.UpdateState(Weapon.IdleState);
