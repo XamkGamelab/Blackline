@@ -16,65 +16,39 @@ public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
     private Dictionary<BaseAmmoDataSheet, int> _ammoStorage = new();
     public Dictionary<BaseAmmoDataSheet, int> AmmoStorage => _ammoStorage;
 
-    private BaseWeapon _unarmed;
-    private BaseWeapon _primaryWeapon;
-    private BaseWeapon _secondaryWeapon;
-    private List<BaseWeapon> _meleeWeapons = new List<BaseWeapon>();
-    private List<BaseWeapon> _utilityWeapons = new List<BaseWeapon>();
-
-    public BaseWeapon Unarmed => _unarmed;
-    public BaseWeapon PrimaryWeapon => _primaryWeapon;
-    public BaseWeapon SecondaryWeapon => _secondaryWeapon;
-    public List<BaseWeapon> MeleeWeapons => _meleeWeapons;
-    public List<BaseWeapon> UtilityWeapons => _utilityWeapons;
-
     private void Awake() => Initialize();
 
     private void Initialize()
     {
-        // Set the maximum capacity of these two list according to the player data sheet. -Shad //
-        MeleeWeapons.Capacity = CharacterDataSheet.MaxMeleeWeapons;
-        UtilityWeapons.Capacity = CharacterDataSheet.MaxUtilityWeapons;
-
         // Go through the Weaponholder transform's children to find out what weapons are //
         // already in the inventory. -Shad //
         for (int i = 0; i < _weaponHolder.childCount; i++)
         {
-            // Setup an index. We know for sure that there can be only weapons in these objects. -Shad //
-            // WeaponType _indexWeaponType = _weaponHolder.GetChild(i).GetComponent<BaseWeapon>().WeaponData.WeaponType;
-
-            // if (_indexWeaponType == WeaponType.Primary) AddWeapon(_weaponHolder.GetChild(i).GetComponent<BaseWeapon>());
-            // if (_indexWeaponType == WeaponType.Secondary) AddWeapon(_weaponHolder.GetChild(i).GetComponent<BaseWeapon>());
-
-            // Since these two WeaponTypes can be carried in different amounts, they will have to be //
-            // assigned in a different way. -Shad //
-            // if (_index.WeaponData.WeaponType == WeaponType.Melee) _primaryWeapon = _index;
-            // if (_index.WeaponData.WeaponType == WeaponType.Primary) _primaryWeapon = _index;
+            BaseWeapon baseWeapon = _weaponHolder.GetChild(i).GetComponent<BaseWeapon>();
+            AddWeapon(baseWeapon);
         }
     }
 
-    #region Setting Weapons
-    public void AddWeapon(BaseWeaponDataSheet newWeapon)
+    #region Adding & Dropping Weapons
+    public void AddWeapon(BaseWeapon newWeapon)
     {
-        if (!_ownedWeapons.ContainsKey(newWeapon))
+        if (!_ownedWeapons.ContainsKey(newWeapon.WeaponData))
         {
-            _ownedWeapons.Add(newWeapon, 1);
-            //newWeapon.SetAmmoProvider(this);
+            _ownedWeapons.Add(newWeapon.WeaponData, 1);
+            newWeapon.SetAmmoProvider(this);
         }
         else
         {
-            if (newWeapon.CanAkimbo) _ownedWeapons[newWeapon]++;
+            if (newWeapon.WeaponData.CanAkimbo) _ownedWeapons[newWeapon.WeaponData]++;
         }
     }
-    #endregion
 
-    #region Dropping Weapons
-    public void DropWeapon(BaseWeaponDataSheet dropWeapon)
+    public void DropWeapon(BaseWeapon dropWeapon)
     {
-        //dropWeapon.SetAmmoProvider(null);
+        dropWeapon.SetAmmoProvider(null);
 
-        _ownedWeapons[dropWeapon]--;
-        if (_ownedWeapons[dropWeapon] == 0) _ownedWeapons.Remove(dropWeapon);
+        _ownedWeapons[dropWeapon.WeaponData]--;
+        if (_ownedWeapons[dropWeapon.WeaponData] == 0) _ownedWeapons.Remove(dropWeapon.WeaponData);
     }
     #endregion
 

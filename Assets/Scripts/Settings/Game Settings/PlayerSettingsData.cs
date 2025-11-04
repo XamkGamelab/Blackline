@@ -20,8 +20,14 @@ public class PlayerSettingsData
     public KeyCode WeaponAction = KeyCode.Q;
 
     // Inventory Interaction //
-    public KeyCode PrimaryWeaponKey = KeyCode.Alpha1;
-    public KeyCode SecondaryWeaponKey = KeyCode.Alpha2;
+    public KeyCode MeleeKey = KeyCode.Alpha1;
+    public KeyCode PistolKey = KeyCode.Alpha2;
+    public KeyCode MachinePistolKey = KeyCode.Alpha3;
+    public KeyCode AssaultRifleKey = KeyCode.Alpha4;
+    public KeyCode MinigunKey = KeyCode.Alpha5;
+    public KeyCode FlakCannonKey = KeyCode.Alpha6;
+    public KeyCode SniperKey = KeyCode.Alpha7;
+    public KeyCode RocketLauncherKey = KeyCode.Alpha8;
 
     // Utils //
     public KeyCode PauseKey = KeyCode.Escape;

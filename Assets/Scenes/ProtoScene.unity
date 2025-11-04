@@ -12740,11 +12740,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 375a67fabfa19904cb121e1a262c2435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataSheet: {fileID: 11400000, guid: d63263f155bdea34f8bd951e841fa087, type: 2}
   _itemPivot: {fileID: 693401242}
-  _rotationSpeed: 20
-  _pivotPointY: 1.5
-  _waveHeight: 0.15
-  _waveSpeed: 2
 --- !u!1 &817002685
 GameObject:
   m_ObjectHideFlags: 0
@@ -20072,6 +20069,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 1389771622}
   _characterDataSheet: {fileID: 11400000, guid: 22ceebdccf6073549bb4ccc2b085ec49, type: 2}
+  _weaponSlots:
+  - {fileID: 11400000, guid: fd310cae0d6e8f4499324f04c7c3a29a, type: 2}
 --- !u!114 &1284027940
 MonoBehaviour:
   m_ObjectHideFlags: 0
