@@ -13343,6 +13343,52 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &859585339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859585340}
+  - component: {fileID: 859585341}
+  m_Layer: 0
+  m_Name: ConcreteImpactFX Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &859585340
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859585339}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 988168720}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &859585341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859585339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868dc1dc8cef5a640bbbed3ece4eb32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 6682183923472322993, guid: 2dea083136c71a1458e111c7dd0e2f5c, type: 3}
+  _poolSize: 100
 --- !u!1 &864419520
 GameObject:
   m_ObjectHideFlags: 0
@@ -17796,6 +17842,7 @@ Transform:
   - {fileID: 1372965806}
   - {fileID: 988859339}
   - {fileID: 1270401895}
+  - {fileID: 859585340}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988859338
@@ -17843,7 +17890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 5004203295657643214, guid: 405118d81fdab81439d28100e9fb0f71, type: 3}
-  _poolSize: 300
+  _poolSize: 500
 --- !u!1 &1020651084
 GameObject:
   m_ObjectHideFlags: 0
@@ -18615,6 +18662,8 @@ MonoBehaviour:
     ImpactFXPool: {fileID: 988859340}
   - SurfaceMaterial: 2
     ImpactFXPool: {fileID: 1270401896}
+  - SurfaceMaterial: 1
+    ImpactFXPool: {fileID: 859585341}
 --- !u!1001 &1113026219
 PrefabInstance:
   m_ObjectHideFlags: 0
