@@ -39,7 +39,7 @@ public class PlayerSettingsData
 
     #region Values
     [Header("Mouse")]
-    public float MouseSensitivity = 175f;
+    public float MouseSensitivity = 500f;
     public float AimSensitivityMultiplier = 0.8f;
     #endregion
 }

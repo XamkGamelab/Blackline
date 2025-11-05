@@ -7,6 +7,7 @@ public class SceneLoadButton : MonoBehaviour
     // Good job Veeti. -Shad //
     public void OnButtonPressed(int sceneIndex)
     {
+        Time.timeScale = 1f; // Fucking nasty fucking hack. -Shad //
         SceneManager.LoadScene(sceneIndex);
     }
 }
