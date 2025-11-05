@@ -102,7 +102,7 @@ public class RaycastWeapon : BaseWeapon
     public override void ThirdFunction()
     {
         if (CurrentState != IdleState) return;
-        if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.WeaponAction)) return;
+        if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.UniqueWeaponAction)) return;
 
         CycleFiringMode();
 

@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerSettingsData
 {
     #region Keybinds
+    [Header("Keybinds")]
     // Movement //
     public KeyCode ForwardKey = KeyCode.W;
     public KeyCode BackwardKey = KeyCode.S;
@@ -17,23 +18,27 @@ public class PlayerSettingsData
     public KeyCode ShootKey = KeyCode.Mouse0;
     public KeyCode AimKey = KeyCode.Mouse1;
     public KeyCode ReloadKey = KeyCode.R;
-    public KeyCode WeaponAction = KeyCode.Q;
+    public KeyCode UniqueWeaponAction = KeyCode.Q; // Cycle firemode, charge plasma, grenade launchers, switch homing to cluster etc... -Shad //
+    public KeyCode AkimboKey = KeyCode.T; // Absolute fucking buffoon. Fuck you Shad. -Shad //
 
     // Inventory Interaction //
     public KeyCode MeleeKey = KeyCode.Alpha1;
-    public KeyCode PistolKey = KeyCode.Alpha2;
-    public KeyCode MachinePistolKey = KeyCode.Alpha3;
-    public KeyCode AssaultRifleKey = KeyCode.Alpha4;
-    public KeyCode MinigunKey = KeyCode.Alpha5;
-    public KeyCode FlakCannonKey = KeyCode.Alpha6;
-    public KeyCode SniperKey = KeyCode.Alpha7;
-    public KeyCode RocketLauncherKey = KeyCode.Alpha8;
+    public KeyCode LightCategoryKey = KeyCode.Alpha2;
+    public KeyCode MediumCategoryKey = KeyCode.Alpha3;
+    public KeyCode HeavyCategoryKey = KeyCode.Alpha4;
+    public KeyCode PlasmaCategoryKey = KeyCode.Alpha5;
+    public KeyCode RocketCategoryKey = KeyCode.Alpha6;
+    public KeyCode UtilityCategoryKey = KeyCode.G;
+    public KeyCode ThrowableCategoryKey = KeyCode.V;
 
     // Utils //
     public KeyCode PauseKey = KeyCode.Escape;
     #endregion
 
+    [Space]
+
     #region Values
+    [Header("Mouse")]
     public float MouseSensitivity = 175f;
     public float AimSensitivityMultiplier = 0.8f;
     #endregion

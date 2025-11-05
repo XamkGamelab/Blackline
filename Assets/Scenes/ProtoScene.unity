@@ -18584,11 +18584,17 @@ MonoBehaviour:
     ShootKey: 323
     AimKey: 324
     ReloadKey: 114
-    WeaponAction: 113
-    PrimaryWeaponKey: 49
-    SecondaryWeaponKey: 50
+    UniqueWeaponAction: 113
+    AkimboKey: 116
+    MeleeKey: 49
+    LightCategoryKey: 50
+    MediumCategoryKey: 51
+    HeavyCategoryKey: 52
+    PlasmaCategoryKey: 53
+    RocketCategoryKey: 54
+    UtilityCategoryKey: 103
     PauseKey: 27
-    MouseSensitivity: 175
+    MouseSensitivity: 250
     AimSensitivityMultiplier: 0.8
   _difficultySettings: {fileID: 11400000, guid: 97a6bea6058985349bce41fdb99d5585, type: 2}
   _currentDifficultyData: {fileID: 11400000, guid: 3bf5422fa04104144ba5ca990561b14a, type: 2}

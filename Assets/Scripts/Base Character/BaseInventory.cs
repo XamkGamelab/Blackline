@@ -39,7 +39,11 @@ public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
         }
         else
         {
-            if (newWeapon.WeaponData.CanAkimbo) _ownedWeapons[newWeapon.WeaponData]++;
+            if (newWeapon.WeaponData.CanAkimbo && _ownedWeapons[newWeapon.WeaponData] == 1)
+            {
+                _ownedWeapons[newWeapon.WeaponData]++;
+                newWeapon.SetAmmoProvider(this);
+            }
         }
     }
 
