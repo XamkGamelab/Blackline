@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RaycastWeaponReloadState : RaycastWeaponBaseState
+public class RaycastWeaponReloadState : WeaponState<RaycastWeapon>
 {
     public RaycastWeaponReloadState(RaycastWeapon weapon) : base(weapon) { }
 
@@ -9,8 +9,6 @@ public class RaycastWeaponReloadState : RaycastWeaponBaseState
     public override void Enter()
     {
         Debug.Log("Reload!");
-
-        _reloadTimer = 0f;
     }
 
     public override void HandleInput()
@@ -23,9 +21,14 @@ public class RaycastWeaponReloadState : RaycastWeaponBaseState
         if (_reloadTimer >= Weapon.DataSheet.EmergencyReloadTime)
         {
             Weapon.ReloadWeapon();
-            Weapon.UpdateState(Weapon.IdleState);
+            Weapon.StateMachine.UpdateState(Weapon.IdleState);
         }
         
         _reloadTimer += Time.deltaTime;
+    }
+
+    public override void Exit()
+    {
+        _reloadTimer = 0f;
     }
 }

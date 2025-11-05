@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RaycastWeaponFiringState : RaycastWeaponBaseState
+public class RaycastWeaponFiringState : WeaponState<RaycastWeapon>
 {
     public RaycastWeaponFiringState(RaycastWeapon weapon) : base(weapon) { }
 
@@ -18,7 +18,7 @@ public class RaycastWeaponFiringState : RaycastWeaponBaseState
         switch (Weapon.CurrentFiringMode)
         {
             case FiringMode.Single:
-                Weapon.UpdateState(Weapon.IdleState);
+                Weapon.StateMachine.UpdateState(Weapon.IdleState);
                 break;
             case FiringMode.Automatic:
                 if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey) && Weapon.AmmoLeftInWeapon())
@@ -27,7 +27,7 @@ public class RaycastWeaponFiringState : RaycastWeaponBaseState
                 }
                 else
                 {
-                    Weapon.UpdateState(Weapon.IdleState);
+                    Weapon.StateMachine.UpdateState(Weapon.IdleState);
                 }
                 break;
             case FiringMode.Burst:
@@ -37,7 +37,7 @@ public class RaycastWeaponFiringState : RaycastWeaponBaseState
                 }
                 else
                 {
-                    Weapon.UpdateState(Weapon.IdleState);
+                    Weapon.StateMachine.UpdateState(Weapon.IdleState);
                 }
                 break;
         }

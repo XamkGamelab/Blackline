@@ -8,7 +8,7 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [Header("Weapon Features")]
     [SerializeField]
     private float _shotCooldownFromHip;
-    public float ShotCooldownFromHip => ShotCooldownFromHip;
+    public float ShotCooldownFromHip => _shotCooldownFromHip;
     [SerializeField]
     private float _shotCooldownAimed;
     public float ShotCooldownAimed => _shotCooldownAimed;

@@ -306,11 +306,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a7cd4180a59454abcf273c0f146f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseItemDataSheet: {fileID: 11400000, guid: 7f15e391fb30ad647af8378c3e5c1aeb, type: 2}
+  _baseWeaponDataSheet: {fileID: 11400000, guid: f84e9605db1810042a2e91c33a6b6741, type: 2}
   _bulletSpawnPoint: {fileID: 9181885729789639812}
   _raycastLayers:
     serializedVersion: 2
     m_Bits: 9
+  _currentFiringMode: 1
+  WeaponZoomEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _loadedAmmoCount: 0
 --- !u!1 &9102988998033491739
 GameObject:
   m_ObjectHideFlags: 0

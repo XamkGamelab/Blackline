@@ -24,8 +24,6 @@ public class RaycastWeapon : BaseWeapon
 
     public FiringMode CurrentFiringMode => _currentFiringMode;
 
-    public RaycastWeaponBaseState CurrentState;
-    public RaycastWeaponIdleState IdleState;
     public RaycastWeaponFiringState FiringState;
     public RaycastWeaponReloadState ReloadState;
 
@@ -41,13 +39,20 @@ public class RaycastWeapon : BaseWeapon
     }
 
     public void Awake()
-    {        
+    {
+        Initialize();
+    }
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
         IdleState = new RaycastWeaponIdleState(this);
         FiringState = new RaycastWeaponFiringState(this);
         ReloadState = new RaycastWeaponReloadState(this);
         NextShotTime = Time.time;
 
-        UpdateState(IdleState);
+        StateMachine.UpdateState(IdleState);
 
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
         _loadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
@@ -101,7 +106,7 @@ public class RaycastWeapon : BaseWeapon
 
     public override void ThirdFunction()
     {
-        if (CurrentState != IdleState) return;
+        if (StateMachine.CurrentState != IdleState) return;
         if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.UniqueWeaponAction)) return;
 
         CycleFiringMode();
@@ -156,15 +161,8 @@ public class RaycastWeapon : BaseWeapon
 
     public override void HandleUpdate()
     {
-        CurrentState.HandleInput();
-        CurrentState.HandleUpdate();
-        ThirdFunction();
-    }
+        base.HandleUpdate();
 
-    public void UpdateState(RaycastWeaponBaseState newState)
-    {
-        CurrentState?.Exit();
-        CurrentState = newState;
-        newState.Enter();
+        //ThirdFunction();
     }
 }

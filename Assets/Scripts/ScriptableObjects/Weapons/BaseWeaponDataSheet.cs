@@ -10,6 +10,12 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     private string _weaponName;
     public string WeaponName => _weaponName;
     [SerializeField]
+    private float _drawTime;
+    public float DrawTime => _drawTime;
+    [SerializeField]
+    private float _holsterTime;
+    public float HolsterTime => _holsterTime;
+    [SerializeField]
     private bool _canAkimbo;
     public bool CanAkimbo => _canAkimbo;
 }

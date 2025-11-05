@@ -5,43 +5,31 @@ public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
 {
     [SerializeField]
     private Transform _weaponHolder;
+    public Transform WeaponHolder => _weaponHolder;
 
     [SerializeField]
     private CharacterDataSheet _characterDataSheet;
     public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
 
-    private Dictionary<BaseWeaponDataSheet, int> _ownedWeapons = new();
-    public Dictionary<BaseWeaponDataSheet, int> OwnedWeapons => _ownedWeapons;
+    private Dictionary<BaseWeapon, int> _ownedWeapons = new();
+    public Dictionary<BaseWeapon, int> OwnedWeapons => _ownedWeapons;
 
     private Dictionary<BaseAmmoDataSheet, int> _ammoStorage = new();
     public Dictionary<BaseAmmoDataSheet, int> AmmoStorage => _ammoStorage;
 
-    private void Awake() => Initialize();
-
-    private void Initialize()
-    {
-        // Go through the Weaponholder transform's children to find out what weapons are //
-        // already in the inventory. -Shad //
-        for (int i = 0; i < _weaponHolder.childCount; i++)
-        {
-            BaseWeapon baseWeapon = _weaponHolder.GetChild(i).GetComponent<BaseWeapon>();
-            AddWeapon(baseWeapon);
-        }
-    }
-
     #region Adding & Dropping Weapons
     public void AddWeapon(BaseWeapon newWeapon)
     {
-        if (!_ownedWeapons.ContainsKey(newWeapon.WeaponData))
+        if (!_ownedWeapons.ContainsKey(newWeapon))
         {
-            _ownedWeapons.Add(newWeapon.WeaponData, 1);
+            _ownedWeapons.Add(newWeapon, 1);
             newWeapon.SetAmmoProvider(this);
         }
         else
         {
-            if (newWeapon.WeaponData.CanAkimbo && _ownedWeapons[newWeapon.WeaponData] == 1)
+            if (newWeapon.WeaponData.CanAkimbo && _ownedWeapons[newWeapon] == 1)
             {
-                _ownedWeapons[newWeapon.WeaponData]++;
+                _ownedWeapons[newWeapon]++;
                 newWeapon.SetAmmoProvider(this);
             }
         }
@@ -51,8 +39,8 @@ public abstract class BaseInventory : MonoBehaviour, IAmmoProvider
     {
         dropWeapon.SetAmmoProvider(null);
 
-        _ownedWeapons[dropWeapon.WeaponData]--;
-        if (_ownedWeapons[dropWeapon.WeaponData] == 0) _ownedWeapons.Remove(dropWeapon.WeaponData);
+        _ownedWeapons[dropWeapon]--;
+        if (_ownedWeapons[dropWeapon] == 0) _ownedWeapons.Remove(dropWeapon);
     }
     #endregion
 

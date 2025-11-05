@@ -13990,7 +13990,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!135 &898104320
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18593,11 +18593,11 @@ MonoBehaviour:
     PlasmaCategoryKey: 53
     RocketCategoryKey: 54
     UtilityCategoryKey: 103
+    ThrowableCategoryKey: 118
     PauseKey: 27
     MouseSensitivity: 250
     AimSensitivityMultiplier: 0.8
   _difficultySettings: {fileID: 11400000, guid: 97a6bea6058985349bce41fdb99d5585, type: 2}
-  _currentDifficultyData: {fileID: 11400000, guid: 3bf5422fa04104144ba5ca990561b14a, type: 2}
 --- !u!114 &1108374869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20075,8 +20075,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 1389771622}
   _characterDataSheet: {fileID: 11400000, guid: 22ceebdccf6073549bb4ccc2b085ec49, type: 2}
-  _weaponSlots:
-  - {fileID: 11400000, guid: fd310cae0d6e8f4499324f04c7c3a29a, type: 2}
 --- !u!114 &1284027940
 MonoBehaviour:
   m_ObjectHideFlags: 0
