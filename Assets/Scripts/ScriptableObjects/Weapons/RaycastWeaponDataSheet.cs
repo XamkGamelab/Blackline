@@ -55,6 +55,9 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [Tooltip("Reload time when weapon is still loaded.")]
     private float _tacticalReloadTime;
     public float TacticalReloadTime => _tacticalReloadTime;
+
+    [Header("SFX")]
+    public AudioClip ShootSound;  
 }
 
 [Flags]
