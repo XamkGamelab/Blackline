@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Player States. //
     public PlayerBaseState CurrentState;
+    public PlayerIdleState IdleState;
     public PlayerWalkState WalkState;
     public PlayerRunState RunState;
     public PlayerCrouchState CrouchState;
@@ -50,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        IdleState = new PlayerIdleState(this);
         WalkState = new PlayerWalkState(this);
         RunState = new PlayerRunState(this);
         CrouchState = new PlayerCrouchState(this);
@@ -57,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
         JumpState = new PlayerJumpState(this);
         FallingState = new PlayerFallingState(this);
 
-        UpdateState(WalkState);
+        UpdateState(IdleState);
     }
 
     private void Update()
@@ -68,6 +70,9 @@ public class PlayerMovement : MonoBehaviour
         _finalSumVector = MoveVector + GravityVector + BunnyhopVector + SlideVector;
 
         CharacterController.Move(_finalSumVector * Time.deltaTime);
+
+        print(InputVector);
+        print(CurrentState);
     }
 
     public void UpdateState(PlayerBaseState newState)

@@ -1,9 +1,0 @@
-**Title:** [BUG] <short description>
-**Repro steps:**
-1) …
-2) …
-**Expected / Actual:** …
-**Evidence:** screenshot/log (paths)
-**Env:** Unity <version>, OS, platform target, commit
-**Links:** Test case, test file, commit
-**Severity:** Critical | High | Medium | Low

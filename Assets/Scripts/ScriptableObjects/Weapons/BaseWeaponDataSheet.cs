@@ -24,6 +24,7 @@ public enum WeaponCategory
 {
     Melee,
     Light,
+    Shell,
     Medium,
     Heavy,
     Plasma,

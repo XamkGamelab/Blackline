@@ -8,6 +8,8 @@ public class PlayerRunState : PlayerGroundedState
     {
         base.HandleInput();
 
+        if (PlayerMovement.InputVector.magnitude == 0f) PlayerMovement.UpdateState(PlayerMovement.IdleState);
+
         if (!Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.RunKey)) PlayerMovement.UpdateState(PlayerMovement.WalkState);
 
         if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.CrouchKey)) PlayerMovement.UpdateState(PlayerMovement.SlideState);

@@ -24,10 +24,11 @@ public class PlayerSettingsData
     // Inventory Interaction //
     public KeyCode MeleeKey = KeyCode.Alpha1;
     public KeyCode LightCategoryKey = KeyCode.Alpha2;
-    public KeyCode MediumCategoryKey = KeyCode.Alpha3;
-    public KeyCode HeavyCategoryKey = KeyCode.Alpha4;
-    public KeyCode PlasmaCategoryKey = KeyCode.Alpha5;
-    public KeyCode RocketCategoryKey = KeyCode.Alpha6;
+    public KeyCode ShellCategoryKey = KeyCode.Alpha3;
+    public KeyCode MediumCategoryKey = KeyCode.Alpha4;
+    public KeyCode HeavyCategoryKey = KeyCode.Alpha5;
+    public KeyCode PlasmaCategoryKey = KeyCode.Alpha6;
+    public KeyCode RocketCategoryKey = KeyCode.Alpha7;
     public KeyCode UtilityCategoryKey = KeyCode.G;
     public KeyCode ThrowableCategoryKey = KeyCode.V;
 

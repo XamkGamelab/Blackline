@@ -12,20 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731e4a34fd26fba479712b11311b229e, type: 3}
   m_Name: ShotgunData
   m_EditorClassIdentifier: 
-  _itemID: 0
+  _weaponCategory: 2
   _weaponName: Pump Shotgun
-  _weaponType: 0
-  _weaponPrefab: {fileID: 0}
-  _shotCooldownFromHip: 0.6
-  _shotCooldownAimed: 0.4
-  _firingModes: 1
+  _drawTime: 0
+  _holsterTime: 0
+  _canAkimbo: 0
+  _shotCooldownFromHip: 0.08
+  _shotCooldownAimed: 0.08
+  _firingModes: 4
   _burstCount: 0
   _projectileMaxRange: 50
   _projectileSpreadX: 0.125
   _projectileSpreadY: 0.125
   _accuracySpreadMultiplier: 1
   _aimZoom: 1.2
-  _maxAmmoInWeapon: 8
+  _maxAmmoInWeapon: 100
   _compatibleAmmo:
   - {fileID: 11400000, guid: 549904d1a31d5c84ca9ca2ac93259a36, type: 2}
   - {fileID: 11400000, guid: b2afff7289794464cbd829897b320845, type: 2}
+  _emergencyReloadTime: 1
+  _tacticalReloadTime: 1

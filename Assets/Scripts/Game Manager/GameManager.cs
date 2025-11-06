@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private void Initialize()
     {
         pauseMenuUI.SetActive(false);
+
+        Application.targetFrameRate = 120;
     }
 
     #region Pausing
