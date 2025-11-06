@@ -18,6 +18,9 @@ public abstract class BaseWeapon : MonoBehaviour
     private bool _readyToSwitch = false;
     public bool ReadyToSwitch => _readyToSwitch;
 
+    private WeaponAudio _weaponAudio;
+    public WeaponAudio WeaponAudio => _weaponAudio;
+
     public virtual void Initialize()
     {
         StateMachine = new WeaponStateMachine<BaseWeapon>();
@@ -30,13 +33,9 @@ public abstract class BaseWeapon : MonoBehaviour
     public virtual void HandleFunctions()
     {
         StateMachine?.HandleStates();
-
-        print(StateMachine?.CurrentState);
     }
 
-    // Inventory scripts can set the provider with this method. -Shad //
-    public void SetAmmoProvider(IAmmoProvider ammoProvider) => _ammoProvider = ammoProvider;
-
+    #region Main Functionality
     // For things like shooting a weapon, or swinging an axe. -Shad //
     public virtual void PrimaryFunction() { }
 
@@ -45,7 +44,9 @@ public abstract class BaseWeapon : MonoBehaviour
 
     // For things like cycling firing modes. -Shad //
     public virtual void ThirdFunction() { }
+    #endregion
 
+    #region Drawing & Holstering
     // Drawing and equipping the weapon. -Shad //
     public virtual void DrawWeapon()
     {
@@ -57,6 +58,17 @@ public abstract class BaseWeapon : MonoBehaviour
     {
 
     }
+    #endregion
+
+    #region Utility
+    // Inventory scripts can set the provider with this method. -Shad //
+    public void SetAmmoProvider(IAmmoProvider ammoProvider) => _ammoProvider = ammoProvider;
+
+    public void SetAudioSource(WeaponAudio weaponAudio)
+    {
+        _weaponAudio = weaponAudio;
+    }
 
     public void SetSwitchReady(bool target) => _readyToSwitch = target;
+    #endregion
 }

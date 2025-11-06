@@ -8,7 +8,7 @@ public class RaycastWeaponReloadState : WeaponState<RaycastWeapon>
 
     public override void Enter()
     {
-        Debug.Log("Reload!");
+        Weapon.WeaponAudio.PlayOnce(Weapon.DataSheet.EmergencyReloadSound);
     }
 
     public override void HandleUpdate()

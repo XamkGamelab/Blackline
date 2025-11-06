@@ -27,7 +27,7 @@ public class RaycastWeapon : BaseWeapon
     public RaycastWeaponFiringState FiringState;
     public RaycastWeaponReloadState ReloadState;
 
-    public int _loadedAmmoCount;
+    public int LoadedAmmoCount;
     public int BurstShotsRemaining { get; private set; }
 
     public float NextShotTime { get; private set; }
@@ -50,7 +50,7 @@ public class RaycastWeapon : BaseWeapon
         StateMachine.UpdateState(DrawState);
 
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
-        _loadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
+        LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
     }
 
     #region Main Functions
@@ -58,7 +58,7 @@ public class RaycastWeapon : BaseWeapon
     {
         if (CurrentFiringMode == FiringMode.Burst) BurstShotsRemaining--;
 
-        _loadedAmmoCount--;
+        LoadedAmmoCount--;
 
         NextShotTime = Time.time + _dataSheet.ShotCooldownFromHip;
 
@@ -90,6 +90,9 @@ public class RaycastWeapon : BaseWeapon
                 bulletTracerFX.Engage(dummyPos, _currentAmmoType); // Only bullet tracer FX! -Shad //
             }
         }
+
+        // Sound effects. -Shad //
+        WeaponAudio.PlayOnce(DataSheet.ShootSound);
     }
 
     public override void SecondaryFunction() 
@@ -137,13 +140,13 @@ public class RaycastWeapon : BaseWeapon
 
     public void ReloadWeapon()
     {
-        _loadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
+        LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
     }
     #endregion
    
     public void CalculateBurstCount()
     {
-        if (_loadedAmmoCount < _dataSheet.BurstCount) BurstShotsRemaining = _loadedAmmoCount;
+        if (LoadedAmmoCount < _dataSheet.BurstCount) BurstShotsRemaining = LoadedAmmoCount;
         else
         {
             BurstShotsRemaining = _dataSheet.BurstCount;
@@ -152,7 +155,7 @@ public class RaycastWeapon : BaseWeapon
         BurstShotsRemaining = _dataSheet.BurstCount;
     }
 
-    public bool AmmoLeftInWeapon() { return _loadedAmmoCount > 0; }
+    public bool AmmoLeftInWeapon() { return LoadedAmmoCount > 0; }
 
     public override void HandleFunctions()
     {

@@ -6,11 +6,6 @@ public class RaycastWeaponIdleState : BaseWeaponIdleState
 
     public RaycastWeaponIdleState(BaseWeapon weapon) : base(weapon) { }
 
-    public override void Enter()
-    {
-        Debug.Log("Idle!");
-    }
-
     // Switch case loop for the different firing modes. Not very scalable, //
     // but fuck it. -Shad //
     public override void HandleInput()
@@ -42,6 +37,8 @@ public class RaycastWeaponIdleState : BaseWeaponIdleState
 
         if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ReloadKey))
         {
+            if (_raycastWeapon.LoadedAmmoCount == _raycastWeapon.DataSheet.MaxAmmoInWeapon) return;
+
             Weapon.StateMachine.UpdateState(_raycastWeapon.ReloadState);
         }
     }

@@ -57,7 +57,8 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     public float TacticalReloadTime => _tacticalReloadTime;
 
     [Header("SFX")]
-    public AudioClip ShootSound;  
+    public AudioClip ShootSound;
+    public AudioClip EmergencyReloadSound;
 }
 
 [Flags]

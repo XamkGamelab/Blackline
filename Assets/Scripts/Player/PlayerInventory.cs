@@ -13,6 +13,10 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     private CharacterDataSheet _characterDataSheet;
     public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
 
+    [SerializeField]
+    private WeaponAudio _weaponAudio;
+    public WeaponAudio WeaponAudio => _weaponAudio;
+
     private Dictionary<BaseWeapon, int> _ownedWeapons = new();
     public Dictionary<BaseWeapon, int> OwnedWeapons => _ownedWeapons;
 
@@ -33,8 +37,6 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
         {
             BaseWeapon baseWeapon = WeaponHolder.GetChild(i).GetComponent<BaseWeapon>();
             AddWeapon(baseWeapon);
-
-            print(_equippedWeapon);
         }
 
         SelectWeaponByCategory(WeaponCategory.Light);
@@ -86,22 +88,19 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
             while (!_equippedWeapon.ReadyToSwitch)
             {
                 await Task.Yield();
-
-                print("Switching...");
             }
 
             _equippedWeapon.gameObject.SetActive(false);
         }
 
         _equippedWeapon = newWeapon;
-        _equippedWeapon.Initialize();
+        _equippedWeapon.Initialize();        
         _equippedWeapon.SetAmmoProvider(this);
+        _equippedWeapon.SetAudioSource(_weaponAudio);
 
         _equippedWeapon.gameObject.SetActive(true);
 
         _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.DrawState);
-
-        print("Switch done.");
     }
     #endregion
 

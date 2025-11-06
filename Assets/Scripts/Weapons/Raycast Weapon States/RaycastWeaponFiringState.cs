@@ -6,8 +6,6 @@ public class RaycastWeaponFiringState : WeaponState<RaycastWeapon>
 
     public override void Enter()
     {
-        Debug.Log("Firing!");
-
         Weapon.PrimaryFunction();
     }
 

@@ -32,3 +32,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7e0701b1c4072a468080afc5fa1ff48, type: 2}
   _emergencyReloadTime: 1
   _tacticalReloadTime: 1
+  ShootSound: {fileID: 8300000, guid: 7af26aecf62b2204ea56225effb0f1f5, type: 3}
+  EmergencyReloadSound: {fileID: 8300000, guid: dd7ddf3a2f02de24fbc067664cd8bf15, type: 3}
