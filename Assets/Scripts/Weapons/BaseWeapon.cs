@@ -15,18 +15,23 @@ public abstract class BaseWeapon : MonoBehaviour
     public WeaponState<BaseWeapon> DrawState { get; protected set; }
     public WeaponState<BaseWeapon> HolsterState { get; protected set; }
 
+    private bool _readyToSwitch = false;
+    public bool ReadyToSwitch => _readyToSwitch;
+
     public virtual void Initialize()
     {
         StateMachine = new WeaponStateMachine<BaseWeapon>();
 
         IdleState = new BaseWeaponIdleState(this);
-        //DrawState = new WeaponDrawState(this);
-        //HolsterState = new WeaponHolsterState(this);
+        DrawState = new BaseWeaponDrawState(this);
+        HolsterState = new BaseWeaponHolsterState(this);
     }
 
-    public virtual void HandleUpdate()
+    public virtual void HandleFunctions()
     {
-        StateMachine?.HandleUpdate();
+        StateMachine?.HandleStates();
+
+        print(StateMachine?.CurrentState);
     }
 
     // Inventory scripts can set the provider with this method. -Shad //
@@ -52,4 +57,6 @@ public abstract class BaseWeapon : MonoBehaviour
     {
 
     }
+
+    public void SetSwitchReady(bool target) => _readyToSwitch = target;
 }

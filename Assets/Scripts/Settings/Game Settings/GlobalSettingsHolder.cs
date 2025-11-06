@@ -45,6 +45,7 @@ public class GlobalSettingsHolder : MonoBehaviour
         {
             { PlayerSettingsData.MeleeKey, WeaponCategory.Melee },
             { PlayerSettingsData.LightCategoryKey, WeaponCategory.Light },
+            { PlayerSettingsData.ShellCategoryKey, WeaponCategory.Shell },
             { PlayerSettingsData.MediumCategoryKey, WeaponCategory.Medium },
             { PlayerSettingsData.HeavyCategoryKey, WeaponCategory.Heavy },
             { PlayerSettingsData.PlasmaCategoryKey, WeaponCategory.Plasma },

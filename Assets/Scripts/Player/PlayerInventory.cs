@@ -1,12 +1,29 @@
+using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class PlayerInventory : BaseInventory
+public class PlayerInventory : MonoBehaviour, IAmmoProvider
 {
+    [SerializeField]
+    private Transform _weaponHolder;
+    public Transform WeaponHolder => _weaponHolder;
+
+    [SerializeField]
+    private CharacterDataSheet _characterDataSheet;
+    public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
+
+    private Dictionary<BaseWeapon, int> _ownedWeapons = new();
+    public Dictionary<BaseWeapon, int> OwnedWeapons => _ownedWeapons;
+
+    private Dictionary<BaseAmmoDataSheet, int> _ammoStorage = new();
+    public Dictionary<BaseAmmoDataSheet, int> AmmoStorage => _ammoStorage;
+
     // The current weapon the player is holding. -Shad //
     private BaseWeapon _equippedWeapon;
     public BaseWeapon EquippedWeapon => _equippedWeapon;
 
-    private void Start() => Initialize();
+    private void Awake() => Initialize();
 
     private void Initialize()
     {
@@ -16,10 +33,14 @@ public class PlayerInventory : BaseInventory
         {
             BaseWeapon baseWeapon = WeaponHolder.GetChild(i).GetComponent<BaseWeapon>();
             AddWeapon(baseWeapon);
-            SelectWeaponByCategory(baseWeapon.WeaponData.WeaponCategory);
+
+            print(_equippedWeapon);
         }
+
+        SelectWeaponByCategory(WeaponCategory.Light);
     }
 
+    #region Selecting & Equipping Weapons
     public void SelectWeaponByKey(KeyCode keyCode)
     {
         WeaponCategory targetCategory = GlobalSettingsHolder.Instance.KeyToCategory[keyCode];
@@ -30,7 +51,8 @@ public class PlayerInventory : BaseInventory
             {
                 if (OwnedWeapons.ContainsKey(key))
                 {
-                    _equippedWeapon = key;
+                    //_equippedWeapon = key;
+                    EquipWeapon(key);
                     break;
                 }
             }
@@ -45,20 +67,98 @@ public class PlayerInventory : BaseInventory
             {
                 if (OwnedWeapons.ContainsKey(key))
                 {
-                    _equippedWeapon = key;
+                    EquipWeapon(key);
                     break;
                 }
             }
         }
     }
 
-    public void EquipWeapon(BaseWeapon newWeapon)
+    public async void EquipWeapon(BaseWeapon newWeapon)
     {
-        if (_equippedWeapon.StateMachine.CurrentState != _equippedWeapon.IdleState) return;
-        if (_equippedWeapon.WeaponData == newWeapon.WeaponData) return;
+        if(_equippedWeapon != null)
+        {
+            if (_equippedWeapon.WeaponData.WeaponName == newWeapon.WeaponData.WeaponName) { print("That's the same weapon."); return; }
+            if (_equippedWeapon.StateMachine.CurrentState != _equippedWeapon.IdleState) return;
 
-        _equippedWeapon.gameObject.SetActive(false);
+            _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.HolsterState);
+
+            while (!_equippedWeapon.ReadyToSwitch)
+            {
+                await Task.Yield();
+
+                print("Switching...");
+            }
+
+            _equippedWeapon.gameObject.SetActive(false);
+        }
+
         _equippedWeapon = newWeapon;
+        _equippedWeapon.Initialize();
+        _equippedWeapon.SetAmmoProvider(this);
+
         _equippedWeapon.gameObject.SetActive(true);
+
+        _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.DrawState);
+
+        print("Switch done.");
     }
+    #endregion
+
+    #region Adding & Dropping Weapons
+    public void AddWeapon(BaseWeapon newWeapon)
+    {
+        if (!_ownedWeapons.ContainsKey(newWeapon))
+        {
+            _ownedWeapons.Add(newWeapon, 1);
+        }
+        else
+        {
+            if (newWeapon.WeaponData.CanAkimbo && _ownedWeapons[newWeapon] == 1)
+            {
+                _ownedWeapons[newWeapon]++;             
+            }
+        }
+    }
+
+    public void DropWeapon(BaseWeapon dropWeapon)
+    {
+        dropWeapon.SetAmmoProvider(null);
+
+        _ownedWeapons[dropWeapon]--;
+        if (_ownedWeapons[dropWeapon] == 0) _ownedWeapons.Remove(dropWeapon);
+    }
+    #endregion
+
+    #region Ammo
+    public bool HasAmmo(BaseAmmoDataSheet ammo) => GetAmmoCount(ammo) > 0;
+
+    public int GetAmmoCount(BaseAmmoDataSheet ammo)
+    {
+        return _ammoStorage.TryGetValue(ammo, out int count) ? count : 0;
+    }
+
+    public void AddAmmo(BaseAmmoDataSheet ammo, int amount)
+    {
+        // If the ammotype isn't in the storage, add the key & value pair and then add the amount. -Shad //
+        if (!_ammoStorage.ContainsKey(ammo))
+            _ammoStorage[ammo] = amount;
+
+        _ammoStorage[ammo] += amount;
+    }
+
+    public void ConsumeAmmo(BaseAmmoDataSheet ammo, int amount)
+    {
+        if (_ammoStorage.TryGetValue(ammo, out int current))
+        {
+            current -= amount;
+
+            if (current <= 0)
+            {
+                // Remove the ammotype from the storage completely if depleted. -Shad //
+                _ammoStorage.Remove(ammo);
+            }
+        }
+    }
+    #endregion
 }

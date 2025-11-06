@@ -38,11 +38,6 @@ public class RaycastWeapon : BaseWeapon
         _bulletTracerFXPool = bulletTracerFXPool;
     }
 
-    public void Awake()
-    {
-        Initialize();
-    }
-
     public override void Initialize()
     {
         base.Initialize();
@@ -52,7 +47,7 @@ public class RaycastWeapon : BaseWeapon
         ReloadState = new RaycastWeaponReloadState(this);
         NextShotTime = Time.time;
 
-        StateMachine.UpdateState(IdleState);
+        StateMachine.UpdateState(DrawState);
 
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
         _loadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
@@ -159,9 +154,9 @@ public class RaycastWeapon : BaseWeapon
 
     public bool AmmoLeftInWeapon() { return _loadedAmmoCount > 0; }
 
-    public override void HandleUpdate()
+    public override void HandleFunctions()
     {
-        base.HandleUpdate();
+        base.HandleFunctions();
 
         //ThirdFunction();
     }

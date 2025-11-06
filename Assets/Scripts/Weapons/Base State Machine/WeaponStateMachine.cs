@@ -9,7 +9,7 @@ public class WeaponStateMachine<TWeapon> where TWeapon : BaseWeapon
         CurrentState.Enter();
     }
 
-    public void HandleUpdate()
+    public void HandleStates()
     {
         CurrentState.HandleInput();
         CurrentState.HandleUpdate();

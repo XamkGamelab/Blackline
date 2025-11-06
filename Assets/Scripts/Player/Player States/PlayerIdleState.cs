@@ -17,6 +17,6 @@ public class PlayerIdleState : PlayerGroundedState
     {
         base.HandleUpdate();
 
-        PlayerMovement.MoveVector = Vector3.SmoothDamp(PlayerMovement.MoveVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.MovementSmoothingTimeGrounded);
+        HandleMove(0f);
     }
 }

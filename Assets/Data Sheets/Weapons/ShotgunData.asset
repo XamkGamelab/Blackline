@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponCategory: 2
   _weaponName: Pump Shotgun
-  _drawTime: 0
-  _holsterTime: 0
+  _drawTime: 0.1
+  _holsterTime: 0.1
   _canAkimbo: 0
-  _shotCooldownFromHip: 0.08
-  _shotCooldownAimed: 0.08
-  _firingModes: 4
+  _shotCooldownFromHip: 0.3
+  _shotCooldownAimed: 0.3
+  _firingModes: 1
   _burstCount: 0
   _projectileMaxRange: 50
   _projectileSpreadX: 0.125
   _projectileSpreadY: 0.125
   _accuracySpreadMultiplier: 1
   _aimZoom: 1.2
-  _maxAmmoInWeapon: 100
+  _maxAmmoInWeapon: 8
   _compatibleAmmo:
   - {fileID: 11400000, guid: 549904d1a31d5c84ca9ca2ac93259a36, type: 2}
   - {fileID: 11400000, guid: b2afff7289794464cbd829897b320845, type: 2}
