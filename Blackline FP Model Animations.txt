@@ -1,3 +1,35 @@
 Blackline FP Model Animations
 
--
+Weapon recoil is dynamic, done through code and Unity's Animation Rigging system with IK. For this reason, weapons firing animations should only animate the moving parts, but not any "kickback".
+
+Weapon Animator Controllers in Unity have Layers. If the weapon has features, that behave differently depending on the weapon being loaded for example, the Layers should be utilized. 
+
+Replace "Weapon" with the actual weapon name, eg. "ARC-16". Note, that not all weapons will necessarily need all of these animations.
+
+For weapon only animations:
+-Weapon_Loaded
+-Weapon_Empty
+-Weapon_FireMode0
+-Weapon_FireMode1
+
+For First Person Model, general:
+-ViktorFP_Weapon_Draw
+-ViktorFP_Weapon_Holster
+-ViktorFP_Weapon_Idle
+-ViktorFP_Weapon_Walk
+-ViktorFP_Weapon_Crouch
+-ViktorFP_Weapon_Sneak
+-ViktorFP_Weapon_ToRun
+-ViktorFP_Weapon_Run
+-ViktorFP_Weapon_RunOut
+
+For First Person, Firearm specific:
+-ViktorFP_Weapon_Fire
+-ViktorFP_Weapon_ToAim
+-ViktorFP_Weapon_AimIdle
+-ViktorFP_Weapon_AimMoving
+-ViktorFP_Weapon_AimOut
+-ViktorFP_Weapon_EmergencyReload
+-ViktorFP_Weapon_TacticalReload
+-ViktorFP_Weapon_SwitchFireMode
+
