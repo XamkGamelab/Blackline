@@ -11,25 +11,44 @@ For weapon only animations:
 -Weapon_Empty
 -Weapon_FireMode0
 -Weapon_FireMode1
+-Weapon_Fire
 
-For First Person Model, general:
+For First Person Model only:
 -ViktorFP_Weapon_Draw
 -ViktorFP_Weapon_Holster
 -ViktorFP_Weapon_Idle
--ViktorFP_Weapon_Walk
--ViktorFP_Weapon_Crouch
--ViktorFP_Weapon_Sneak
--ViktorFP_Weapon_ToRun
--ViktorFP_Weapon_Run
--ViktorFP_Weapon_RunOut
-
-For First Person, Firearm specific:
--ViktorFP_Weapon_Fire
--ViktorFP_Weapon_ToAim
--ViktorFP_Weapon_AimIdle
--ViktorFP_Weapon_AimMoving
--ViktorFP_Weapon_AimOut
 -ViktorFP_Weapon_EmergencyReload
 -ViktorFP_Weapon_TacticalReload
--ViktorFP_Weapon_SwitchFireMode
 
+For weapons, general:
+-Weapon_Draw
+-Weapon_Holster
+-Weapon_Idle
+-Weapon_Sneak
+-Weapon_Walk
+-Weapon_Run
+
+Weapons, Firearm specific:
+-Weapon_ToAim
+-Weapon_AimIdle
+-Weapon_AimMoving
+-Weapon_AimOut
+-Weapon_EmergencyReload
+-Weapon_TacticalReload
+-Weapon_SwitchFireMode
+-Weapon_Loaded
+-Weapon_Empty
+-Weapon_Fire
+
+-Weapon_Draw_Dual
+-Weapon_Holster_Dual
+-Weapon_Idle_Dual
+-Weapon_Sneak_Dual
+-Weapon_Walk_Dual
+-Weapon_Run_Dual
+-Weapon_Fire_R
+-Weapon_Fire_L
+-Weapon_Loaded_R
+-Weapon_Loaded_L
+-Weapon_Empty_R
+-Weapon_Empty_L
