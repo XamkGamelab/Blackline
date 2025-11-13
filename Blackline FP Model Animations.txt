@@ -31,7 +31,6 @@ For weapons, general:
 Weapons, Firearm specific:
 -Weapon_ToAim
 -Weapon_AimIdle
--Weapon_AimMoving
 -Weapon_AimOut
 -Weapon_EmergencyReload
 -Weapon_TacticalReload
