@@ -19,6 +19,11 @@ For First Person Model only:
 -ViktorFP_Weapon_Idle
 -ViktorFP_Weapon_EmergencyReload
 -ViktorFP_Weapon_TacticalReload
+-ViktorFP_Weapon_Draw_Dual
+-ViktorFP_Weapon_Holster_Dual
+-ViktorFP_Weapon_Idle_Dual
+-ViktorFP_Weapon_Reload_R
+-ViktorFP_Weapon_Reload_L
 
 For weapons, general:
 -Weapon_Draw
@@ -50,4 +55,6 @@ Weapons, Firearm specific:
 -Weapon_Loaded_R
 -Weapon_Loaded_L
 -Weapon_Empty_R
--Weapon_Empty_L
+-Weapon_Empty_L2
+-Weapon_Reload_R
+-Weapon_Reload_L
