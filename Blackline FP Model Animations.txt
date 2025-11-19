@@ -7,8 +7,8 @@ Weapon Animator Controllers in Unity have Layers. If the weapon has features, th
 Replace "Weapon" with the actual weapon name, eg. "ARC-16". Note, that not all weapons will necessarily need all of these animations.
 
 For weapon only animations:
--Weapon_Loaded
--Weapon_Empty
+-Weapon_BoltForward
+-Weapon_BoltBack
 -Weapon_FireMode0
 -Weapon_FireMode1
 -Weapon_Fire
@@ -28,10 +28,10 @@ For First Person Model only:
 For weapons, general:
 -Weapon_Draw
 -Weapon_Holster
--Weapon_Idle
--Weapon_Sneak
--Weapon_Walk
--Weapon_Run
+-Weapon_Idle (48 Keyframes)
+-Weapon_Sneak (32 Keyframes)
+-Weapon_Walk (20 Keyframes)
+-Weapon_Run (12 Keyframes)
 
 Weapons, Firearm specific:
 -Weapon_ToAim
@@ -40,8 +40,8 @@ Weapons, Firearm specific:
 -Weapon_EmergencyReload
 -Weapon_TacticalReload
 -Weapon_SwitchFireMode
--Weapon_Loaded
--Weapon_Empty
+-Weapon_BoltForward
+-Weapon_BoltBack
 -Weapon_Fire
 
 -Weapon_Draw_Dual
@@ -52,9 +52,9 @@ Weapons, Firearm specific:
 -Weapon_Run_Dual
 -Weapon_Fire_R
 -Weapon_Fire_L
--Weapon_Loaded_R
--Weapon_Loaded_L
--Weapon_Empty_R
--Weapon_Empty_L2
+-Weapon_BoltForward_R
+-Weapon_BoltForward_L
+-Weapon_BoltBack_R
+-Weapon_BoltBack_L
 -Weapon_Reload_R
 -Weapon_Reload_L
