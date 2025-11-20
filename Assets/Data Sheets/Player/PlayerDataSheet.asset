@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b43f879427099c4c80203e4d5700d22, type: 3}
   m_Name: PlayerDataSheet
   m_EditorClassIdentifier: 
-  _walkSpeed: 3
-  _runSpeed: 6
-  _crouchSpeed: 1.5
+  _walkSpeed: 4
+  _runSpeed: 9
+  _crouchSpeed: 2
   _gravity: -9.81
   _jumpHeight: 1.2
   _maxHealth: 200
