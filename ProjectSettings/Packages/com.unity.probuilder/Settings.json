@@ -137,6 +137,16 @@
                 "value": "{\"m_Value\":false}"
             },
             {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "meshImporter.quads",
+                "value": "{\"m_Value\":true}"
+            },
+            {
+                "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "meshImporter.smoothing",
+                "value": "{\"m_Value\":true}"
+            },
+            {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ShapeBuilder.ActiveShapeIndex",
                 "value": "{\"m_Value\":6}"
@@ -159,7 +169,7 @@
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ShapeBuilder.LastSize.Cube",
-                "value": "{\"m_Value\":{\"x\":-1.5,\"y\":3.0,\"z\":-27.0}}"
+                "value": "{\"m_Value\":{\"x\":10.0,\"y\":10.0,\"z\":10.0}}"
             },
             {
                 "type": "UnityEngine.Vector3, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -309,7 +319,7 @@
             {
                 "type": "UnityEngine.ProBuilder.SelectMode, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "s_SelectMode",
-                "value": "{\"m_Value\":2}"
+                "value": "{\"m_Value\":4}"
             },
             {
                 "type": "UnityEngine.ProBuilder.ExtrudeMethod, Unity.ProBuilder, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
@@ -337,6 +347,11 @@
                 "value": "{\"m_Value\":0.125}"
             },
             {
+                "type": "System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "meshImporter.smoothingAngle",
+                "value": "{\"m_Value\":1.0}"
+            },
+            {
                 "type": "UnityEditor.ProBuilder.Actions.DetachFaces+DetachSetting, Unity.ProBuilder.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "DetachFaces.target",
                 "value": "{\"m_Value\":0}"
@@ -344,6 +359,16 @@
             {
                 "type": "UnityEditor.ProBuilder.Actions.OffsetElements+CoordinateSpace, Unity.ProBuilder.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "MoveElements.s_CoordinateSpace",
+                "value": "{\"m_Value\":0}"
+            },
+            {
+                "type": "UnityEditor.ProBuilder.Actions.DuplicateFaces+DuplicateFaceSetting, Unity.ProBuilder.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "DuplicateFaces.target",
+                "value": "{\"m_Value\":0}"
+            },
+            {
+                "type": "UnityEditor.ProBuilder.Actions.MirrorObjects+MirrorSettings, Unity.ProBuilder.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "key": "MirrorObjects.mirrorAxes",
                 "value": "{\"m_Value\":0}"
             }
         ]
