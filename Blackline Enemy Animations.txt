@@ -1,0 +1,12 @@
+Blackline Enemy Animations
+
+Blacklines enemies come in certain types with fixed weapon arsenals. For this reason, their animations should include their weapons.
+
+Replace "Enemy" with the appropriate name, eg. "NX-CA-MK1".
+
+Enemy_Idle
+Enemy_Patrol
+Enemy_Move
+Enemy_Aim
+Enemy_Attack 
+Enemy_Die
