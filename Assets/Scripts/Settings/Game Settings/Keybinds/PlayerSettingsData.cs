@@ -34,6 +34,7 @@ public class PlayerSettingsData
 
     // Utils //
     public KeyCode PauseKey = KeyCode.Escape;
+    public KeyCode Interact = KeyCode.E;
     #endregion
 
     [Space]
