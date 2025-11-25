@@ -11,12 +11,14 @@ public class RaycastWeapon : BaseWeapon
     [SerializeField]
     private LayerMask _raycastLayers;
     [SerializeField]
-    private FiringMode _currentFiringMode;
+    private FiringMode _currentFiringMode;    
 
     private BulletTracerFXPool _bulletTracerFXPool;    
 
     private RaycastWeaponDataSheet _dataSheet => (RaycastWeaponDataSheet)WeaponData;
     public RaycastWeaponDataSheet DataSheet => _dataSheet;
+
+    public bool _dualWielding { get; private set; }
 
     private BaseAmmoDataSheet _currentAmmoType;
 
