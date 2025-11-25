@@ -82,6 +82,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   _currentFiringMode: 4
+  _recoilBone: {fileID: 8275257002750922832}
   WeaponZoomEvent:
     m_PersistentCalls:
       m_Calls: []

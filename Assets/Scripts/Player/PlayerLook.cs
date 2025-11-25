@@ -4,7 +4,7 @@ using Zenject;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField]
-    private Camera _playerCam;
+    private Transform _camPivot;
 
     // Zenject dependency injection. //  
     private PlayerDataSheet _playerDataSheet;
@@ -21,7 +21,7 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraLogic();
-        Cinematics();
+        //Cinematics();
     }
 
     private void Initialize()
@@ -42,7 +42,7 @@ public class PlayerLook : MonoBehaviour
         _camLookY = Input.GetAxis("Mouse X") * GlobalSettingsHolder.Instance.PlayerSettingsData.MouseSensitivity * Time.deltaTime;
 
         // Rotate only the camera locally with _camLookX, and the whole player with _camLookY. //
-        _playerCam.transform.localRotation = Quaternion.Euler(_camLookX, 0f, 0f);
+        _camPivot.transform.localRotation = Quaternion.Euler(_camLookX, 0f, 0f);
         transform.Rotate(transform.up * _camLookY);
     }
 
@@ -50,10 +50,10 @@ public class PlayerLook : MonoBehaviour
     private void Cinematics()
     {
         // Some kind of smooth transition between the FOVs would be necessary. Right now, fucking horrible. -Davoth //
-        _targetFOV = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.RunKey) ?
+        /*_targetFOV = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.RunKey) ?
             Mathf.SmoothDamp(_targetFOV, _playerDataSheet.RunningCameraFOV, ref _refSmooth, 0.5f) :
             Mathf.SmoothDamp(_targetFOV, _playerDataSheet.WalkingCameraFOV, ref _refSmooth, 0.5f);
 
-        _playerCam.fieldOfView = _targetFOV;
+        _camPivot.fieldOfView = _targetFOV;*/
     }
 }

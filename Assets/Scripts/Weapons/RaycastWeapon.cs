@@ -11,7 +11,9 @@ public class RaycastWeapon : BaseWeapon
     [SerializeField]
     private LayerMask _raycastLayers;
     [SerializeField]
-    private FiringMode _currentFiringMode;    
+    private FiringMode _currentFiringMode;
+    [SerializeField]
+    private Transform _recoilBone;
 
     private BulletTracerFXPool _bulletTracerFXPool;    
 
