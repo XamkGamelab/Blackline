@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ARC-16 Bolt Movement L
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: ARC16_L
+    m_Weight: 0
+  - m_Path: ARC16_R
+    m_Weight: 0
+  - m_Path: ARC16_Rig
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Boltcarrier.L
+    m_Weight: 1
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Chamberhatch.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Charginghandle.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Mag.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Mag.L/LeftHandTarget.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/RightHandTarget.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Stock.L
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Boltcarrier.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Chamberhatch.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Charginghandle.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Mag.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Mag.R/LeftHandTarget.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/RightHandTarget.R
+    m_Weight: 0
+  - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Stock.R
+    m_Weight: 0
+  - m_Path: ARC16_Rounds_L
+    m_Weight: 0
+  - m_Path: ARC16_Rounds_R
+    m_Weight: 0

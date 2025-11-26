@@ -86,7 +86,7 @@ MonoBehaviour:
   WeaponZoomEvent:
     m_PersistentCalls:
       m_Calls: []
-  LoadedAmmoCount: 0
+  LoadedAmmoCount: 30
 --- !u!1 &8536224209336453409
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ARC-16
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cbc3a160631ae4a43bca695796972fdd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
