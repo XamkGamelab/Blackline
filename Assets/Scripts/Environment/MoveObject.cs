@@ -36,6 +36,7 @@ public class MoveObject : MonoBehaviour
 
     void Start()
     {
+        // keep startWorldPosition as the transform position (pivot) for movement calculations
         startWorldPosition = transform.position;
         startLocalPosition = transform.localPosition;
     }
@@ -52,7 +53,8 @@ public class MoveObject : MonoBehaviour
 
         if (!isMoving && (!triggerOnce || !hasTriggered))
         {
-            float dist = Vector3.Distance(player.position, transform.position);
+            Vector3 detectionCenter = GetDetectionCenter();
+            float dist = Vector3.Distance(player.position, detectionCenter);
             if (dist <= detectionRadius)
             {
                 StartCoroutine(ProcessMove());
@@ -110,13 +112,35 @@ public class MoveObject : MonoBehaviour
         transform.position = to;
     }
 
+    /// <summary>
+    /// Returns the world-space center point to use for detection.
+    /// Prefers any Collider bounds center (including children), then Renderer bounds center,
+    /// otherwise falls back to transform.position.
+    /// This keeps the detection sphere visually centered on the visible geometry.
+    /// </summary>
+    private Vector3 GetDetectionCenter()
+    {
+        // Try to find a collider on this object or in children
+        Collider col = GetComponentInChildren<Collider>();
+        if (col != null)
+            return col.bounds.center;
+
+        // Fallback to renderer bounds (mesh, sprite, etc.)
+        Renderer rend = GetComponentInChildren<Renderer>();
+        if (rend != null)
+            return rend.bounds.center;
+
+        // Last resort: object's transform position
+        return transform.position;
+    }
+
     void OnDrawGizmosSelected()
     {
-        // draw detection radius
+        // draw detection radius centered on the object's geometry center when possible
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.DrawWireSphere(GetDetectionCenter(), detectionRadius);
 
-        // draw target line and point
+        // draw target line and point (keeps previous behavior: from pivot/start position)
         Vector3 startPos = Application.isPlaying ? startWorldPosition : transform.position;
         Vector3 targetWorld = targetIsLocal ? (startPos + targetPosition) : targetPosition;
 
