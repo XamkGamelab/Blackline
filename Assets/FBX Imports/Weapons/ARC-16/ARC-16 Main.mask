@@ -6,7 +6,7 @@ AvatarMask:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC-16 Dual Wield Mask
+  m_Name: ARC-16 Main
   m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
   m_Elements:
   - m_Path: 
@@ -18,9 +18,9 @@ AvatarMask:
   - m_Path: ARC16_Rig
     m_Weight: 0
   - m_Path: ARC16_Rig/Root.L
-    m_Weight: 1
-  - m_Path: ARC16_Rig/Root.L/Recoil.L
     m_Weight: 0
+  - m_Path: ARC16_Rig/Root.L/Recoil.L
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L
     m_Weight: 1
   - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Boltcarrier.L
@@ -38,25 +38,25 @@ AvatarMask:
   - m_Path: ARC16_Rig/Root.L/Recoil.L/Gun.L/Stock.L
     m_Weight: 1
   - m_Path: ARC16_Rig/Root.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R
     m_Weight: 0
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Boltcarrier.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Chamberhatch.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Charginghandle.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Mag.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Mag.R/LeftHandTarget.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/RightHandTarget.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rig/Root.R/Recoil.R/Gun.R/Stock.R
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: ARC16_Rounds_L
     m_Weight: 0
   - m_Path: ARC16_Rounds_R

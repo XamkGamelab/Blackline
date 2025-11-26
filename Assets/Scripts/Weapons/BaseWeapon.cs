@@ -2,9 +2,16 @@ using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour
 {
+    [Header("Base Weapon References")]
     [SerializeField]
     private BaseWeaponDataSheet _baseWeaponDataSheet;
     public BaseWeaponDataSheet WeaponData => _baseWeaponDataSheet;
+    [SerializeField]
+    private Transform _leftHandTargetIK;
+    public Transform LeftHandTargetIK => _leftHandTargetIK;
+    [SerializeField]
+    private Transform _rightHandTargetIK;
+    public Transform RightHandTargetIK => _rightHandTargetIK;
 
     private IAmmoProvider _ammoProvider;
     public IAmmoProvider AmmoProvider => _ammoProvider;

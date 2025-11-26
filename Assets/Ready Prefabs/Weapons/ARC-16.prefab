@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1650781895444833820}
   - component: {fileID: 6197607003083295453}
+  - component: {fileID: 1829560470120770351}
   m_Layer: 0
   m_Name: ARC-16
   m_TagString: Untagged
@@ -77,16 +78,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseWeaponDataSheet: {fileID: 11400000, guid: fd310cae0d6e8f4499324f04c7c3a29a, type: 2}
+  _leftHandTargetIK: {fileID: 476764812177319225}
+  _rightHandTargetIK: {fileID: 7695247217532652153}
   _bulletSpawnPoint: {fileID: 3123251191523248451}
   _raycastLayers:
     serializedVersion: 2
     m_Bits: 9
   _currentFiringMode: 4
-  _recoilBone: {fileID: 8275257002750922832}
-  WeaponZoomEvent:
-    m_PersistentCalls:
-      m_Calls: []
   LoadedAmmoCount: 30
+--- !u!114 &1829560470120770351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204799000934875780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a994ba410fc9a428aafc1acfc078cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 6197607003083295453}
+  _recoilBone: {fileID: 8275257002750922832}
 --- !u!1 &8536224209336453409
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +198,11 @@ PrefabInstance:
       addedObject: {fileID: 3123251191523248451}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+--- !u!4 &476764812177319225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1810728893025889876, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+  m_PrefabInstance: {fileID: 2286930617639897965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1744711900569627782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
@@ -193,6 +211,11 @@ Transform:
 --- !u!4 &7670887147913706068 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8487236356498878777, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+  m_PrefabInstance: {fileID: 2286930617639897965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7695247217532652153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8464460339541229844, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
   m_PrefabInstance: {fileID: 2286930617639897965}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8275257002750922832 stripped

@@ -1,19 +1,17 @@
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using Zenject;
 
 public class RaycastWeapon : BaseWeapon
 {
+    [Header("Raycast Weapon References")]
     [SerializeField]
     private Transform _bulletSpawnPoint;
     [SerializeField]
     private LayerMask _raycastLayers;
     [SerializeField]
     private FiringMode _currentFiringMode;
-    [SerializeField]
-    private Transform _recoilBone;
 
     private BulletTracerFXPool _bulletTracerFXPool;    
 
@@ -24,7 +22,8 @@ public class RaycastWeapon : BaseWeapon
 
     private BaseAmmoDataSheet _currentAmmoType;
 
-    [HideInInspector] public UnityEvent WeaponZoomEvent;
+    public event Action OnWeaponFire;
+    public event Action OnWeaponZoom;
 
     public FiringMode CurrentFiringMode => _currentFiringMode;
 
@@ -97,11 +96,13 @@ public class RaycastWeapon : BaseWeapon
 
         // Sound effects. -Shad //
         WeaponAudio.PlayOnce(DataSheet.ShootSound);
+
+        OnWeaponFire?.Invoke();
     }
 
     public override void SecondaryFunction() 
     {
-        WeaponZoomEvent?.Invoke();
+        OnWeaponZoom?.Invoke();
 
         // if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey)) return;
     }

@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerInventory : MonoBehaviour, IAmmoProvider
 {
@@ -26,8 +27,10 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     // The current weapon the player is holding. -Shad //
     private BaseWeapon _equippedWeapon;
     public BaseWeapon EquippedWeapon => _equippedWeapon;
+  
+    public event Action OnWeaponEquip;
 
-    private void Awake() => Initialize();
+    private void Start() => Initialize();
 
     private void Initialize()
     {
@@ -39,7 +42,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
             AddWeapon(baseWeapon);
         }
 
-        SelectWeaponByCategory(WeaponCategory.Light);
+        SelectWeaponByCategory(WeaponCategory.Medium);
     }
 
     #region Selecting & Equipping Weapons
@@ -101,6 +104,8 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
         _equippedWeapon.gameObject.SetActive(true);
 
         _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.DrawState);
+        
+        OnWeaponEquip?.Invoke();
     }
     #endregion
 

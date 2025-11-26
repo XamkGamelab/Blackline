@@ -17,6 +17,8 @@ MonoBehaviour:
   _drawTime: 0.1
   _holsterTime: 0.1
   _canAkimbo: 0
+  _leftHandIKRotationOffset: {x: 0.6272114, y: 0.6272114, z: 0.32650557, w: 0.32650557}
+  _rightHandIKRotationOffset: {x: -0.4980973, y: 0.54357785, z: 0.4564221, w: -0.49809736}
   _shotCooldownFromHip: 0.1
   _shotCooldownAimed: 0.1
   _firingModes: 5
@@ -25,6 +27,14 @@ MonoBehaviour:
   _projectileSpreadX: 0.01
   _projectileSpreadY: 0.01
   _accuracySpreadMultiplier: 1
+  _recoilSnappiness: 4
+  _recoilReturnSpeed: 12
+  _recoilRotX: -2
+  _recoilRotY: 0
+  _recoilRotZ: 2
+  _recoilPosX: 0
+  _recoilPosY: 0
+  _recoilPosZ: -0.1
   _aimZoom: 1.5
   _maxAmmoInWeapon: 30
   _compatibleAmmo:

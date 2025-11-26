@@ -32,6 +32,32 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [SerializeField]
     private float _accuracySpreadMultiplier;
     public float AccuracySpreadMultiplier => _accuracySpreadMultiplier;
+    [Space]
+    [SerializeField]
+    private float _recoilSnappiness;
+    public float RecoilSnappiness => _recoilSnappiness;
+    [SerializeField]
+    private float _recoilReturnSpeed;
+    public float RecoilReturnSpeed => _recoilReturnSpeed;
+    [SerializeField]
+    private float _recoilRotX;
+    public float RecoilRotX => _recoilRotX;
+    [SerializeField]
+    private float _recoilRotY;
+    public float RecoilRotY => _recoilRotY;
+    [SerializeField]
+    private float _recoilRotZ;
+    public float RecoilRotZ => _recoilRotZ;
+    [Space]
+    [SerializeField]
+    private float _recoilPosX;
+    public float RecoilPosX => _recoilPosX;
+    [SerializeField]
+    private float _recoilPosY;
+    public float RecoilPosY => _recoilPosY;
+    [SerializeField]
+    private float _recoilPosZ;
+    public float RecoilPosZ => _recoilPosZ;
 
     [Header("Aiming")]
     [SerializeField]

@@ -18,6 +18,14 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     [SerializeField]
     private bool _canAkimbo;
     public bool CanAkimbo => _canAkimbo;
+
+    [Header("Animation")]
+    [SerializeField]
+    private Quaternion _leftHandIKRotationOffset;
+    public Quaternion LeftHandIKRotationOffset => _leftHandIKRotationOffset;
+    [SerializeField]
+    private Quaternion _rightHandIKRotationOffset;
+    public Quaternion RightHandIKRotationOffset => _rightHandIKRotationOffset;
 }
 
 public enum WeaponCategory
