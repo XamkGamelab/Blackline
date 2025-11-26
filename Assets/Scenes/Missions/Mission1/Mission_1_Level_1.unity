@@ -56902,7 +56902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef45ac43cd1f08840a893a7c30c01dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerCam: {fileID: 330585545}
+  _camPivot: {fileID: 330585546}
 --- !u!114 &1284027938
 MonoBehaviour:
   m_ObjectHideFlags: 0
