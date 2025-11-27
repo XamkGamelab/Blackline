@@ -4,7 +4,11 @@ using Zenject;
 public class PlayerLook : MonoBehaviour
 {
     [SerializeField]
-    private Transform _camPivot;
+    private PlayerMovement _playerMovement;
+    [SerializeField]
+    private Transform _cameraPivot;
+    [SerializeField]
+    private Transform _swayPivot;
 
     // Zenject dependency injection. //  
     private PlayerDataSheet _playerDataSheet;
@@ -21,7 +25,7 @@ public class PlayerLook : MonoBehaviour
     private void Update()
     {
         CameraLogic();
-        //Cinematics();
+        Cinematics();
     }
 
     private void Initialize()
@@ -42,7 +46,7 @@ public class PlayerLook : MonoBehaviour
         _camLookY = Input.GetAxis("Mouse X") * GlobalSettingsHolder.Instance.PlayerSettingsData.MouseSensitivity * Time.deltaTime;
 
         // Rotate only the camera locally with _camLookX, and the whole player with _camLookY. //
-        _camPivot.transform.localRotation = Quaternion.Euler(_camLookX, 0f, 0f);
+        _cameraPivot.transform.localRotation = Quaternion.Euler(_camLookX, 0f, 0f);
         transform.Rotate(transform.up * _camLookY);
     }
 
@@ -55,5 +59,14 @@ public class PlayerLook : MonoBehaviour
             Mathf.SmoothDamp(_targetFOV, _playerDataSheet.WalkingCameraFOV, ref _refSmooth, 0.5f);
 
         _camPivot.fieldOfView = _targetFOV;*/
+
+        if(_playerMovement.CurrentState == _playerMovement.CrouchState)
+        {
+            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraCrouchPosY, 0f), 5f * Time.deltaTime);
+        }
+        else
+        {
+            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDefaultPosY, 0f), 5f * Time.deltaTime);
+        }
     }
 }

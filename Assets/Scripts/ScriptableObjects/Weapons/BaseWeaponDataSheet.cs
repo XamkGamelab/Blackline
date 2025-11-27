@@ -19,6 +19,20 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     private bool _canAkimbo;
     public bool CanAkimbo => _canAkimbo;
 
+    [Header("Sway")]
+    [SerializeField]
+    private float _swayAmountRot;
+    public float SwayAmountRot => _swayAmountRot;
+    [SerializeField]
+    private float _swaySmoothnessRot;
+    public float SwaySmoothnessRot => _swaySmoothnessRot;
+    [SerializeField]
+    private float _swayAmountPos;
+    public float SwayAmountPos => _swayAmountPos;
+    [SerializeField]
+    private float _swaySmoothnessPos;
+    public float SwaySmoothnessPos => _swaySmoothnessPos;
+
     [Header("Animation")]
     [SerializeField]
     private Quaternion _leftHandIKRotationOffset;

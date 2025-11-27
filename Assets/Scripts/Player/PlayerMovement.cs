@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private CharacterController _characterController;
+    [SerializeField]
+    private Transform _cameraPivot;
 
     // Zenject dependency injection. //
     [HideInInspector]
@@ -79,17 +81,19 @@ public class PlayerMovement : MonoBehaviour
         newState.Enter();
     }
 
-    public void SetControllerSize(bool crouching)
+    public void SetCrouchSize(bool crouching)
     {
         if (crouching)
         {
             CharacterController.center = new(0f, PlayerData.CharControlCrouchCenterY, 0f);
             CharacterController.height = PlayerData.CharControlCrouchHeight;
+            _cameraPivot.localPosition = new(0f, PlayerData.CameraCrouchPosY, 0f);
         }
         else
         {
             CharacterController.center = new(0f, PlayerData.CharControlDefaultCenterY, 0f);
             CharacterController.height = PlayerData.CharControlDefaultHeight;
+            _cameraPivot.localPosition = new(0f, PlayerData.CameraDefaultPosY, 0f);
         }
     }
 }

@@ -25,6 +25,8 @@ MonoBehaviour:
   _maxPowerups: 1
   _walkingCameraFOV: 60
   _runningCameraFOV: 75
+  _cameraDefaultPosY: 1.6
+  _cameraCrouchPosY: 0.8
   _charControlDefaultCenterY: 1
   _charControlDefaultHeight: 2
   _charControlCrouchCenterY: 0.5

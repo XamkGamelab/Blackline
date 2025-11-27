@@ -11,6 +11,10 @@ public class PlayerDataSheet : CharacterDataSheet
     [SerializeField]
     [Range(60f, 180f)]
     private float _runningCameraFOV;
+    [SerializeField]
+    private float _cameraDefaultPosY;
+    [SerializeField]
+    private float _cameraCrouchPosY;
 
     [Header("Player Character Controller")]
     [SerializeField]
@@ -50,6 +54,8 @@ public class PlayerDataSheet : CharacterDataSheet
 
     public float WalkingCameraFOV => _walkingCameraFOV;
     public float RunningCameraFOV => _runningCameraFOV;
+    public float CameraDefaultPosY => _cameraDefaultPosY;
+    public float CameraCrouchPosY => _cameraCrouchPosY;
 
     public float CharControlDefaultCenterY => _charControlDefaultCenterY;
     public float CharControlDefaultHeight => _charControlDefaultHeight;

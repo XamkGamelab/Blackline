@@ -6,7 +6,7 @@ public class PlayerCrouchState : PlayerGroundedState
 
     public override void Enter()
     {       
-        PlayerMovement.SetControllerSize(true);
+        PlayerMovement.SetCrouchSize(true);
     }
 
     public override void HandleInput()
@@ -24,6 +24,6 @@ public class PlayerCrouchState : PlayerGroundedState
     // Exiting Slide, this resizes the CharacterController to its normal size. -Shad //
     public override void Exit()
     {
-        PlayerMovement.SetControllerSize(false);
+        PlayerMovement.SetCrouchSize(false);
     }
 }
