@@ -7,7 +7,7 @@ public class PlayerSlideState : PlayerGroundedState
     // Entering Slide, this resizes the CharacterController to a smaller size and adds a small boost. -Shad //
     public override void Enter()
     {
-        PlayerMovement.SetControllerSize(true);
+        PlayerMovement.SetCrouchSize(true);
 
         Debug.Log("Slide Boost!");
 
@@ -41,6 +41,6 @@ public class PlayerSlideState : PlayerGroundedState
     // Exiting Slide, this resizes the CharacterController to its normal size. -Shad //
     public override void Exit()
     {
-        PlayerMovement.SetControllerSize(false);
+        PlayerMovement.SetCrouchSize(false);
     }
 }

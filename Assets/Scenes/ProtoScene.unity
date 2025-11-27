@@ -15614,7 +15614,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832575517}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -21027,6 +21027,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1094777586}
+  - component: {fileID: 1094777587}
   m_Layer: 6
   m_Name: SwayPivot
   m_TagString: Untagged
@@ -21050,6 +21051,21 @@ Transform:
   - {fileID: 1389771622}
   m_Father: {fileID: 47494078}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1094777587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094777585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941dc43447c8716479bc935c2b068378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 1284027936}
+  _playerLook: {fileID: 1284027937}
+  _playerInventory: {fileID: 1284027939}
 --- !u!43 &1095275633
 Mesh:
   m_ObjectHideFlags: 0
@@ -22982,6 +22998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterController: {fileID: 1284027935}
+  _cameraPivot: {fileID: 47494078}
   PlayerData: {fileID: 0}
   InputVector: {x: 0, y: 0, z: 0}
   MoveVector: {x: 0, y: 0, z: 0}
@@ -23002,7 +23019,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef45ac43cd1f08840a893a7c30c01dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camPivot: {fileID: 47494078}
+  _playerMovement: {fileID: 1284027936}
+  _cameraPivot: {fileID: 47494078}
+  _swayPivot: {fileID: 1094777586}
 --- !u!114 &1284027938
 MonoBehaviour:
   m_ObjectHideFlags: 0

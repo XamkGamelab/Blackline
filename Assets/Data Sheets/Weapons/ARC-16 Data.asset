@@ -17,6 +17,10 @@ MonoBehaviour:
   _drawTime: 0.1
   _holsterTime: 0.1
   _canAkimbo: 0
+  _swayAmountRot: 1
+  _swaySmoothnessRot: 5
+  _swayAmountPos: 0.1
+  _swaySmoothnessPos: 10
   _leftHandIKRotationOffset: {x: 0.6272114, y: 0.6272114, z: 0.32650557, w: 0.32650557}
   _rightHandIKRotationOffset: {x: -0.4980973, y: 0.54357785, z: 0.4564221, w: -0.49809736}
   _shotCooldownFromHip: 0.1
