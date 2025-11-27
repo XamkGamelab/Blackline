@@ -3,10 +3,12 @@ using UnityEngine;
 public abstract class PlayerBaseState
 {
     protected PlayerMovement PlayerMovement;
+    public string WeaponAnimationKeyword;
+    public string FPAnimationKeyword;
 
     public PlayerBaseState(PlayerMovement playerMovement)
     {
-        this.PlayerMovement = playerMovement;
+        this.PlayerMovement = playerMovement;        
     }
 
     // This is the base, the foundation for all the player states. Every state will inherit this class, with these methods. -Shad //
