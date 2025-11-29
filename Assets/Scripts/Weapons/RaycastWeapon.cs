@@ -168,4 +168,14 @@ public class RaycastWeapon : BaseWeapon
 
         //ThirdFunction();
     }
+
+    public override string WeaponAction()
+    {
+        return $"{_dataSheet.WeaponKeyword}_Rig|{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.WeaponAnimKeyword}";
+    }
+
+    public override string PlayerAction()
+    {
+        return $"ViktorKainFP_Rig|ViktorFP_{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.ArmsAnimKeyword}";
+    }
 }

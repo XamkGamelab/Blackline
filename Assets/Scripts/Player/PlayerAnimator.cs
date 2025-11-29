@@ -6,26 +6,12 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerInventory _playerInventory;
 
     [SerializeField]
+    private Animator _playerAnim;
+
+    [SerializeField]
     private Transform _leftHandIK;
     [SerializeField] 
     private Transform _rightHandIK;
-
-    private void OnEnable()
-    {
-        _playerInventory.OnWeaponEquip += HandleOnEquipWeapon;
-    }
-
-    private void OnDisable()
-    {
-        _playerInventory.OnWeaponEquip -= HandleOnEquipWeapon;
-    }
-
-    [ContextMenu("Update Hands")]
-    public void HandleOnEquipWeapon()
-    {
-        _leftHandIK.localRotation = Quaternion.identity * _playerInventory.EquippedWeapon.WeaponData.LeftHandIKRotationOffset;
-        _rightHandIK.localRotation = Quaternion.identity * _playerInventory.EquippedWeapon.WeaponData.RightHandIKRotationOffset;
-    }
 
     public void Update()
     {        
@@ -34,5 +20,10 @@ public class PlayerAnimator : MonoBehaviour
 
         if(_playerInventory.EquippedWeapon.RightHandTargetIK != null)
             _rightHandIK.position = _playerInventory.EquippedWeapon.RightHandTargetIK.position;
+
+        _leftHandIK.rotation = _playerInventory.EquippedWeapon.LeftHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.LeftHandIKRotationOffset;
+        _rightHandIK.rotation = _playerInventory.EquippedWeapon.RightHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.RightHandIKRotationOffset;
+
+        _playerAnim.Play(_playerInventory.EquippedWeapon.PlayerAction(), 0);
     }
 }

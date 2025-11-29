@@ -23076,6 +23076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInventory: {fileID: 1284027939}
+  _playerAnim: {fileID: 1654410824}
   _leftHandIK: {fileID: 2017166909}
   _rightHandIK: {fileID: 632408206}
 --- !u!1 &1305279348
@@ -28837,6 +28838,11 @@ MonoBehaviour:
   - m_Rig: {fileID: 1322957134}
     m_Active: 1
   m_Effectors: []
+--- !u!95 &1654410824 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4999fa770c050334285b66977a5b1e59, type: 3}
+  m_PrefabInstance: {fileID: 1654410820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1683348635
 GameObject:
   m_ObjectHideFlags: 0

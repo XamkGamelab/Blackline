@@ -3,8 +3,6 @@ using UnityEngine;
 public abstract class PlayerBaseState
 {
     protected PlayerMovement PlayerMovement;
-    public string WeaponAnimationKeyword;
-    public string FPAnimationKeyword;
 
     public PlayerBaseState(PlayerMovement playerMovement)
     {

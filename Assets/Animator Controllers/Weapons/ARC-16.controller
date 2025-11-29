@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_AimOut
+  m_Name: ARC-16_Rig|ARC-16_AimOut
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -33,7 +33,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Holster
+  m_Name: ARC-16_Rig|ARC-16_Holster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -59,7 +59,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Idle
+  m_Name: ARC-16_Rig|ARC-16_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -151,7 +151,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Sneak
+  m_Name: ARC-16_Rig|ARC-16_Sneak
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -425,7 +425,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_ToAim
+  m_Name: ARC-16_Rig|ARC-16_ToAim
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -502,7 +502,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Reload_R
+  m_Name: ARC-16_Rig|ARC-16_Reload_R
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -528,7 +528,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Draw
+  m_Name: ARC-16_Rig|ARC-16_Draw
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -606,7 +606,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_AimIdle
+  m_Name: ARC-16_Rig|ARC-16_AimIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -632,7 +632,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_EmergencyReload
+  m_Name: ARC-16_Rig|ARC-16_EmergencyReload
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -710,7 +710,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Run
+  m_Name: ARC-16_Rig|ARC-16_Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -788,7 +788,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_TacticalReload
+  m_Name: ARC-16_Rig|ARC-16_TacticalReload
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -814,7 +814,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ARC16_Rig|ARC-16_Walk
+  m_Name: ARC-16_Rig|ARC-16_Walk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

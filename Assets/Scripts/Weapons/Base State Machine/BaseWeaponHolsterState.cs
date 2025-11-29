@@ -4,6 +4,9 @@ public class BaseWeaponHolsterState : WeaponState<BaseWeapon>
 {
     public BaseWeaponHolsterState(BaseWeapon weapon) : base(weapon) { }
 
+    public override string WeaponAnimKeyword => "Holster";
+    public override string ArmsAnimKeyword => "Holster";
+
     private float _holsterTimer = 0f;
 
     public override void Enter()

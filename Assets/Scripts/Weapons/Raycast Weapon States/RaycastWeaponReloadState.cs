@@ -4,6 +4,9 @@ public class RaycastWeaponReloadState : WeaponState<RaycastWeapon>
 {
     public RaycastWeaponReloadState(RaycastWeapon weapon) : base(weapon) { }
 
+    public override string WeaponAnimKeyword => "EmergencyReload";
+    public override string ArmsAnimKeyword => "EmergencyReload";
+
     private float _reloadTimer = 0f;
 
     public override void Enter()

@@ -35,6 +35,9 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
 
     [Header("Animation")]
     [SerializeField]
+    private string _weaponKeyword;
+    public string WeaponKeyword => _weaponKeyword;
+    [SerializeField]
     private Quaternion _leftHandIKRotationOffset;
     public Quaternion LeftHandIKRotationOffset => _leftHandIKRotationOffset;
     [SerializeField]

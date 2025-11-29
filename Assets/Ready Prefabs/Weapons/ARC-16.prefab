@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1650781895444833820}
   - component: {fileID: 6197607003083295453}
   - component: {fileID: 1829560470120770351}
+  - component: {fileID: 4083464546507037633}
   m_Layer: 0
   m_Name: ARC-16
   m_TagString: Untagged
@@ -100,6 +101,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weapon: {fileID: 6197607003083295453}
   _recoilBone: {fileID: 8275257002750922832}
+--- !u!114 &4083464546507037633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4204799000934875780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a122d202c316f44b0ea41e6ed4c3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponAnim: {fileID: 5680827959458707196}
+  _weapon: {fileID: 6197607003083295453}
 --- !u!1 &8536224209336453409
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +221,11 @@ Transform:
 --- !u!4 &1744711900569627782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+  m_PrefabInstance: {fileID: 2286930617639897965}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5680827959458707196 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
   m_PrefabInstance: {fileID: 2286930617639897965}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7670887147913706068 stripped

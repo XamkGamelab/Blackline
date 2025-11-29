@@ -21,8 +21,9 @@ MonoBehaviour:
   _swaySmoothnessRot: 5
   _swayAmountPos: 0.1
   _swaySmoothnessPos: 10
-  _leftHandIKRotationOffset: {x: 0.6272114, y: 0.6272114, z: 0.32650557, w: 0.32650557}
-  _rightHandIKRotationOffset: {x: -0.4980973, y: 0.54357785, z: 0.4564221, w: -0.49809736}
+  _weaponKeyword: ARC-16
+  _leftHandIKRotationOffset: {x: 0.56098545, y: -0.4304594, z: 0.56098557, w: 0.43045923}
+  _rightHandIKRotationOffset: {x: 0.5849215, y: 0.41127318, z: -0.5359814, w: 0.44882637}
   _shotCooldownFromHip: 0.1
   _shotCooldownAimed: 0.1
   _firingModes: 5
@@ -43,7 +44,7 @@ MonoBehaviour:
   _maxAmmoInWeapon: 30
   _compatibleAmmo:
   - {fileID: 11400000, guid: 4eb8cf6399b5f5e45a47dbd6d96b95b8, type: 2}
-  _emergencyReloadTime: 1
+  _emergencyReloadTime: 1.33
   _tacticalReloadTime: 1.15
   ShootSound: {fileID: 8300000, guid: bddd87e324ac72246bcd6f8599a4030b, type: 3}
   EmergencyReloadSound: {fileID: 8300000, guid: dd7ddf3a2f02de24fbc067664cd8bf15, type: 3}

@@ -78,4 +78,16 @@ public abstract class BaseWeapon : MonoBehaviour
 
     public void SetSwitchReady(bool target) => _readyToSwitch = target;
     #endregion
+
+    #region Animation
+    public virtual string WeaponAction()
+    {
+        return "";
+    }
+
+    public virtual string PlayerAction()
+    {
+        return "";
+    }
+    #endregion
 }
