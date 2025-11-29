@@ -17,9 +17,9 @@ MonoBehaviour:
   _drawTime: 0.1
   _holsterTime: 0.1
   _canAkimbo: 0
-  _swayAmountRot: 1
+  _swayAmountRot: 2
   _swaySmoothnessRot: 5
-  _swayAmountPos: 0.1
+  _swayAmountPos: 0.15
   _swaySmoothnessPos: 10
   _weaponKeyword: ARC-16
   _leftHandIKRotationOffset: {x: 0.56098545, y: -0.4304594, z: 0.56098557, w: 0.43045923}

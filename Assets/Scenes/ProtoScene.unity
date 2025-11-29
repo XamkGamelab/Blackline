@@ -23075,6 +23075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f73835ec34ab6114eb4ef5c5dbb95f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 1284027936}
   _playerInventory: {fileID: 1284027939}
   _playerAnim: {fileID: 1654410824}
   _leftHandIK: {fileID: 2017166909}

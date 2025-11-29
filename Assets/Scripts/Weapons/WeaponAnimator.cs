@@ -9,8 +9,14 @@ public class WeaponAnimator : MonoBehaviour
     [SerializeField]
     private BaseWeapon _weapon;
 
+    private string _animationClipCache;
+
     public void Update()
     {
-        _weaponAnim.Play(_weapon.WeaponAction(), 0);
+        if(_animationClipCache != _weapon.WeaponAnimAction())
+        {
+            _weaponAnim.PlaySmooth(Animator.StringToHash(_weapon.WeaponAnimAction()), 0.05f);
+            _animationClipCache = _weapon.WeaponAnimAction();
+        }
     }
 }

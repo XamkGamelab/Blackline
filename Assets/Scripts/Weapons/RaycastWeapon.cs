@@ -11,28 +11,34 @@ public class RaycastWeapon : BaseWeapon
     [SerializeField]
     private LayerMask _raycastLayers;
     [SerializeField]
-    private FiringMode _currentFiringMode;
+    private FiringMode _currentFiringMode; 
 
-    private BulletTracerFXPool _bulletTracerFXPool;    
-
+    // Cast BaseWeaponDataSheet as RaycastWeaponDataSheet. -Shad //
     private RaycastWeaponDataSheet _dataSheet => (RaycastWeaponDataSheet)WeaponData;
     public RaycastWeaponDataSheet DataSheet => _dataSheet;
 
-    public bool _dualWielding { get; private set; }
+    // BulletTracerFX -Shad //
+    private BulletTracerFXPool _bulletTracerFXPool;
 
+    // Current ammo type from the inventory. -Shad //
     private BaseAmmoDataSheet _currentAmmoType;
-
+    
+    // Relevant events for camera, or anything else you'd like. -Shad //
     public event Action OnWeaponFire;
     public event Action OnWeaponZoom;
 
-    public FiringMode CurrentFiringMode => _currentFiringMode;
-
+    // Raycast Weapon specific states, base states from BaseWeapon. -Shad //
     public RaycastWeaponFiringState FiringState;
     public RaycastWeaponReloadState ReloadState;
 
+    // Extra weapon states layer. -Shad //
+    public bool Aiming { get; private set; }
+    public bool DualWielding { get; private set; }
+
+    // Play-time weapon data. -Shad //
+    public FiringMode CurrentFiringMode => _currentFiringMode;
     public int LoadedAmmoCount;
     public int BurstShotsRemaining { get; private set; }
-
     public float NextShotTime { get; private set; }
 
     [Inject]
@@ -54,6 +60,13 @@ public class RaycastWeapon : BaseWeapon
 
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
         LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
+    }
+
+    public override void HandleFunctions()
+    {
+        base.HandleFunctions();
+
+        ThirdFunction();
     }
 
     #region Main Functions
@@ -81,14 +94,11 @@ public class RaycastWeapon : BaseWeapon
             // If it hits something, use the hit position. Else, use a dummy position if the player shoots in the sky for example. -Shad //
             if (Physics.Raycast(bulletRay, out bulletHit, _dataSheet.ProjectileMaxRange, _raycastLayers))
             {
-                //_currentAmmoType.OnHit(bulletHit, gameObject);
-
                 bulletTracerFX.Engage(bulletHit.point, _currentAmmoType); // Bullet tracer FX! -Shad //
                 SurfaceImpactLibrary.Instance.SpawnImpactFX(bulletHit); // Impact FX! -Shad //
             }
             else
             {
-
                 Vector3 dummyPos = _bulletSpawnPoint.position + (_bulletSpawnPoint.forward + spread) * _dataSheet.ProjectileMaxRange; // Dummy position. -Shad //
                 bulletTracerFX.Engage(dummyPos, _currentAmmoType); // Only bullet tracer FX! -Shad //
             }
@@ -104,7 +114,9 @@ public class RaycastWeapon : BaseWeapon
     {
         OnWeaponZoom?.Invoke();
 
-        // if (!Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey)) return;
+        if (StateMachine.CurrentState != IdleState) return;
+
+        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey)) Aiming = true;
     }
 
     public override void ThirdFunction()
@@ -148,7 +160,8 @@ public class RaycastWeapon : BaseWeapon
         LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
     }
     #endregion
-   
+
+    #region Ammo Related Calculations
     public void CalculateBurstCount()
     {
         if (LoadedAmmoCount < _dataSheet.BurstCount) BurstShotsRemaining = LoadedAmmoCount;
@@ -161,20 +174,21 @@ public class RaycastWeapon : BaseWeapon
     }
 
     public bool AmmoLeftInWeapon() { return LoadedAmmoCount > 0; }
+    #endregion
 
-    public override void HandleFunctions()
+    public override string WeaponAnimAction()
     {
-        base.HandleFunctions();
-
-        //ThirdFunction();
+        if(StateMachine.CurrentState != IdleState)
+        {
+            return $"{_dataSheet.WeaponKeyword}_Rig|{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.WeaponAnimKeyword}";
+        }
+        else
+        {
+            return $"{_dataSheet.WeaponKeyword}_Rig|{_dataSheet.WeaponKeyword}_{PlayerMovementContext}";
+        }
     }
 
-    public override string WeaponAction()
-    {
-        return $"{_dataSheet.WeaponKeyword}_Rig|{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.WeaponAnimKeyword}";
-    }
-
-    public override string PlayerAction()
+    public override string PlayerAnimAction()
     {
         return $"ViktorKainFP_Rig|ViktorFP_{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.ArmsAnimKeyword}";
     }

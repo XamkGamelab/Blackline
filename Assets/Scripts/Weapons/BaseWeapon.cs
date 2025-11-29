@@ -17,13 +17,13 @@ public abstract class BaseWeapon : MonoBehaviour
     public IAmmoProvider AmmoProvider => _ammoProvider;
 
     public WeaponStateMachine<BaseWeapon> StateMachine { get; private set; }
+    public PlayerMovementContext PlayerMovementContext { get; private set; }
 
     public WeaponState<BaseWeapon> IdleState { get; protected set; }
     public WeaponState<BaseWeapon> DrawState { get; protected set; }
     public WeaponState<BaseWeapon> HolsterState { get; protected set; }
 
-    private bool _readyToSwitch = false;
-    public bool ReadyToSwitch => _readyToSwitch;
+    public bool ReadyToSwitch { get; private set; }
 
     private WeaponAudio _weaponAudio;
     public WeaponAudio WeaponAudio => _weaponAudio;
@@ -76,18 +76,31 @@ public abstract class BaseWeapon : MonoBehaviour
         _weaponAudio = weaponAudio;
     }
 
-    public void SetSwitchReady(bool target) => _readyToSwitch = target;
+    public void SetSwitchReady(bool target) => ReadyToSwitch = target;
     #endregion
 
     #region Animation
-    public virtual string WeaponAction()
+    public virtual string WeaponAnimAction()
     {
         return "";
     }
 
-    public virtual string PlayerAction()
+    public virtual string PlayerAnimAction()
     {
         return "";
     }
+
+    public void SetPlayerMovementContext(PlayerMovementContext context)
+    {
+        PlayerMovementContext = context;
+    }
     #endregion
+}
+
+public enum PlayerMovementContext
+{
+    Idle,
+    Sneak,
+    Walk,
+    Run,
 }

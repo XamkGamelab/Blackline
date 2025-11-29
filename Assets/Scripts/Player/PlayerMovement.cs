@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public PlayerJumpState JumpState;
     public PlayerFallingState FallingState;
 
+    // Context movement for the current weapon. -Shad //
+    private PlayerMovementContext _playerMovementContext;
+
     // Public, but hidden references. //
     public CharacterController CharacterController => _characterController;
     [HideInInspector]
@@ -79,6 +82,20 @@ public class PlayerMovement : MonoBehaviour
         CurrentState?.Exit();
         CurrentState = newState;
         newState.Enter();
+    }
+
+    public PlayerMovementContext WeaponMovementContext()
+    {
+        if (CurrentState == IdleState)
+            return PlayerMovementContext.Idle;
+        else if (CurrentState == CrouchState)
+            return PlayerMovementContext.Sneak;
+        else if (CurrentState == WalkState)
+            return PlayerMovementContext.Walk;
+        else if (CurrentState == RunState)
+            return PlayerMovementContext.Run;
+        else
+            return PlayerMovementContext.Idle;
     }
 
     public void SetCrouchSize(bool crouching)

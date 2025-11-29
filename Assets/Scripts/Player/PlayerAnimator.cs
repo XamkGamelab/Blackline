@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerAnimator : MonoBehaviour
 {
     [SerializeField]
+    private PlayerMovement _playerMovement;
+    [SerializeField]
     private PlayerInventory _playerInventory;
 
     [SerializeField]
@@ -12,6 +14,8 @@ public class PlayerAnimator : MonoBehaviour
     private Transform _leftHandIK;
     [SerializeField] 
     private Transform _rightHandIK;
+
+    private string _animationClipCache;
 
     public void Update()
     {        
@@ -24,6 +28,12 @@ public class PlayerAnimator : MonoBehaviour
         _leftHandIK.rotation = _playerInventory.EquippedWeapon.LeftHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.LeftHandIKRotationOffset;
         _rightHandIK.rotation = _playerInventory.EquippedWeapon.RightHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.RightHandIKRotationOffset;
 
-        _playerAnim.Play(_playerInventory.EquippedWeapon.PlayerAction(), 0);
+        if(_animationClipCache != _playerInventory.EquippedWeapon.PlayerAnimAction())
+        {
+            _playerAnim.PlaySmooth(Animator.StringToHash(_playerInventory.EquippedWeapon.PlayerAnimAction()), 0.05f);
+            _animationClipCache = _playerInventory.EquippedWeapon.PlayerAnimAction();
+        }
+
+        _playerInventory.EquippedWeapon.SetPlayerMovementContext(_playerMovement.WeaponMovementContext());
     }
 }
