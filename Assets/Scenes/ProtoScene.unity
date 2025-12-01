@@ -23020,8 +23020,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 1284027936}
+  _playerInventory: {fileID: 1284027939}
   _cameraPivot: {fileID: 47494078}
   _swayPivot: {fileID: 1094777586}
+  _cam: {fileID: 330585545}
 --- !u!114 &1284027938
 MonoBehaviour:
   m_ObjectHideFlags: 0

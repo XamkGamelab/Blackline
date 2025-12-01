@@ -15,8 +15,6 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] 
     private Transform _rightHandIK;
 
-    private string _animationClipCache;
-
     public void Update()
     {        
         if(_playerInventory.EquippedWeapon.LeftHandTargetIK != null)
@@ -28,12 +26,13 @@ public class PlayerAnimator : MonoBehaviour
         _leftHandIK.rotation = _playerInventory.EquippedWeapon.LeftHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.LeftHandIKRotationOffset;
         _rightHandIK.rotation = _playerInventory.EquippedWeapon.RightHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.RightHandIKRotationOffset;
 
-        if(_animationClipCache != _playerInventory.EquippedWeapon.PlayerAnimAction())
-        {
-            _playerAnim.PlaySmooth(Animator.StringToHash(_playerInventory.EquippedWeapon.PlayerAnimAction()), 0.05f);
-            _animationClipCache = _playerInventory.EquippedWeapon.PlayerAnimAction();
-        }
 
-        _playerInventory.EquippedWeapon.SetPlayerMovementContext(_playerMovement.WeaponMovementContext());
+        _playerInventory.EquippedWeapon.SetPlayerMovementSpeed(_playerMovement.MoveVector.magnitude);
+        _playerInventory.EquippedWeapon.SetPlayerAirborne(_playerMovement.CurrentState is PlayerFallingState);
+
+        if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is RaycastWeaponReloadState) _playerAnim.SetInteger("Reloading", 2);
+        else if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is not RaycastWeaponReloadState) _playerAnim.SetInteger("Reloading", 0);
+
+        if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is BaseWeaponHolsterState) _playerAnim.SetTrigger("Hoslter");
     }
 }

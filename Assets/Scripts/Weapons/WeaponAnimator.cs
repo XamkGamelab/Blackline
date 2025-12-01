@@ -9,14 +9,15 @@ public class WeaponAnimator : MonoBehaviour
     [SerializeField]
     private BaseWeapon _weapon;
 
-    private string _animationClipCache;
-
     public void Update()
     {
-        if(_animationClipCache != _weapon.WeaponAnimAction())
-        {
-            _weaponAnim.PlaySmooth(Animator.StringToHash(_weapon.WeaponAnimAction()), 0.05f);
-            _animationClipCache = _weapon.WeaponAnimAction();
-        }
+        _weaponAnim.SetFloat("PlayerSpeed", _weapon.PlayerMovementSpeed);
+        _weaponAnim.SetBool("Airborne", _weapon.PlayerAirborne);
+        if (_weapon.StateMachine.CurrentState == _weapon.HolsterState) _weaponAnim.SetTrigger("Holster");
+
+        if (_weapon is RaycastWeapon raycastWeaponAiming) _weaponAnim.SetBool("Aiming", raycastWeaponAiming.Aiming);
+
+        if (_weapon is RaycastWeapon raycastWeaponReloading && raycastWeaponReloading.StateMachine.CurrentState is RaycastWeaponReloadState) _weaponAnim.SetInteger("Reloading", 2);
+        else if (_weapon is RaycastWeapon raycastWeaponNOTReloading && raycastWeaponNOTReloading.StateMachine.CurrentState is not RaycastWeaponReloadState) _weaponAnim.SetInteger("Reloading", 0);
     }
 }

@@ -17,7 +17,6 @@ public abstract class BaseWeapon : MonoBehaviour
     public IAmmoProvider AmmoProvider => _ammoProvider;
 
     public WeaponStateMachine<BaseWeapon> StateMachine { get; private set; }
-    public PlayerMovementContext PlayerMovementContext { get; private set; }
 
     public WeaponState<BaseWeapon> IdleState { get; protected set; }
     public WeaponState<BaseWeapon> DrawState { get; protected set; }
@@ -27,6 +26,9 @@ public abstract class BaseWeapon : MonoBehaviour
 
     private WeaponAudio _weaponAudio;
     public WeaponAudio WeaponAudio => _weaponAudio;
+
+    public float PlayerMovementSpeed { get; private set; }
+    public bool PlayerAirborne { get; private set; }
 
     public virtual void Initialize()
     {
@@ -90,17 +92,8 @@ public abstract class BaseWeapon : MonoBehaviour
         return "";
     }
 
-    public void SetPlayerMovementContext(PlayerMovementContext context)
-    {
-        PlayerMovementContext = context;
-    }
-    #endregion
-}
+    public void SetPlayerMovementSpeed(float playerMoveVector) => PlayerMovementSpeed = playerMoveVector;
 
-public enum PlayerMovementContext
-{
-    Idle,
-    Sneak,
-    Walk,
-    Run,
+    public void SetPlayerAirborne(bool playerStateCheck) => PlayerAirborne = playerStateCheck;
+    #endregion
 }

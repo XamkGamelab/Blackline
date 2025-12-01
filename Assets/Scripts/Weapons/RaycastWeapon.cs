@@ -66,6 +66,7 @@ public class RaycastWeapon : BaseWeapon
     {
         base.HandleFunctions();
 
+        SecondaryFunction();
         ThirdFunction();
     }
 
@@ -114,9 +115,11 @@ public class RaycastWeapon : BaseWeapon
     {
         OnWeaponZoom?.Invoke();
 
-        if (StateMachine.CurrentState != IdleState) return;
-
-        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey)) Aiming = true;
+        if (StateMachine.CurrentState == ReloadState) Aiming = false;
+        else
+        {
+            Aiming = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey);
+        }
     }
 
     public override void ThirdFunction()
@@ -175,21 +178,4 @@ public class RaycastWeapon : BaseWeapon
 
     public bool AmmoLeftInWeapon() { return LoadedAmmoCount > 0; }
     #endregion
-
-    public override string WeaponAnimAction()
-    {
-        if(StateMachine.CurrentState != IdleState)
-        {
-            return $"{_dataSheet.WeaponKeyword}_Rig|{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.WeaponAnimKeyword}";
-        }
-        else
-        {
-            return $"{_dataSheet.WeaponKeyword}_Rig|{_dataSheet.WeaponKeyword}_{PlayerMovementContext}";
-        }
-    }
-
-    public override string PlayerAnimAction()
-    {
-        return $"ViktorKainFP_Rig|ViktorFP_{_dataSheet.WeaponKeyword}_{StateMachine.CurrentState.ArmsAnimKeyword}";
-    }
 }
