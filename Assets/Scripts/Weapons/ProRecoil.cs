@@ -22,12 +22,12 @@ public class ProRecoil : MonoBehaviour
 
     private void OnEnable()
     {
-        _weapon.OnWeaponFire += HandleOnWeaponFire;
+        _weapon.WeaponPrimaryEvent += HandleOnWeaponFire;
     }
 
     private void OnDisable()
     {
-        _weapon.OnWeaponFire -= HandleOnWeaponFire;
+        _weapon.WeaponPrimaryEvent -= HandleOnWeaponFire;
     }
 
     private void LateUpdate()

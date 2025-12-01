@@ -32,19 +32,6 @@ public class PlayerLook : MonoBehaviour
         Cinematics();
     }
 
-    private RaycastWeapon _raycastWeapon;
-    private void Start() => _raycastWeapon = (RaycastWeapon)_playerInventory.EquippedWeapon;
-
-    private void OnEnable()
-    {
-        _raycastWeapon.OnWeaponZoom += HandleWeaponZoom;
-    }
-
-    private void OnDisable()
-    {
-        _raycastWeapon.OnWeaponZoom -= HandleWeaponZoom;
-    }
-
     private void Initialize()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -67,12 +54,21 @@ public class PlayerLook : MonoBehaviour
         transform.Rotate(transform.up * _camLookY);
     }
 
-    private float _targetFOV, _refSmooth;
+    private float _targetFOV, refSmoothFOV = 0f;
     private void Cinematics()
     {
-        Mathf.SmoothDamp(_cam.fieldOfView, _targetFOV, ref _refSmooth, 0.25f);
+        if (_playerInventory.EquippedWeapon.Aiming)
+        {
+            _targetFOV = _playerDataSheet.WalkingCameraFOV / _playerInventory.EquippedWeapon.WeaponData.AimZoom;
+        }
+        else
+        {
+            _targetFOV = _playerDataSheet.WalkingCameraFOV;
+        }
 
-        if(_playerMovement.CurrentState == _playerMovement.CrouchState)
+        _cam.fieldOfView = Mathf.SmoothDamp(_cam.fieldOfView, _targetFOV, ref refSmoothFOV, 0.1f);        
+
+        if (_playerMovement.CurrentState == _playerMovement.CrouchState || _playerMovement.CurrentState == _playerMovement.SlideState)
         {
             _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraCrouchPosY, 0f), 5f * Time.deltaTime);
         }
@@ -80,12 +76,5 @@ public class PlayerLook : MonoBehaviour
         {
             _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDefaultPosY, 0f), 5f * Time.deltaTime);
         }
-    }
-
-    private void HandleWeaponZoom()
-    {
-        print("Zoom");
-
-        _targetFOV = _raycastWeapon.Aiming ? _playerDataSheet.WalkingCameraFOV / _raycastWeapon.DataSheet.AimZoom : _playerDataSheet.WalkingCameraFOV;
     }
 }

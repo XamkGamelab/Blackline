@@ -59,11 +59,6 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     private float _recoilPosZ;
     public float RecoilPosZ => _recoilPosZ;
 
-    [Header("Aiming")]
-    [SerializeField]
-    private float _aimZoom;
-    public float AimZoom => _aimZoom;
-
     [Header("Ammo")]
     [SerializeField]
     private int _maxAmmoInWeapon;

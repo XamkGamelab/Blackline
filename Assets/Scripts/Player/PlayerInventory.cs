@@ -27,7 +27,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     private BaseWeapon _equippedWeapon;
     public BaseWeapon EquippedWeapon => _equippedWeapon;
   
-    public event Action OnWeaponEquip;
+    public event Action WeaponEquipEvent;
 
     private void Start() => Initialize();
 
@@ -104,7 +104,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
 
         _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.DrawState);
         
-        OnWeaponEquip?.Invoke();
+        WeaponEquipEvent?.Invoke();
     }
     #endregion
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class BaseWeapon : MonoBehaviour
@@ -16,12 +17,22 @@ public abstract class BaseWeapon : MonoBehaviour
     private IAmmoProvider _ammoProvider;
     public IAmmoProvider AmmoProvider => _ammoProvider;
 
+    // StateMachine fuckery. -Shad //
     public WeaponStateMachine<BaseWeapon> StateMachine { get; private set; }
 
+    // Base weapon states. -Shad //
     public WeaponState<BaseWeapon> IdleState { get; protected set; }
     public WeaponState<BaseWeapon> DrawState { get; protected set; }
     public WeaponState<BaseWeapon> HolsterState { get; protected set; }
 
+    // Extra weapon states layer. -Shad //
+    protected bool _aiming;
+    public bool Aiming => _aiming;
+    public bool DualWielding { get; private set; }
+
+    // Relevant events for camera, or anything else you'd like. -Shad //
+    public event Action WeaponPrimaryEvent;
+    public event Action WeaponSecondaryEvent;
     public bool ReadyToSwitch { get; private set; }
 
     private WeaponAudio _weaponAudio;
@@ -46,10 +57,16 @@ public abstract class BaseWeapon : MonoBehaviour
 
     #region Main Functionality
     // For things like shooting a weapon, or swinging an axe. -Shad //
-    public virtual void PrimaryFunction() { }
+    public virtual void PrimaryFunction() 
+    {
+        WeaponPrimaryEvent?.Invoke();
+    }
 
     // For things like aiming a weapon, or perhaps throwing an axe. -Shad //
-    public virtual void SecondaryFunction() { }
+    public virtual void SecondaryFunction() 
+    {
+        WeaponSecondaryEvent?.Invoke();
+    }
 
     // For things like cycling firing modes. -Shad //
     public virtual void ThirdFunction() { }

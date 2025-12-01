@@ -33,6 +33,11 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     private float _swaySmoothnessPos;
     public float SwaySmoothnessPos => _swaySmoothnessPos;
 
+    [Header("Aiming")]
+    [SerializeField]
+    private float _aimZoom;
+    public float AimZoom => _aimZoom;
+
     [Header("Animation")]
     [SerializeField]
     private string _weaponKeyword;

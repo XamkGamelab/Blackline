@@ -21,19 +21,11 @@ public class RaycastWeapon : BaseWeapon
     private BulletTracerFXPool _bulletTracerFXPool;
 
     // Current ammo type from the inventory. -Shad //
-    private BaseAmmoDataSheet _currentAmmoType;
-    
-    // Relevant events for camera, or anything else you'd like. -Shad //
-    public event Action OnWeaponFire;
-    public event Action OnWeaponZoom;
+    private BaseAmmoDataSheet _currentAmmoType;   
 
     // Raycast Weapon specific states, base states from BaseWeapon. -Shad //
     public RaycastWeaponFiringState FiringState;
     public RaycastWeaponReloadState ReloadState;
-
-    // Extra weapon states layer. -Shad //
-    public bool Aiming { get; private set; }
-    public bool DualWielding { get; private set; }
 
     // Play-time weapon data. -Shad //
     public FiringMode CurrentFiringMode => _currentFiringMode;
@@ -73,6 +65,8 @@ public class RaycastWeapon : BaseWeapon
     #region Main Functions
     public override void PrimaryFunction()
     {
+        base.PrimaryFunction();
+
         if (CurrentFiringMode == FiringMode.Burst) BurstShotsRemaining--;
 
         LoadedAmmoCount--;
@@ -107,18 +101,16 @@ public class RaycastWeapon : BaseWeapon
 
         // Sound effects. -Shad //
         WeaponAudio.PlayOnce(DataSheet.ShootSound);
-
-        OnWeaponFire?.Invoke();
     }
 
     public override void SecondaryFunction() 
     {
-        OnWeaponZoom?.Invoke();
+        base.SecondaryFunction();
 
-        if (StateMachine.CurrentState == ReloadState) Aiming = false;
+        if (StateMachine.CurrentState == ReloadState) _aiming = false;
         else
         {
-            Aiming = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey);
+            _aiming = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey);
         }
     }
 
