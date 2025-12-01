@@ -33,11 +33,10 @@ public class SurfaceImpactLibrary : MonoBehaviour
 
 public enum SurfaceMaterial
 {
-    Default,
     Concrete,
     Metal,
-    Wood,
     Flesh,
+    Android,
     Glass,
 }
 
