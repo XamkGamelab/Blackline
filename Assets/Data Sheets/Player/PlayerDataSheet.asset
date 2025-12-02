@@ -17,8 +17,8 @@ MonoBehaviour:
   _crouchSpeed: 2
   _gravity: -9.81
   _jumpHeight: 1.2
-  _maxHealth: 200
-  _maxArmor: 200
+  _maxHealth: 100
+  _maxArmor: 100
   _walkingCameraFOV: 75
   _runningCameraFOV: 90
   _cameraDefaultPosY: 1.6

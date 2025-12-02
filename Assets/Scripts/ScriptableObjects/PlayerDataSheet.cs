@@ -8,71 +8,65 @@ public class PlayerDataSheet : CharacterDataSheet
     [SerializeField]
     [Range(60f, 180f)]
     private float _walkingCameraFOV;
+    public float WalkingCameraFOV => _walkingCameraFOV;
     [SerializeField]
     [Range(60f, 180f)]
     private float _runningCameraFOV;
+    public float RunningCameraFOV => _runningCameraFOV;
     [SerializeField]
     private float _cameraDefaultPosY;
+    public float CameraDefaultPosY => _cameraDefaultPosY;
     [SerializeField]
     private float _cameraCrouchPosY;
+    public float CameraCrouchPosY => _cameraCrouchPosY;
 
     [Header("Player Character Controller")]
     [SerializeField]
     private float _charControlDefaultCenterY;
+    public float CharControlDefaultCenterY => _charControlDefaultCenterY;
     [SerializeField]
     private float _charControlDefaultHeight;
+    public float CharControlDefaultHeight => _charControlDefaultHeight;
     [SerializeField]
     private float _charControlCrouchCenterY;
+    public float CharControlCrouchCenterY => _charControlCrouchCenterY;
     [SerializeField]
     private float _charControlCrouchHeight;
+    public float CharControlCrouchHeight => _charControlCrouchHeight;
 
     [Header("Player Movement")]
     [SerializeField]
     private float _movementSmoothingTimeGrounded;
+    public float MovementSmoothingTimeGrounded => _movementSmoothingTimeGrounded;
     [SerializeField]
     private float _movementSmoothingTimeAirborne;
+    public float MovementSmoothingTimeAirborne => _movementSmoothingTimeAirborne;
 
     [Header("Sliding")]
     [SerializeField]
     private float _slideSpeedMultiplier;
+    public float SlideSpeedMultiplier => _slideSpeedMultiplier;
     [SerializeField]
     private float _slideSmoothingTime;
+    public float SlideSmoothingTime => _slideSmoothingTime;
     [SerializeField]
     private float _slideCooldown;
+    public float SlideCooldown => _slideCooldown;
 
     [Header("Bunnyhopping")]
     [SerializeField]
     private float _bunnyHopSpeedMultiplier;
+    public float BunnyHopSpeedMultiplier => _bunnyHopSpeedMultiplier;
     [SerializeField]
     private float _bunnyHopSmoothingTimeGrounded;
+    public float BunnyHopSmoothingTimeGrounded => _bunnyHopSmoothingTimeGrounded;
     [SerializeField]
     private float _bunnyHopSmoothingTimeAirborne;
+    public float BunnyHopSmoothingTimeAirborne => _bunnyHopSmoothingTimeAirborne;
 
     [Header("Perks")]
     [SerializeField]
     private Perk[] _perks;
-
-    public float WalkingCameraFOV => _walkingCameraFOV;
-    public float RunningCameraFOV => _runningCameraFOV;
-    public float CameraDefaultPosY => _cameraDefaultPosY;
-    public float CameraCrouchPosY => _cameraCrouchPosY;
-
-    public float CharControlDefaultCenterY => _charControlDefaultCenterY;
-    public float CharControlDefaultHeight => _charControlDefaultHeight;
-    public float CharControlCrouchCenterY => _charControlCrouchCenterY;
-    public float CharControlCrouchHeight => _charControlCrouchHeight;
-
-    public float MovementSmoothingTimeGrounded => _movementSmoothingTimeGrounded;
-    public float MovementSmoothingTimeAirborne => _movementSmoothingTimeAirborne;
-
-    public float SlideSpeedMultiplier => _slideSpeedMultiplier;
-    public float SlideSmoothingTime => _slideSmoothingTime;
-    public float SlideCooldown => _slideCooldown;    
-
-    public float BunnyHopSpeedMultiplier => _bunnyHopSpeedMultiplier;
-    public float BunnyHopSmoothingTimeGrounded => _bunnyHopSmoothingTimeGrounded;
-    public float BunnyHopSmoothingTimeAirborne => _bunnyHopSmoothingTimeAirborne;
-
     public Perk[] Perks => _perks;
 }
 

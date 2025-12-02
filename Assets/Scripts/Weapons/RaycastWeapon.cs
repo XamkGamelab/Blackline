@@ -65,8 +65,6 @@ public class RaycastWeapon : BaseWeapon
     #region Main Functions
     public override void PrimaryFunction()
     {
-        base.PrimaryFunction();
-
         if (CurrentFiringMode == FiringMode.Burst) BurstShotsRemaining--;
 
         LoadedAmmoCount--;
@@ -101,17 +99,19 @@ public class RaycastWeapon : BaseWeapon
 
         // Sound effects. -Shad //
         WeaponAudio.PlayOnce(DataSheet.ShootSound);
+
+        base.PrimaryFunction();
     }
 
     public override void SecondaryFunction() 
     {
-        base.SecondaryFunction();
-
         if (StateMachine.CurrentState == ReloadState) _aiming = false;
         else
         {
             _aiming = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey);
         }
+
+        base.SecondaryFunction();
     }
 
     public override void ThirdFunction()
@@ -150,9 +150,11 @@ public class RaycastWeapon : BaseWeapon
         _currentFiringMode = validModes[nextIndex];
     }
 
-    public void ReloadWeapon()
+    public override void ReloadFunction()
     {
         LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
+
+        base.ReloadFunction();
     }
     #endregion
 

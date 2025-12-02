@@ -32,6 +32,17 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     [SerializeField]
     private float _swaySmoothnessPos;
     public float SwaySmoothnessPos => _swaySmoothnessPos;
+    [SerializeField]
+    private float _aimingSwayMultiplier;
+    public float AimingSwayMultiplier => _aimingSwayMultiplier;
+
+    [Header("Camera FX")]
+    [SerializeField]
+    private float _primaryFunctionRecoil;
+    public float PrimaryFunctionRecoil => _primaryFunctionRecoil;
+    [SerializeField]
+    private float _primaryFunctionSmoothness;
+    public float PrimaryFunctionSmoothness => _primaryFunctionSmoothness;
 
     [Header("Aiming")]
     [SerializeField]

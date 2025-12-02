@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -5,13 +6,14 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 {
     [SerializeField]
     private SurfaceMaterial _surfaceMaterial;
-
-    private float _currentArmor;
-    private float _currentHealth;
-
-    private PlayerDataSheet PlayerData;
-
     public SurfaceMaterial SurfaceMaterial => _surfaceMaterial;
+      
+    public float CurrentHealth { get; private set; }
+    public float CurrentArmor { get; private set; }
+
+    public event Action DamageTakenEvent;
+
+    private PlayerDataSheet PlayerData;    
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)
@@ -19,7 +21,13 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
         PlayerData = playerDataSheet;
     }
 
-    public bool IsBurning { get; }
+    private void Awake()
+    {
+        CurrentHealth = 0;
+        CurrentArmor = 0;
+    }
+
+    public bool IsBurning { get; private set; }
     public void Ignite(float duration, float damagePerSecond)
     {
 
@@ -32,6 +40,8 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 
     public void ApplyDamage(float damage, float armorPenetration)
     {
-        _currentHealth -= DamageData.HealthDamage(damage, armorPenetration, _currentArmor);
+        CurrentHealth -= DamageData.HealthDamage(damage, armorPenetration, CurrentArmor);
+
+        DamageTakenEvent?.Invoke();
     }
 }

@@ -18,7 +18,7 @@ public class RaycastWeaponReloadState : WeaponState<RaycastWeapon>
     {
         if (_reloadTimer >= Weapon.DataSheet.EmergencyReloadTime)
         {
-            Weapon.ReloadWeapon();
+            Weapon.ReloadFunction();
             Weapon.StateMachine.UpdateState(Weapon.IdleState);
         }
         

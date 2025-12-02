@@ -783,7 +783,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 496119756}
-  - {fileID: 1094777586}
   m_Father: {fileID: 1284027934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &60401370
@@ -10882,6 +10881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 496119756}
+  - component: {fileID: 496119757}
   m_Layer: 6
   m_Name: RecoilPivot
   m_TagString: Untagged
@@ -10903,8 +10903,24 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 330585546}
+  - {fileID: 1094777586}
   m_Father: {fileID: 47494078}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &496119757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496119755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8604c4b17a77acf46a20c1db110808a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 1284027936}
+  _playerLook: {fileID: 1284027937}
+  _playerInventory: {fileID: 1284027939}
 --- !u!1 &525087033
 GameObject:
   m_ObjectHideFlags: 0
@@ -21888,13 +21904,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094777585}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1389771622}
-  m_Father: {fileID: 47494078}
+  m_Father: {fileID: 496119756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1094777587
 MonoBehaviour:
@@ -22191,11 +22207,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _surfaceImpactData:
-  - SurfaceMaterial: 4
-    ImpactFXPool: {fileID: 988859340}
   - SurfaceMaterial: 2
-    ImpactFXPool: {fileID: 1270401896}
+    ImpactFXPool: {fileID: 988859340}
   - SurfaceMaterial: 1
+    ImpactFXPool: {fileID: 1270401896}
+  - SurfaceMaterial: 0
     ImpactFXPool: {fileID: 859585341}
   - SurfaceMaterial: 3
     ImpactFXPool: {fileID: 966100126}
@@ -23783,6 +23799,7 @@ GameObject:
   - component: {fileID: 1284027938}
   - component: {fileID: 1284027940}
   - component: {fileID: 1284027941}
+  - component: {fileID: 1284027942}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -23897,7 +23914,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 1389771622}
-  _characterDataSheet: {fileID: 11400000, guid: 22ceebdccf6073549bb4ccc2b085ec49, type: 2}
   _weaponAudio: {fileID: 1389771624}
 --- !u!114 &1284027940
 MonoBehaviour:
@@ -23929,6 +23945,27 @@ MonoBehaviour:
   _playerAnim: {fileID: 1654410824}
   _leftHandIK: {fileID: 2017166909}
   _rightHandIK: {fileID: 632408206}
+--- !u!114 &1284027942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284027933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb0c2b4c10f8794cb35757b1dd930d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerInventory: {fileID: 1284027939}
+  _playerHealth: {fileID: 1284027940}
+  _healthText: {fileID: 16496289}
+  _healthSlider: {fileID: 1593977474}
+  _armorText: {fileID: 1311727513}
+  _armorSlider: {fileID: 1552608787}
+  _weaponName: {fileID: 0}
+  _currentAmmo: {fileID: 938941906}
+  _inventoryAmmo: {fileID: 1899786417}
 --- !u!1 &1291009486
 GameObject:
   m_ObjectHideFlags: 0
@@ -43219,6 +43256,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6197607003083295453, guid: e8f89ee77e278a84eb668643a15e2465, type: 3}
+      propertyPath: RecoilEffect
+      value: 
+      objectReference: {fileID: 496119757}
     - target: {fileID: 7293152062496089617, guid: e8f89ee77e278a84eb668643a15e2465, type: 3}
       propertyPath: m_IsActive
       value: 0

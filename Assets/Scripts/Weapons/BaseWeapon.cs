@@ -33,6 +33,7 @@ public abstract class BaseWeapon : MonoBehaviour
     // Relevant events for camera, or anything else you'd like. -Shad //
     public event Action WeaponPrimaryEvent;
     public event Action WeaponSecondaryEvent;
+    public event Action WeaponReloadedEvent;
     public bool ReadyToSwitch { get; private set; }
 
     private WeaponAudio _weaponAudio;
@@ -70,6 +71,11 @@ public abstract class BaseWeapon : MonoBehaviour
 
     // For things like cycling firing modes. -Shad //
     public virtual void ThirdFunction() { }
+
+    public virtual void ReloadFunction()
+    {
+        WeaponReloadedEvent?.Invoke();
+    }
     #endregion
 
     #region Drawing & Holstering

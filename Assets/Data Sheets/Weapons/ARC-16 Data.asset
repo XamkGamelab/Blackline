@@ -19,8 +19,12 @@ MonoBehaviour:
   _canAkimbo: 0
   _swayAmountRot: 2
   _swaySmoothnessRot: 5
-  _swayAmountPos: 0.15
-  _swaySmoothnessPos: 10
+  _swayAmountPos: 0.01
+  _swaySmoothnessPos: 25
+  _aimingSwayMultiplier: 0.1
+  _primaryFunctionRecoil: 5
+  _primaryFunctionSmoothness: 15
+  _aimZoom: 1.5
   _weaponKeyword: ARC-16
   _leftHandIKRotationOffset: {x: 0.56098545, y: -0.4304594, z: 0.56098557, w: 0.43045923}
   _rightHandIKRotationOffset: {x: 0.5849215, y: 0.41127318, z: -0.5359814, w: 0.44882637}
@@ -39,8 +43,7 @@ MonoBehaviour:
   _recoilRotZ: 2
   _recoilPosX: 0
   _recoilPosY: 0
-  _recoilPosZ: -0.1
-  _aimZoom: 1.5
+  _recoilPosZ: -0.11
   _maxAmmoInWeapon: 30
   _compatibleAmmo:
   - {fileID: 11400000, guid: 4eb8cf6399b5f5e45a47dbd6d96b95b8, type: 2}

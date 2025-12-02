@@ -3,6 +3,7 @@ using Zenject;
 
 public class PlayerLook : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private PlayerMovement _playerMovement;
     [SerializeField]

@@ -2,16 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using Zenject;
 
 public class PlayerInventory : MonoBehaviour, IAmmoProvider
 {
     [SerializeField]
     private Transform _weaponHolder;
-    public Transform WeaponHolder => _weaponHolder;
-
-    [SerializeField]
-    private CharacterDataSheet _characterDataSheet;
-    public CharacterDataSheet CharacterDataSheet => _characterDataSheet;
+    public Transform WeaponHolder => _weaponHolder;   
 
     [SerializeField]
     private WeaponAudio _weaponAudio;
@@ -26,10 +23,19 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     // The current weapon the player is holding. -Shad //
     private BaseWeapon _equippedWeapon;
     public BaseWeapon EquippedWeapon => _equippedWeapon;
-  
+
+    private PlayerDataSheet _playerData;
+    public PlayerDataSheet PlayerData => _playerData;
+
     public event Action WeaponEquipEvent;
 
-    private void Start() => Initialize();
+    [Inject]
+    private void Construct(PlayerDataSheet playerDataSheet)
+    {
+        _playerData = playerDataSheet;
+    }
+
+    private void Awake() => Initialize();
 
     private void Initialize()
     {
