@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f3e4f9a9952124ba536441f1c8dad9, type: 3}
+  m_Name: Godslayer Data
+  m_EditorClassIdentifier: 
+  _weaponCategory: 0
+  _weaponName: Godslayer
+  _drawTime: 0.1
+  _holsterTime: 0.1
+  _canAkimbo: 0
+  _swayAmountRot: 2
+  _swaySmoothnessRot: 5
+  _swayAmountPos: 0.01
+  _swaySmoothnessPos: 25
+  _aimingSwayMultiplier: 1
+  _primaryFunctionRecoil: 5
+  _primaryFunctionSmoothness: 15
+  _aimZoom: 0
+  _weaponKeyword: 
+  _leftHandIKRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  _rightHandIKRotationOffset: {x: 0, y: 0, z: 0, w: 0}
+  _swingCooldown: 0.1
+  _swingMaxRange: 2
+  SwingSounds: []

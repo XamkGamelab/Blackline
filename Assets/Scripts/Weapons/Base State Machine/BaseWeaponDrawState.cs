@@ -4,9 +4,6 @@ public class BaseWeaponDrawState : WeaponState<BaseWeapon>
 {
     public BaseWeaponDrawState(BaseWeapon weapon) : base(weapon) { }
 
-    public override string WeaponAnimKeyword => "Draw";
-    public override string ArmsAnimKeyword => "Draw";
-
     private float _drawTimer = 0f;
 
     public override void HandleUpdate()

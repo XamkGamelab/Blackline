@@ -4,9 +4,6 @@ public class RaycastWeaponFiringState : WeaponState<RaycastWeapon>
 {
     public RaycastWeaponFiringState(RaycastWeapon weapon) : base(weapon) { }
 
-    public override string WeaponAnimKeyword => "Idle";
-    public override string ArmsAnimKeyword => "Idle";
-
     public override void Enter()
     {
         Weapon.PrimaryFunction();
