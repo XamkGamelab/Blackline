@@ -7,7 +7,7 @@ public class EndMissionController : MonoBehaviour
     public GameObject endMissionCanvas;   // The UI Canvas (disabled by default)
     public TMP_Text timeText;             // TMP text slot for mission time
     public TMP_Text enemyText;            // TMP text slot for enemies killed
-    public PlayerSettingsData playerSettings; // Reference to your settings script
+    PlayerSettingsData playerSettings; // Reference to your settings script
 
     private float missionStartTime;
     private int enemiesKilled = 0;
@@ -51,7 +51,7 @@ public class EndMissionController : MonoBehaviour
         endMissionCanvas.SetActive(true);
     }
 
-    // Converts seconds → MM:SS
+    // Converts seconds MM:SS
     private string FormatTime(float totalSeconds)
     {
         int minutes = Mathf.FloorToInt(totalSeconds / 60);
