@@ -39,7 +39,8 @@ public class RaycastWeaponIdleState : BaseWeaponIdleState
         {
             if (_raycastWeapon.LoadedAmmoCount == _raycastWeapon.DataSheet.MaxAmmoInWeapon) return;
 
-            Weapon.StateMachine.UpdateState(_raycastWeapon.ReloadState);
+            if(_raycastWeapon.LoadedAmmoCount == 0) Weapon.StateMachine.UpdateState(_raycastWeapon.EmergencyReloadState);        
+            if(_raycastWeapon.LoadedAmmoCount > 0) Weapon.StateMachine.UpdateState(_raycastWeapon.TacticalReloadState);
         }
     }
 }

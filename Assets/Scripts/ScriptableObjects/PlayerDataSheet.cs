@@ -33,6 +33,9 @@ public class PlayerDataSheet : CharacterDataSheet
     [SerializeField]
     private float _charControlCrouchHeight;
     public float CharControlCrouchHeight => _charControlCrouchHeight;
+    [SerializeField]
+    private float _crouchTransitionSpeed;
+    public float CrouchTransitionSpeed => _crouchTransitionSpeed;
 
     [Header("Player Movement")]
     [SerializeField]

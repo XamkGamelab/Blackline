@@ -22,14 +22,29 @@ MonoBehaviour:
   _swayAmountPos: 0.01
   _swaySmoothnessPos: 25
   _aimingSwayMultiplier: 1
+  _slideWeaponAngle: -15
   _primaryFunctionRecoil: 5
   _primaryFunctionSmoothness: 15
   _aimZoom: 0
   _leftHandIKRotationOffset: {x: 0.56098515, y: -0.43045983, z: 0.56098515, w: 0.43045977}
   _rightHandIKRotationOffset: {x: 0.584921, y: 0.41127372, z: -0.53598136, w: 0.44882655}
-  _swingCooldown: 0.5
+  _drawSoundClip: {fileID: 8300000, guid: c372d78c496de6749b7e36951d31f8ba, type: 3}
+  _swingCooldown: 0.55
   _swingMaxRange: 3
   _recoilRotX: 12
   _recoilRotY: 12
   _recoilRotZ: 12
-  SwingSounds: []
+  SwingSounds:
+  - {fileID: 8300000, guid: a09c9c387b587534eb2e85685fd64035, type: 3}
+  - {fileID: 8300000, guid: 1065bea2b56a8a745aea1fdd9b0e5547, type: 3}
+  - {fileID: 8300000, guid: 30f29741fea71aa45a34eb1fdd4a7d84, type: 3}
+  - {fileID: 8300000, guid: 3ee200200113b14448148cddf2bf50d8, type: 3}
+  - {fileID: 8300000, guid: d262916894aee26429ab663ecc3f291f, type: 3}
+  - {fileID: 8300000, guid: 4f4f3ccacdfb2174eb7ef24bb858e988, type: 3}
+  - {fileID: 8300000, guid: 487421bd5507a2a4eacd5210d2eecd68, type: 3}
+  - {fileID: 8300000, guid: c485fdaa6c9f1c74ba7fa072503f7669, type: 3}
+  - {fileID: 8300000, guid: 2e67dbde144929e4d82220bc05f1900c, type: 3}
+  - {fileID: 8300000, guid: 5ffbccedcb6a15a448b4cf28b8cbb384, type: 3}
+  - {fileID: 8300000, guid: b6c454817c485b24199ce9eb06500380, type: 3}
+  - {fileID: 8300000, guid: 20ba47c6867f5a24fbb95a3e4aeaeecd, type: 3}
+  - {fileID: 8300000, guid: ec7e1dcd607802b47a716f668806e4c1, type: 3}

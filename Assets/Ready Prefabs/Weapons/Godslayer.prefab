@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f2a868aad074dd4e928a29838748d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _meleeWeapon: {fileID: 4843643314660919033}
 --- !u!4 &2446670328252778192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3608018817773898484, guid: 5bc5a9528bdedaa40b4230c54456a769, type: 3}

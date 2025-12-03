@@ -14,7 +14,8 @@ public class MeleeWeaponIdleState : BaseWeaponIdleState
 
         if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
         {
-            Weapon.StateMachine.UpdateState(_meleeWeapon.LeftSwingState);
+            _meleeWeapon.SetSwingIndex(1);
+            Weapon.StateMachine.UpdateState(_meleeWeapon.AttackState);
         }
     }
 }

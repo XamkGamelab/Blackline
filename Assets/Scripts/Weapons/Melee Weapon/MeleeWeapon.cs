@@ -13,9 +13,7 @@ public class MeleeWeapon : BaseWeapon
     public MeleeWeaponDataSheet DataSheet => _dataSheet;
 
     // Melee Weapon specific states, base states from BaseWeapon. -Shad //
-    public MeleeWeaponLeftSwingState LeftSwingState;
-    public MeleeWeaponRightSwingState RightSwingState;
-    public MeleeWeaponHeavySwingState HeavySwingState;
+    public MeleeWeaponAttackState AttackState;
 
     // Play-time weapon data. -Shad //
     public float NextSwingTime { get; private set; }
@@ -25,9 +23,7 @@ public class MeleeWeapon : BaseWeapon
         base.Initialize();
 
         IdleState = new MeleeWeaponIdleState(this);
-        LeftSwingState = new MeleeWeaponLeftSwingState(this);
-        RightSwingState = new MeleeWeaponRightSwingState(this);
-        HeavySwingState = new MeleeWeaponHeavySwingState(this);
+        AttackState = new MeleeWeaponAttackState(this);
 
         NextSwingTime = Time.time;
 
@@ -45,7 +41,13 @@ public class MeleeWeapon : BaseWeapon
     #region Main Functions
     public override void PrimaryFunction()
     {
-        NextSwingTime = Time.time + _dataSheet.SwingCooldown;
+        base.PrimaryFunction();
+    }
+
+    // Called from MeleeWeaponEvents!! -Shad //
+    public void SwingWeapon()
+    {
+        PrimaryFunction();
 
         Ray swingRay = new(_swingRaycastPosition.position, _swingRaycastPosition.forward);
         RaycastHit swingHit = new RaycastHit();
@@ -57,9 +59,16 @@ public class MeleeWeapon : BaseWeapon
         }
 
         // Sound effects. -Shad //
-        //WeaponAudio.PlayOnce(DataSheet.SwingSounds[0]);
 
-        base.PrimaryFunction();
+        AudioClip chosenClip = DataSheet.SwingSounds[Random.Range(0, DataSheet.SwingSounds.Length)];
+        WeaponAudio.PlayOnce(chosenClip);
+    }
+
+    public void SetSwingIndex(int index)
+    {
+        NextSwingTime = Time.time + _dataSheet.SwingCooldown;
+
+        WeaponAnimator.SetInteger("SwingIndex", index);
     }
 
     public override void SecondaryFunction()

@@ -45,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     // Move method is called more than once per frame. Fuck you Unity <3. -Shad //
     private Vector3 _finalSumVector;
 
+    private bool _crouching;
+    private float _targetCenterY, _targetHeight, _targetCamHeight;
+
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)
     {
@@ -72,6 +75,23 @@ public class PlayerMovement : MonoBehaviour
         _finalSumVector = MoveVector + GravityVector + BunnyhopVector + SlideVector;
 
         CharacterController.Move(_finalSumVector * Time.deltaTime);
+
+        if (_crouching)
+        {
+            _targetCenterY = Mathf.Lerp(_targetCenterY, PlayerData.CharControlCrouchCenterY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+            _targetHeight = Mathf.Lerp(_targetHeight, PlayerData.CharControlCrouchHeight, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+            _targetCamHeight = Mathf.Lerp(_targetCamHeight, PlayerData.CameraCrouchPosY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _targetCenterY = Mathf.Lerp(_targetCenterY, PlayerData.CharControlDefaultCenterY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+            _targetHeight = Mathf.Lerp(_targetHeight, PlayerData.CharControlDefaultHeight, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+            _targetCamHeight = Mathf.Lerp(_targetCamHeight, PlayerData.CameraDefaultPosY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+        }
+
+        CharacterController.center = new(0f, _targetCenterY, 0f);
+        CharacterController.height = _targetHeight;
+        _cameraPivot.localPosition = new(0f, _targetCamHeight, 0f);
     }
 
     public void UpdateState(PlayerBaseState newState)
@@ -83,17 +103,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetCrouchSize(bool crouching)
     {
-        if (crouching)
-        {
-            CharacterController.center = new(0f, PlayerData.CharControlCrouchCenterY, 0f);
-            CharacterController.height = PlayerData.CharControlCrouchHeight;
-            _cameraPivot.localPosition = new(0f, PlayerData.CameraCrouchPosY, 0f);
-        }
-        else
-        {
-            CharacterController.center = new(0f, PlayerData.CharControlDefaultCenterY, 0f);
-            CharacterController.height = PlayerData.CharControlDefaultHeight;
-            _cameraPivot.localPosition = new(0f, PlayerData.CameraDefaultPosY, 0f);
-        }
+        _crouching = crouching;
     }
 }

@@ -80,6 +80,7 @@ public class RaycastWeaponDataSheet : BaseWeaponDataSheet
     [Header("SFX")]
     public AudioClip ShootSound;
     public AudioClip EmergencyReloadSound;
+    public AudioClip TacticalReloadSound;
 }
 
 [Flags]

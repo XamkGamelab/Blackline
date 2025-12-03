@@ -47,10 +47,9 @@ public class PlayerAnimator : MonoBehaviour
         _playerInventory.EquippedWeapon.WeaponAnimator.SetFloat("PlayerSpeed", _playerMovement.MoveVector.magnitude);
         _playerInventory.EquippedWeapon.WeaponAnimator.SetBool("Airborne", _playerMovement.CurrentState is PlayerFallingState);
 
-        if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is RaycastWeaponReloadState) _playerAnim.SetInteger("Reloading", 2);
-        else if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is not RaycastWeaponReloadState) _playerAnim.SetInteger("Reloading", 0);
-
-        //if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is BaseWeaponHolsterState) _playerAnim.SetTrigger("Holster");
+        if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is RaycastWeaponEmergencyReloadState) _playerAnim.SetInteger("Reloading", 2);
+        else if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is RaycastWeaponTacticalReloadState) _playerAnim.SetInteger("Reloading", 1);
+        else if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is not RaycastWeaponTacticalReloadState && _playerInventory.EquippedWeapon.StateMachine.CurrentState is not RaycastWeaponEmergencyReloadState) _playerAnim.SetInteger("Reloading", 0);
     }
 
     private void OnWeaponEquipped()

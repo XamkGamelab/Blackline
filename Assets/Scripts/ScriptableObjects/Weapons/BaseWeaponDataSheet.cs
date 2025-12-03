@@ -35,6 +35,9 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     [SerializeField]
     private float _aimingSwayMultiplier;
     public float AimingSwayMultiplier => _aimingSwayMultiplier;
+    [SerializeField]
+    private float _slideWeaponAngle;
+    public float SlideWeaponAngle => _slideWeaponAngle;
 
     [Header("Camera FX")]
     [SerializeField]
@@ -56,6 +59,11 @@ public abstract class BaseWeaponDataSheet : ScriptableObject
     [SerializeField]
     private Quaternion _rightHandIKRotationOffset;
     public Quaternion RightHandIKRotationOffset => _rightHandIKRotationOffset;
+
+    [Header("Base Weapon SFX")]
+    [SerializeField]
+    private AudioClip _drawSoundClip;
+    public AudioClip DrawSoundClip => _drawSoundClip;
 }
 
 public enum WeaponCategory

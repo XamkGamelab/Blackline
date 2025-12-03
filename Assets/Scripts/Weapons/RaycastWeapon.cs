@@ -25,7 +25,8 @@ public class RaycastWeapon : BaseWeapon
 
     // Raycast Weapon specific states, base states from BaseWeapon. -Shad //
     public RaycastWeaponFiringState FiringState;
-    public RaycastWeaponReloadState ReloadState;
+    public RaycastWeaponEmergencyReloadState EmergencyReloadState;
+    public RaycastWeaponTacticalReloadState TacticalReloadState;
 
     // Play-time weapon data. -Shad //
     public FiringMode CurrentFiringMode => _currentFiringMode;
@@ -45,7 +46,8 @@ public class RaycastWeapon : BaseWeapon
 
         IdleState = new RaycastWeaponIdleState(this);
         FiringState = new RaycastWeaponFiringState(this);
-        ReloadState = new RaycastWeaponReloadState(this);
+        EmergencyReloadState = new RaycastWeaponEmergencyReloadState(this);
+        TacticalReloadState = new RaycastWeaponTacticalReloadState(this);
         NextShotTime = Time.time;
 
         StateMachine.UpdateState(DrawState);
@@ -105,7 +107,7 @@ public class RaycastWeapon : BaseWeapon
 
     public override void SecondaryFunction() 
     {
-        if (StateMachine.CurrentState == ReloadState) _aiming = false;
+        if (StateMachine.CurrentState == EmergencyReloadState || StateMachine.CurrentState == TacticalReloadState) _aiming = false;
         else
         {
             _aiming = Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.AimKey);

@@ -22000,6 +22000,7 @@ MonoBehaviour:
   _playerMovement: {fileID: 1284027936}
   _playerLook: {fileID: 1284027937}
   _playerInventory: {fileID: 1284027939}
+  _weaponHolder: {fileID: 1389771622}
 --- !u!43 &1095275633
 Mesh:
   m_ObjectHideFlags: 0

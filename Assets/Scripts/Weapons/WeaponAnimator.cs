@@ -11,25 +11,24 @@ public class WeaponAnimator : MonoBehaviour
 
     public void Update()
     {
-        //_weaponAnim.SetFloat("PlayerSpeed", _weapon.PlayerMovementSpeed);
-        //_weaponAnim.SetBool("Airborne", _weapon.PlayerAirborne);
+        if(_weapon is RaycastWeapon)
+        {
+            _weaponAnim.SetBool("Aiming", _weapon.Aiming);
 
-        //if (_weapon.StateMachine.CurrentState == _weapon.HolsterState) _weaponAnim.SetTrigger("Holster");
+            if (_weapon.StateMachine.CurrentState is RaycastWeaponEmergencyReloadState) _weaponAnim.SetInteger("Reloading", 2);
+            else if (_weapon.StateMachine.CurrentState is RaycastWeaponTacticalReloadState) _weaponAnim.SetInteger("Reloading", 1);
+            else if (_weapon.StateMachine.CurrentState is not RaycastWeaponTacticalReloadState && _weapon.StateMachine.CurrentState is not RaycastWeaponEmergencyReloadState) _weaponAnim.SetInteger("Reloading", 0);
+        }
 
-        if (_weapon is RaycastWeapon raycastWeaponAiming) _weaponAnim.SetBool("Aiming", raycastWeaponAiming.Aiming);
-
-        if (_weapon is RaycastWeapon raycastWeaponReloading && raycastWeaponReloading.StateMachine.CurrentState is RaycastWeaponReloadState) _weaponAnim.SetInteger("Reloading", 2);
-        else if (_weapon is RaycastWeapon raycastWeaponNOTReloading && raycastWeaponNOTReloading.StateMachine.CurrentState is not RaycastWeaponReloadState) _weaponAnim.SetInteger("Reloading", 0);
-
-        if (_weapon is MeleeWeapon meleeWeapon)
+        /*if(_weapon is MeleeWeapon)
         {
             _weaponAnim.SetBool
-                (
-                "Swing", 
-                meleeWeapon.StateMachine.CurrentState is MeleeWeaponLeftSwingState ||
-                meleeWeapon.StateMachine.CurrentState is MeleeWeaponRightSwingState ||
-                meleeWeapon.StateMachine.CurrentState is MeleeWeaponHeavySwingState
-                );
-        }
+            (
+                "Swing",
+                _weapon.StateMachine.CurrentState is MeleeWeaponLeftSwingState ||
+                _weapon.StateMachine.CurrentState is MeleeWeaponRightSwingState ||
+                _weapon.StateMachine.CurrentState is MeleeWeaponHeavySwingState
+            );
+        }*/
     }
 }

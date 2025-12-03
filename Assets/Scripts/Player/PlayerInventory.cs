@@ -111,6 +111,8 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
         _equippedWeapon.gameObject.SetActive(true);
 
         _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.DrawState);
+
+        _weaponAudio.PlayOnce(_equippedWeapon.WeaponData.DrawSoundClip);
         
         WeaponEquipEvent?.Invoke();
     }

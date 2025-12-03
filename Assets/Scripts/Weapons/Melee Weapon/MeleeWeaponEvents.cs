@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class MeleeWeaponEvents : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private MeleeWeapon _meleeWeapon;
 
-    // Update is called once per frame
-    void Update()
+    public void SwingEvent()
     {
-        
+        print("Whoosh!!");
+
+        _meleeWeapon.SwingWeapon();
     }
 }
