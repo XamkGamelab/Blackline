@@ -10134,6 +10134,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4792436697564461665, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
       propertyPath: m_Name
       value: ARC-16
@@ -10144,6 +10148,18 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: cbc3a160631ae4a43bca695796972fdd, type: 2}
     - target: {fileID: 5866666021909216657, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
       propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934024264958193710, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6368419976655389777, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887320249426943585, guid: 3811cfe05f242c248aa5688e3743a5da, type: 3}
+      propertyPath: m_SkinnedMotionVectors
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

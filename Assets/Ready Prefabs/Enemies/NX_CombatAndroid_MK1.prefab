@@ -143,9 +143,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -6942357393964268732, guid: 3e91820019158224a8a73ca81745081e, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6942357393964268732, guid: 3e91820019158224a8a73ca81745081e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 102ceb86434b13240b978c3619edc08c, type: 2}
+    - target: {fileID: -407332181073530252, guid: 3e91820019158224a8a73ca81745081e, type: 3}
+      propertyPath: m_SkinnedMotionVectors
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -407332181073530252, guid: 3e91820019158224a8a73ca81745081e, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
