@@ -13,11 +13,13 @@ public class RecoilEffect : MonoBehaviour
 
     private void Start()
     {
+        _playerInventory.WeaponEquipEvent += OnWeaponSwitched;
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent += RecoilCam;
     }
 
     private void OnDestroy()
     {
+        _playerInventory.WeaponEquipEvent -= OnWeaponSwitched;
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= RecoilCam;
     }
 
@@ -37,5 +39,18 @@ public class RecoilEffect : MonoBehaviour
 
             _targetRotation += new Vector3(Random.Range(raycastWeaponData.RecoilRotX / 2, raycastWeaponData.RecoilRotX), Random.Range(-raycastWeaponData.RecoilRotY, raycastWeaponData.RecoilRotY), Random.Range(-raycastWeaponData.RecoilRotZ, raycastWeaponData.RecoilRotZ));
         }        
+
+        if(_playerInventory.EquippedWeapon is MeleeWeapon meleeWeapon)
+        {
+            MeleeWeaponDataSheet meleeWeaponData = meleeWeapon.DataSheet;
+
+            _targetRotation += new Vector3(Random.Range(-meleeWeaponData.RecoilRotX, meleeWeaponData.RecoilRotX), Random.Range(-meleeWeaponData.RecoilRotY, meleeWeaponData.RecoilRotY), Random.Range(-meleeWeaponData.RecoilRotZ, meleeWeaponData.RecoilRotZ));
+        }
+    }
+
+    public void OnWeaponSwitched()
+    {
+        foreach (BaseWeapon key in _playerInventory.OwnedWeapons.Keys) key.WeaponPrimaryEvent -= RecoilCam;
+        _playerInventory.EquippedWeapon.WeaponPrimaryEvent += RecoilCam;
     }
 }

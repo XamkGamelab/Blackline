@@ -15,6 +15,23 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] 
     private Transform _rightHandIK;
 
+    private void OnEnable()
+    {
+        _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
+        _playerInventory.WeaponUnequipEvent += OnWeaponUnequipped;
+    }
+
+    private void OnDisable()
+    {
+        _playerInventory.WeaponEquipEvent -= OnWeaponEquipped;
+        _playerInventory.WeaponUnequipEvent += OnWeaponUnequipped;
+    }
+
+    private void Start()
+    {
+        _playerAnim.Play($"ViktorKainFP_Rig|ViktorFP_{_playerInventory.EquippedWeapon.WeaponData.WeaponName}_Draw");
+    }
+
     public void Update()
     {        
         if(_playerInventory.EquippedWeapon.LeftHandTargetIK != null)
@@ -27,12 +44,25 @@ public class PlayerAnimator : MonoBehaviour
         _rightHandIK.rotation = _playerInventory.EquippedWeapon.RightHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.RightHandIKRotationOffset;
 
 
-        _playerInventory.EquippedWeapon.SetPlayerMovementSpeed(_playerMovement.MoveVector.magnitude);
-        _playerInventory.EquippedWeapon.SetPlayerAirborne(_playerMovement.CurrentState is PlayerFallingState);
+        _playerInventory.EquippedWeapon.WeaponAnimator.SetFloat("PlayerSpeed", _playerMovement.MoveVector.magnitude);
+        _playerInventory.EquippedWeapon.WeaponAnimator.SetBool("Airborne", _playerMovement.CurrentState is PlayerFallingState);
 
         if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is RaycastWeaponReloadState) _playerAnim.SetInteger("Reloading", 2);
         else if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is not RaycastWeaponReloadState) _playerAnim.SetInteger("Reloading", 0);
 
-        if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is BaseWeaponHolsterState) _playerAnim.SetTrigger("Hoslter");
+        //if (_playerInventory.EquippedWeapon.StateMachine.CurrentState is BaseWeaponHolsterState) _playerAnim.SetTrigger("Holster");
+    }
+
+    private void OnWeaponEquipped()
+    {
+        _playerAnim.Play($"ViktorKainFP_Rig|ViktorFP_{_playerInventory.EquippedWeapon.WeaponData.WeaponName}_Draw");
+    }
+
+    private void OnWeaponUnequipped()
+    {
+        _playerAnim.SetTrigger("Holster");
+        _playerAnim.ResetTrigger("Holster");
+
+        _playerInventory.EquippedWeapon.WeaponAnimator.SetTrigger("Holster");
     }
 }

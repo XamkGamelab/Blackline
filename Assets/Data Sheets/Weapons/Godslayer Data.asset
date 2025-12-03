@@ -25,9 +25,11 @@ MonoBehaviour:
   _primaryFunctionRecoil: 5
   _primaryFunctionSmoothness: 15
   _aimZoom: 0
-  _weaponKeyword: 
-  _leftHandIKRotationOffset: {x: 0, y: 0, z: 0, w: 0}
-  _rightHandIKRotationOffset: {x: 0, y: 0, z: 0, w: 0}
-  _swingCooldown: 0.1
-  _swingMaxRange: 2
+  _leftHandIKRotationOffset: {x: 0.56098515, y: -0.43045983, z: 0.56098515, w: 0.43045977}
+  _rightHandIKRotationOffset: {x: 0.584921, y: 0.41127372, z: -0.53598136, w: 0.44882655}
+  _swingCooldown: 0.3
+  _swingMaxRange: 3
+  _recoilRotX: 12
+  _recoilRotY: 12
+  _recoilRotZ: 12
   SwingSounds: []

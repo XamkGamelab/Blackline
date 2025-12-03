@@ -37,14 +37,14 @@ public class PlayerGameUI : MonoBehaviour
     [Inject]
     private void Construct(PlayerDataSheet playerData) => PlayerData = playerData;
 
-    public void OnEnable()
+    public void Start()
     {
         _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
 
         _playerHealth.DamageTakenEvent += OnDamageTaken;
     }
 
-    public void OnDisable()
+    public void OnDestroy()
     {
         _playerInventory.WeaponEquipEvent -= OnWeaponEquipped;
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= OnWeaponPrimary;

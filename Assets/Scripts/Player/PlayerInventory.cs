@@ -28,6 +28,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     public PlayerDataSheet PlayerData => _playerData;
 
     public event Action WeaponEquipEvent;
+    public event Action WeaponUnequipEvent;
 
     [Inject]
     private void Construct(PlayerDataSheet playerDataSheet)
@@ -47,7 +48,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
             AddWeapon(baseWeapon);
         }
 
-        SelectWeaponByCategory(WeaponCategory.Medium);
+        SelectWeaponByCategory(WeaponCategory.Melee);
     }
 
     #region Selecting & Equipping Weapons
@@ -92,6 +93,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
             if (_equippedWeapon.StateMachine.CurrentState != _equippedWeapon.IdleState) return;
 
             _equippedWeapon.StateMachine.UpdateState(_equippedWeapon.HolsterState);
+            WeaponUnequipEvent?.Invoke();
 
             while (!_equippedWeapon.ReadyToSwitch)
             {

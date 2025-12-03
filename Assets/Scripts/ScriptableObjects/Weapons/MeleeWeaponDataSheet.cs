@@ -13,6 +13,17 @@ public class MeleeWeaponDataSheet : BaseWeaponDataSheet
     private float _swingMaxRange;
     public float SwingMaxRange => _swingMaxRange;
 
+    [Header("Recoil")]
+    [SerializeField]
+    private float _recoilRotX;
+    public float RecoilRotX => _recoilRotX;
+    [SerializeField]
+    private float _recoilRotY;
+    public float RecoilRotY => _recoilRotY;
+    [SerializeField]
+    private float _recoilRotZ;
+    public float RecoilRotZ => _recoilRotZ;
+
     [Header("SFX")]
     public AudioClip[] SwingSounds;    
 }

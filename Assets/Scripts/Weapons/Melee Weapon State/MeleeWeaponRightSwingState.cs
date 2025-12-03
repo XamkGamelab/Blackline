@@ -13,7 +13,7 @@ public class MeleeWeaponRightSwingState : WeaponState<MeleeWeapon>
     {
         if (Time.time < Weapon.NextSwingTime) return;
 
-        if (Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
+        if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
         {
             Weapon.StateMachine.UpdateState(Weapon.HeavySwingState);
         }

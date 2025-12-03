@@ -8,6 +8,9 @@ public abstract class BaseWeapon : MonoBehaviour
     private BaseWeaponDataSheet _baseWeaponDataSheet;
     public BaseWeaponDataSheet WeaponData => _baseWeaponDataSheet;
     [SerializeField]
+    private Animator _weaponAnimator;
+    public Animator WeaponAnimator => _weaponAnimator;
+    [SerializeField]
     private Transform _leftHandTargetIK;
     public Transform LeftHandTargetIK => _leftHandTargetIK;
     [SerializeField]
@@ -39,9 +42,6 @@ public abstract class BaseWeapon : MonoBehaviour
     private WeaponAudio _weaponAudio;
     public WeaponAudio WeaponAudio => _weaponAudio;
 
-    public float PlayerMovementSpeed { get; private set; }
-    public bool PlayerAirborne { get; private set; }
-
     public virtual void Initialize()
     {
         StateMachine = new WeaponStateMachine<BaseWeapon>();
@@ -58,7 +58,7 @@ public abstract class BaseWeapon : MonoBehaviour
 
     #region Main Functionality
     // For things like shooting a weapon, or swinging an axe. -Shad //
-    public virtual void PrimaryFunction() 
+    public virtual void PrimaryFunction()
     {
         WeaponPrimaryEvent?.Invoke();
     }
@@ -102,21 +102,5 @@ public abstract class BaseWeapon : MonoBehaviour
     }
 
     public void SetSwitchReady(bool target) => ReadyToSwitch = target;
-    #endregion
-
-    #region Animation
-    public virtual string WeaponAnimAction()
-    {
-        return "";
-    }
-
-    public virtual string PlayerAnimAction()
-    {
-        return "";
-    }
-
-    public void SetPlayerMovementSpeed(float playerMoveVector) => PlayerMovementSpeed = playerMoveVector;
-
-    public void SetPlayerAirborne(bool playerStateCheck) => PlayerAirborne = playerStateCheck;
     #endregion
 }
