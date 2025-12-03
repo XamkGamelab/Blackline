@@ -216,7 +216,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -325,7 +325,7 @@ ModelImporter:
       takeName: ViktorKainFP_Rig|ViktorFP_Godslayer_Idle
       internalID: 7468131725874039946
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 48
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -354,7 +354,7 @@ ModelImporter:
       takeName: ViktorKainFP_Rig|ViktorFP_Godslayer_SwingHeavy
       internalID: -4671505863576137549
       firstFrame: 0
-      lastFrame: 8
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -383,7 +383,7 @@ ModelImporter:
       takeName: ViktorKainFP_Rig|ViktorFP_Godslayer_SwingLeft
       internalID: 565625607175272087
       firstFrame: 0
-      lastFrame: 10
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -412,7 +412,7 @@ ModelImporter:
       takeName: ViktorKainFP_Rig|ViktorFP_Godslayer_SwingRight
       internalID: -3895483785701754170
       firstFrame: 0
-      lastFrame: 9
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -476,7 +476,7 @@ ModelImporter:
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1

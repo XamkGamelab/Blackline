@@ -27,7 +27,7 @@ MonoBehaviour:
   _aimZoom: 0
   _leftHandIKRotationOffset: {x: 0.56098515, y: -0.43045983, z: 0.56098515, w: 0.43045977}
   _rightHandIKRotationOffset: {x: 0.584921, y: 0.41127372, z: -0.53598136, w: 0.44882655}
-  _swingCooldown: 0.3
+  _swingCooldown: 0.5
   _swingMaxRange: 3
   _recoilRotX: 12
   _recoilRotY: 12
