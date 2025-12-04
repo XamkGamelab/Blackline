@@ -13,8 +13,11 @@ public abstract class CharacterDataSheet : ScriptableObject
     private float _crouchSpeed;
     public float CrouchSpeed => _crouchSpeed;
     [SerializeField]
-    private float _gravity;
-    public float Gravity => _gravity;
+    private float _staticGravity;
+    public float StaticGravity => _staticGravity;
+    [SerializeField]
+    private float _jumpGravity;
+    public float JumpGravity => _jumpGravity;
     [SerializeField]
     private float _jumpHeight;
     public float JumpHeight => _jumpHeight;

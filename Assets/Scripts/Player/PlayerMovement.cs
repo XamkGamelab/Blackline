@@ -40,6 +40,9 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector]
     public Vector3 RefVector = Vector3.zero;
 
+    [HideInInspector]
+    public float CurrentGravitySpeed;
+
     // This is the final vector to actually move the character controller. //
     // The Character Controlller component doesn't work properly when the //
     // Move method is called more than once per frame. Fuck you Unity <3. -Shad //

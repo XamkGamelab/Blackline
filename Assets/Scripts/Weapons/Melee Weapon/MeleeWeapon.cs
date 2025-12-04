@@ -16,7 +16,9 @@ public class MeleeWeapon : BaseWeapon
     public MeleeWeaponAttackState AttackState;
 
     // Play-time weapon data. -Shad //
-    public float NextSwingTime { get; private set; }
+    public float NextAttackTime { get; private set; }
+    public float CurrentAttackBufferTime { get; private set; }
+    public int CurrentAnimIndex { get; private set; }
 
     public override void Initialize()
     {
@@ -25,7 +27,7 @@ public class MeleeWeapon : BaseWeapon
         IdleState = new MeleeWeaponIdleState(this);
         AttackState = new MeleeWeaponAttackState(this);
 
-        NextSwingTime = Time.time;
+        NextAttackTime = Time.time;
 
         StateMachine.UpdateState(DrawState);
     }
@@ -42,12 +44,9 @@ public class MeleeWeapon : BaseWeapon
     public override void PrimaryFunction()
     {
         base.PrimaryFunction();
-    }
 
-    // Called from MeleeWeaponEvents!! -Shad //
-    public void SwingWeapon()
-    {
-        PrimaryFunction();
+        AddAttackCooldown();
+        AddSwingIndex();
 
         Ray swingRay = new(_swingRaycastPosition.position, _swingRaycastPosition.forward);
         RaycastHit swingHit = new RaycastHit();
@@ -59,22 +58,35 @@ public class MeleeWeapon : BaseWeapon
         }
 
         // Sound effects. -Shad //
-
         AudioClip chosenClip = DataSheet.SwingSounds[Random.Range(0, DataSheet.SwingSounds.Length)];
         WeaponAudio.PlayOnce(chosenClip);
     }
 
-    public void SetSwingIndex(int index)
+    public void AddAttackCooldown()
     {
-        NextSwingTime = Time.time + _dataSheet.SwingCooldown;
+        float coolDown = WeaponAnimator.GetInteger("SwingIndex") < 3 ? DataSheet.LightAttackCooldown : DataSheet.HeavyAttackCooldown;
 
-        WeaponAnimator.SetInteger("SwingIndex", index);
+        NextAttackTime = Time.time + coolDown;
+        CurrentAttackBufferTime = NextAttackTime + DataSheet.AttackInputBufferTime;
+    }
+
+    public void AddSwingIndex()
+    {
+        if (CurrentAnimIndex == 3) CurrentAnimIndex = 1;
+        else CurrentAnimIndex++;
+
+        //WeaponAnimator.SetInteger("SwingIndex", CurrentAnimIndex);
+    }
+
+    public void ResetSwingIndex()
+    {
+        CurrentAnimIndex = 0;
+        //WeaponAnimator.SetInteger("SwingIndex", CurrentAnimIndex);
     }
 
     public override void SecondaryFunction()
     {
         // HEAVY ATTACK LOGIC HERE!! -Shad //
-
         base.SecondaryFunction();
     }
     #endregion

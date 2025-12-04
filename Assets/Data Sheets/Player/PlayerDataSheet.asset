@@ -15,7 +15,8 @@ MonoBehaviour:
   _walkSpeed: 4
   _runSpeed: 9
   _crouchSpeed: 2
-  _gravity: -9.81
+  _staticGravity: -4.9
+  _jumpGravity: -11.76
   _jumpHeight: 1.2
   _maxHealth: 100
   _maxArmor: 100

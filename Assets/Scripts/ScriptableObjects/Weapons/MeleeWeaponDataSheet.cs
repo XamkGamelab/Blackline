@@ -5,8 +5,14 @@ public class MeleeWeaponDataSheet : BaseWeaponDataSheet
 {
     [Header("Weapon Features")]
     [SerializeField]
-    private float _swingCooldown;
-    public float SwingCooldown => _swingCooldown;
+    private float _lightAttackCooldown;
+    public float LightAttackCooldown => _lightAttackCooldown;
+    [SerializeField]
+    private float _heavyAttackCooldown;
+    public float HeavyAttackCooldown => _heavyAttackCooldown;
+    [SerializeField]
+    private float _attackInputBufferTime;
+    public float AttackInputBufferTime => _attackInputBufferTime;
 
     [Header("Ballistics")]
     [SerializeField]

@@ -11,7 +11,11 @@ public abstract class PlayerGroundedState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        if(!PlayerMovement.CharacterController.isGrounded) PlayerMovement.UpdateState(PlayerMovement.FallingState);
+        if (!PlayerMovement.CharacterController.isGrounded)
+        {
+            PlayerMovement.CurrentGravitySpeed = PlayerMovement.PlayerData.StaticGravity;
+            PlayerMovement.UpdateState(PlayerMovement.FallingState);
+        }
 
         HandleGravity();
         HandleBunnyhop();
@@ -21,7 +25,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
     // Since in this state the player is already grounded, we will still add a constant gravity, to make the player stick to the ground. -Shad //
     protected void HandleGravity()
     {
-        if(PlayerMovement.CharacterController.isGrounded) PlayerMovement.GravityVector.y = PlayerMovement.PlayerData.Gravity;
+        if(PlayerMovement.CharacterController.isGrounded) PlayerMovement.GravityVector.y = PlayerMovement.PlayerData.StaticGravity;
     }
 
     // This slowly fades the bunnyhop vector to zero. -Shad //

@@ -29,7 +29,9 @@ MonoBehaviour:
   _leftHandIKRotationOffset: {x: 0.56098515, y: -0.43045983, z: 0.56098515, w: 0.43045977}
   _rightHandIKRotationOffset: {x: 0.584921, y: 0.41127372, z: -0.53598136, w: 0.44882655}
   _drawSoundClip: {fileID: 8300000, guid: c372d78c496de6749b7e36951d31f8ba, type: 3}
-  _swingCooldown: 0.55
+  _lightAttackCooldown: 0.5
+  _heavyAttackCooldown: 0.6
+  _attackInputBufferTime: 0.15
   _swingMaxRange: 3
   _recoilRotX: 12
   _recoilRotY: 12

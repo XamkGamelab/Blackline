@@ -18,9 +18,15 @@ public abstract class PlayerAirborneState : PlayerBaseState
         FadeMoveVector();        
     }
 
+
+    public override void Exit()
+    {
+        PlayerMovement.CurrentGravitySpeed = PlayerMovement.PlayerData.StaticGravity;
+    }
+
     protected void HandleGravity()
     {
-        PlayerMovement.GravityVector.y += PlayerMovement.PlayerData.Gravity * Time.deltaTime;
+        PlayerMovement.GravityVector.y += PlayerMovement.CurrentGravitySpeed * Time.deltaTime;
     }
 
     protected void HandleBunnyhop()

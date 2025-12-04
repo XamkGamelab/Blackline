@@ -7,8 +7,8 @@ public class MeleeWeaponEvents : MonoBehaviour
 
     public void SwingEvent()
     {
-        print("Whoosh!!");
+        //print("Whoosh!!");
 
-        _meleeWeapon.SwingWeapon();
+        //_meleeWeapon.SwingWeapon();
     }
 }

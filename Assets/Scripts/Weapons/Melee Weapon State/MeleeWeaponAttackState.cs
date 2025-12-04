@@ -6,22 +6,23 @@ public class MeleeWeaponAttackState : WeaponState<MeleeWeapon>
 
     public override void Enter()
     {
-        //Weapon.SetSwingIndex(1);
+        Weapon.PrimaryFunction();
     }
 
     public override void HandleUpdate()
     {
-        if (Time.time < Weapon.NextSwingTime) return;
+        if (Time.time < Weapon.NextAttackTime) return;
 
-        if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
+        if(Time.time < Weapon.CurrentAttackBufferTime)
         {
-            //Weapon.StateMachine.UpdateState(Weapon.RightSwingState);
-            Weapon.SetSwingIndex(2);
+            if (Input.GetKey(GlobalSettingsHolder.Instance.PlayerSettingsData.ShootKey))
+            {
+                Weapon.StateMachine.UpdateState(Weapon.AttackState);
+            }
         }
         else
         {
             Weapon.StateMachine.UpdateState(Weapon.IdleState);
-            Weapon.SetSwingIndex(0);
         }
     }
 }

@@ -6,8 +6,7 @@ public class EndMissionController : MonoBehaviour
     [Header("References")]
     public GameObject endMissionCanvas;   // The UI Canvas (disabled by default)
     public TMP_Text timeText;             // TMP text slot for mission time
-    public TMP_Text enemyText;            // TMP text slot for enemies killed
-    PlayerSettingsData playerSettings; // Reference to your settings script
+    public TMP_Text enemyText;            // TMP text slot for enemies killed    
 
     private float missionStartTime;
     private int enemiesKilled = 0;
@@ -21,7 +20,7 @@ public class EndMissionController : MonoBehaviour
 
     void Update()
     {
-        if (!missionEnded && Input.GetKeyDown(playerSettings.Interact))
+        if (!missionEnded && Input.GetKeyDown(GlobalSettingsHolder.Instance.PlayerSettingsData.Interact))
         {
             ShowEndMission();
         }

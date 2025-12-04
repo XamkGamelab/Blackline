@@ -20,15 +20,9 @@ public class WeaponAnimator : MonoBehaviour
             else if (_weapon.StateMachine.CurrentState is not RaycastWeaponTacticalReloadState && _weapon.StateMachine.CurrentState is not RaycastWeaponEmergencyReloadState) _weaponAnim.SetInteger("Reloading", 0);
         }
 
-        /*if(_weapon is MeleeWeapon)
+        if(_weapon is MeleeWeapon meleeWeapon)
         {
-            _weaponAnim.SetBool
-            (
-                "Swing",
-                _weapon.StateMachine.CurrentState is MeleeWeaponLeftSwingState ||
-                _weapon.StateMachine.CurrentState is MeleeWeaponRightSwingState ||
-                _weapon.StateMachine.CurrentState is MeleeWeaponHeavySwingState
-            );
-        }*/
+            _weaponAnim.SetInteger("SwingIndex", meleeWeapon.CurrentAnimIndex);
+        }
     }
 }
