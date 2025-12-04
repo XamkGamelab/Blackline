@@ -15,8 +15,8 @@ MonoBehaviour:
   _projectilesPerShot: 1
   _ammoName: Medium Caliber Ammo
   _damage: 35
-  _armorPenetration: 0.1
-  _projectileRange: 0
+  _armorPenetration: 0.6
+  _projectileRange: 1
   _projectileSpeed: 5
   _damageType: 0
   Source: {fileID: 0}

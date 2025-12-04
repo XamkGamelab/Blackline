@@ -1,17 +1,13 @@
 public class DamageData
 {
-    public static float HealthDamage(float damage, float armorPenetration, float currentArmor)
-    {
-        if (currentArmor <= 0f) return damage;
-        else
-        {
-            return damage * (armorPenetration * GlobalSettingsHolder.Instance.CurrentDifficultyData.PlayerArmorDamageMitigation);
-        }
-    }
-
-    public static float ArmorDamage(float damage, float armorPenetration)
+    public static float HealthDamage(float damage, float armorPenetration)
     {
         return damage * armorPenetration;
+    }
+
+    public static float ArmorDamage(float damage)
+    {
+        return damage;
     }
 }
 
@@ -21,6 +17,4 @@ public enum DamageType
     Fire,
     Explosive,
     // Electric...? -Shad //
-    // Magic...? -Shad //
-    // Demonic...? -Shad //
 }

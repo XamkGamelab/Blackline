@@ -55,6 +55,12 @@ public class MeleeWeapon : BaseWeapon
         if (Physics.Raycast(swingRay, out swingHit, _dataSheet.SwingMaxRange, _raycastLayers))
         {
             SurfaceImpactLibrary.Instance.SpawnImpactFX(swingHit); // Impact FX! -Shad //
+
+            // The hit object has an IDamageble interface, so let's actually damage that entity. -Shad //
+            if (swingHit.collider.TryGetComponent<IDamageble>(out IDamageble damageble))
+            {
+                damageble.ApplyDamage(DataSheet.AttackDamage, DataSheet.ArmorPenetration);
+            }
         }
 
         // Sound effects. -Shad //

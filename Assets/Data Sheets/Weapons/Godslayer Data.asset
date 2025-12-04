@@ -32,6 +32,8 @@ MonoBehaviour:
   _lightAttackCooldown: 0.5
   _heavyAttackCooldown: 0.6
   _attackInputBufferTime: 0.15
+  _attackDamage: 75
+  _armorPenetration: 1
   _swingMaxRange: 3
   _recoilRotX: 12
   _recoilRotY: 12

@@ -23,8 +23,8 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 
     private void Awake()
     {
-        CurrentHealth = 0;
-        CurrentArmor = 0;
+        CurrentHealth = PlayerData.MaxHealth;
+        CurrentArmor = PlayerData.MaxArmor;
     }
 
     public bool IsBurning { get; private set; }
@@ -40,7 +40,8 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 
     public void ApplyDamage(float damage, float armorPenetration)
     {
-        CurrentHealth -= DamageData.HealthDamage(damage, armorPenetration, CurrentArmor);
+        CurrentHealth -= DamageData.HealthDamage(damage, armorPenetration);
+        CurrentArmor -= DamageData.ArmorDamage(damage);
 
         DamageTakenEvent?.Invoke();
     }

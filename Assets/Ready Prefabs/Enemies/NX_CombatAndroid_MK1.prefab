@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 1687557992295630663}
+  _maxHealth: 100
+  _maxArmor: 25
   _surfaceMaterial: 3
 --- !u!195 &1687557992295630663
 NavMeshAgent:

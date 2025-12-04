@@ -14,6 +14,15 @@ public class MeleeWeaponDataSheet : BaseWeaponDataSheet
     private float _attackInputBufferTime;
     public float AttackInputBufferTime => _attackInputBufferTime;
 
+    [Header("Damage")]
+    [SerializeField]
+    private float _attackDamage;
+    public float AttackDamage => _attackDamage;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _armorPenetration;
+    public float ArmorPenetration => _armorPenetration;
+
     [Header("Ballistics")]
     [SerializeField]
     private float _swingMaxRange;

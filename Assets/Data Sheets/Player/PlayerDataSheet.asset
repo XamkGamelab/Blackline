@@ -15,8 +15,8 @@ MonoBehaviour:
   _walkSpeed: 4
   _runSpeed: 9
   _crouchSpeed: 2
-  _staticGravity: -4.9
-  _jumpGravity: -11.76
+  _staticGravity: -10
+  _jumpGravity: -25
   _jumpHeight: 1.2
   _maxHealth: 100
   _maxArmor: 100
@@ -30,7 +30,7 @@ MonoBehaviour:
   _charControlCrouchHeight: 1
   _crouchTransitionSpeed: 12
   _movementSmoothingTimeGrounded: 0.15
-  _movementSmoothingTimeAirborne: 1
+  _movementSmoothingTimeAirborne: 1.25
   _slideSpeedMultiplier: 1
   _slideSmoothingTime: 1
   _slideCooldown: 1

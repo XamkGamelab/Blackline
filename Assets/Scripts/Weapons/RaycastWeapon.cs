@@ -91,6 +91,12 @@ public class RaycastWeapon : BaseWeapon
             {
                 bulletTracerFX.Engage(bulletHit.point, _currentAmmoType); // Bullet tracer FX! -Shad //
                 SurfaceImpactLibrary.Instance.SpawnImpactFX(bulletHit); // Impact FX! -Shad //
+
+                // The hit object has an IDamageble interface, so let's actually damage that entity. -Shad //
+                if (bulletHit.collider.TryGetComponent<IDamageble>(out IDamageble damageble))
+                {
+                    damageble.ApplyDamage(_currentAmmoType.Damage, _currentAmmoType.ArmorPenetration);
+                }
             }
             else
             {
