@@ -14974,6 +14974,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 371658731823748792, guid: bc2d81ab657503446b7cc292f874a3b9, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1881908858440312938, guid: bc2d81ab657503446b7cc292f874a3b9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15037,7 +15041,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: bc2d81ab657503446b7cc292f874a3b9, type: 3}
 --- !u!1 &383674319 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 3514080375258714003, guid: bc2d81ab657503446b7cc292f874a3b9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5551800340157183613, guid: bc2d81ab657503446b7cc292f874a3b9, type: 3}
   m_PrefabInstance: {fileID: 383674318}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &383674320 stripped
@@ -15067,6 +15071,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &383674323 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2506358801311670213, guid: bc2d81ab657503446b7cc292f874a3b9, type: 3}
+  m_PrefabInstance: {fileID: 383674318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &385115931
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34719,6 +34728,9 @@ MonoBehaviour:
   endMissionCanvas: {fileID: 383674320}
   timeText: {fileID: 383674321}
   enemyText: {fileID: 383674322}
+  playerCamera: {fileID: 383674323}
+  interactDistance: 3
+  playerIsLooking: 0
 --- !u!43 &600176863
 Mesh:
   m_ObjectHideFlags: 0
