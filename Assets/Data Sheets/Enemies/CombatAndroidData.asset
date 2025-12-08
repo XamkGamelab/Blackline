@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _manufacturer: Nexa Group
   _enemyName: Combat Android MK. I
-  _lightAttackCooldown: 0
-  _heavyAttackCooldown: 0
-  _attackInputBufferTime: 0
-  _attackDamage: 0
-  _armorPenetration: 0
+  _maxHealth: 75
+  _maxArmor: 25
+  _equippedWeapon: {fileID: 11400000, guid: f84e9605db1810042a2e91c33a6b6741, type: 2}
+  _equippedAmmo: {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
+  _engageDistance: 75
+  _attackDistance: 60
+  _attackFrequency: 0
+  _patrolPositioningFrequency: 0
   ShootSound: {fileID: 0}

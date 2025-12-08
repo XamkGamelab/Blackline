@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IDamageble
 {
     SurfaceMaterial SurfaceMaterial { get; }
@@ -25,4 +27,15 @@ public interface IAmmoProvider
 public interface IPickup
 {
     void Pickup();
+}
+
+public interface IPlayerPosition
+{
+    Transform IPlayerTransform { get; }
+}
+
+public interface IPlayerHealth
+{
+    float IPlayerHealth { get; }
+    float IPlayerArmor { get; }
 }

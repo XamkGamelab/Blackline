@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SmallCaliberIncindiaryAmmoData
   m_EditorClassIdentifier: 
   _projectilesPerShot: 1
-  _ammoName: Small Caliber Incindiary Ammo
+  _ammoName: Light Incindiary Ammo
   _damage: 25
   _armorPenetration: 0
   _projectileRange: 0.5

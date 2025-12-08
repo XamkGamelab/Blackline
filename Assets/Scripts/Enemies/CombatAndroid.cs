@@ -6,8 +6,12 @@ public class CombatAndroid : BaseEnemy
     [Header("Combat Android")]
     [SerializeField]
     private NavMeshAgent _agent;
+    public NavMeshAgent Agent => _agent;
+
+    public CombatAndroidDataSheet DataSheet => (CombatAndroidDataSheet)BaseEnemyDataSheet; 
 
     public CombatAndroidPatrolState PatrolState;
+    public CombatAndroidAttackState AttackState;
 
     private void Awake() => Initialize();
 
@@ -17,6 +21,7 @@ public class CombatAndroid : BaseEnemy
 
         PatrolState = new CombatAndroidPatrolState(this);
         IdleState = new CombatAndroidIdleState(this);
+        AttackState = new CombatAndroidAttackState(this);
 
         StateMachine.UpdateState(IdleState);
     }

@@ -772,7 +772,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Dual Wield
     m_StateMachine: {fileID: -4595683486109413072}
-    m_Mask: {fileID: 31900000, guid: bb1d1671fb62e434fa9af39d7aa2d85a, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -796,7 +796,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: Right Bolt
     m_StateMachine: {fileID: 746011187296373085}
-    m_Mask: {fileID: 31900000, guid: b224e983f3abb1b43990ce940243178e, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

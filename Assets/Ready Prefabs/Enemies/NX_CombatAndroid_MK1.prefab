@@ -47,10 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30499907066fec145942300cc0357683, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _agent: {fileID: 1687557992295630663}
-  _maxHealth: 100
-  _maxArmor: 25
+  _baseEnemyDataSheet: {fileID: 11400000, guid: 426f1a6f8a00e6f4b96bf2b84da4d820, type: 2}
   _surfaceMaterial: 3
+  _agent: {fileID: 1687557992295630663}
 --- !u!195 &1687557992295630663
 NavMeshAgent:
   m_ObjectHideFlags: 0

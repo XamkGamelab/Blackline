@@ -1,12 +1,12 @@
 using UnityEngine;
+using Zenject;
 
 public abstract class BaseEnemy : MonoBehaviour, IDamageble
 {
     [Header("Base Enemy")]
     [SerializeField]
-    private float _maxHealth;
-    [SerializeField]
-    private float _maxArmor;
+    private BaseEnemyDataSheet _baseEnemyDataSheet;
+    public BaseEnemyDataSheet BaseEnemyDataSheet => _baseEnemyDataSheet;
     [SerializeField]
     private SurfaceMaterial _surfaceMaterial;
     public SurfaceMaterial SurfaceMaterial => _surfaceMaterial;
@@ -15,8 +15,17 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageble
     public float _currentArmor { get; protected set; }
 
     public EnemyStateMachine<BaseEnemy> StateMachine { get; private set; }
-
     public EnemyState<BaseEnemy> IdleState { get; protected set; }
+
+    public IPlayerPosition PlayerPosition { get; protected set; }
+    public IPlayerHealth PlayerHealth { get; protected set; }
+
+    [Inject]
+    private void Construct(IPlayerPosition playerPos, IPlayerHealth playerHealth)
+    {
+        PlayerPosition = playerPos;
+        PlayerHealth = playerHealth;
+    }
 
     private void Awake() => Initialize();
 
@@ -25,8 +34,8 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageble
         StateMachine = new EnemyStateMachine<BaseEnemy>();
         IdleState = new BaseEnemyIdleState(this);
 
-        _currentHealth = _maxHealth;
-        _currentArmor = _maxArmor;
+        _currentHealth = BaseEnemyDataSheet.MaxHealth;
+        _currentArmor = BaseEnemyDataSheet.MaxArmor;
     }
 
     private void Update()

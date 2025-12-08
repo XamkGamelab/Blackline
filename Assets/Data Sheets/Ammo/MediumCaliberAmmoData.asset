@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MediumCaliberAmmoData
   m_EditorClassIdentifier: 
   _projectilesPerShot: 1
-  _ammoName: Medium Caliber Ammo
+  _ammoName: Medium Ammo
   _damage: 35
   _armorPenetration: 0.6
   _projectileRange: 1

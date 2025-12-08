@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
+public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
 {
     [SerializeField]
     private SurfaceMaterial _surfaceMaterial;
@@ -13,7 +13,10 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable
 
     public event Action DamageTakenEvent;
 
-    private PlayerDataSheet PlayerData;    
+    private PlayerDataSheet PlayerData;
+
+    public float IPlayerHealth => CurrentHealth;
+    public float IPlayerArmor => CurrentArmor;
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)

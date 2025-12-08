@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPlayerPosition
 {
     [SerializeField]
     private CharacterController _characterController;
@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _crouching;
     private float _targetCenterY, _targetHeight, _targetCamHeight;
+
+    // IPlayerPosition for Enemies. -Shad //
+    [HideInInspector] 
+    public Transform IPlayerTransform => transform;
 
     [Inject]
     public void Construct(PlayerDataSheet playerDataSheet)

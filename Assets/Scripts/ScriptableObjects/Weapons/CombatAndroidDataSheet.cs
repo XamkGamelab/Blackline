@@ -5,23 +5,17 @@ public class CombatAndroidDataSheet : BaseEnemyDataSheet
 {
     [Header("Combat Android Features")]
     [SerializeField]
-    private float _lightAttackCooldown;
-    public float LightAttackCooldown => _lightAttackCooldown;
+    private float _engageDistance;
+    public float EngageDistance => _engageDistance;
     [SerializeField]
-    private float _heavyAttackCooldown;
-    public float HeavyAttackCooldown => _heavyAttackCooldown;
+    private float _attackDistance;
+    public float AttackDistance => _attackDistance;
     [SerializeField]
-    private float _attackInputBufferTime;
-    public float AttackInputBufferTime => _attackInputBufferTime;
-
-    [Header("Combat Android Damage")]
+    private float _attackFrequency;
+    public float AttackFrequency => _attackFrequency;
     [SerializeField]
-    private float _attackDamage;
-    public float AttackDamage => _attackDamage;
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float _armorPenetration;
-    public float ArmorPenetration => _armorPenetration;
+    private float _patrolPositioningFrequency;
+    public float PatrolPositioningFrequency => _patrolPositioningFrequency;
 
     [Header("SFX")]
     public AudioClip ShootSound;    
