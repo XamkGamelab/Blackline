@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 731e4a34fd26fba479712b11311b229e, type: 3}
-  m_Name: RevolverData
+  m_Name: Megadeath-500 Data
   m_EditorClassIdentifier: 
   _weaponCategory: 1
   _weaponName: Revolver

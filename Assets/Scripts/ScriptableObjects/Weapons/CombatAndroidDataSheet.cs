@@ -16,6 +16,19 @@ public class CombatAndroidDataSheet : BaseEnemyDataSheet
     [SerializeField]
     private float _patrolPositioningFrequency;
     public float PatrolPositioningFrequency => _patrolPositioningFrequency;
+    [SerializeField]
+    private float _patrolDistance;
+    public float PatrolDistance => _patrolDistance;
+
+    [Space]
+
+    [Header("Combat Andorid Speed")]
+    [SerializeField]
+    private float _patrolSpeed;
+    public float PatrolSpeed => _patrolSpeed;
+    [SerializeField]
+    private float _walkSpeed;
+    public float WalkSpeed => _walkSpeed;
 
     [Header("SFX")]
     public AudioClip ShootSound;    

@@ -15,7 +15,6 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageble
     public float _currentArmor { get; protected set; }
 
     public EnemyStateMachine<BaseEnemy> StateMachine { get; private set; }
-    public EnemyState<BaseEnemy> IdleState { get; protected set; }
 
     public IPlayerPosition PlayerPosition { get; protected set; }
     public IPlayerHealth PlayerHealth { get; protected set; }
@@ -32,18 +31,17 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageble
     public virtual void Initialize()
     {
         StateMachine = new EnemyStateMachine<BaseEnemy>();
-        IdleState = new BaseEnemyIdleState(this);
 
         _currentHealth = BaseEnemyDataSheet.MaxHealth;
         _currentArmor = BaseEnemyDataSheet.MaxArmor;
     }
 
-    private void Update()
+    public virtual void Update()
     {
         HandleStates();
     }
 
-    public virtual void HandleStates()
+    private void HandleStates()
     {
         StateMachine.CurrentState.HandleUpdate();
     }
