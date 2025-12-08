@@ -20,18 +20,21 @@ public class CombatAndroid : BaseEnemy
     private BaseAmmoDataSheet AmmoType;
     [SerializeField]
     private WeaponAudio WeaponAudio;
+    [SerializeField]
+    private ParticleSystem[] _shootParticles;
 
     public RaycastWeaponDataSheet WeaponData => (RaycastWeaponDataSheet)DataSheet.EquippedWeapon;
     public CombatAndroidDataSheet DataSheet => (CombatAndroidDataSheet)BaseEnemyDataSheet;
 
     public CombatAndroidIdleState IdleState;
-    public CombatAndroidPatrolState PatrolState;
+    public CombatAndroidRepositionState RepositionState;
     public CombatAndroidChaseState ChaseState;
     public CombatAndroidAttackState AttackState;
     public CombatAndroidDeadState DeadState;
     
     private BulletTracerFXPool _bulletTracerFXPool;
     public float NextShotTime { get; private set; }
+    [HideInInspector] public float NextRepositionTime;
 
     [Inject]
     private void Construct(BulletTracerFXPool pool)
@@ -46,8 +49,9 @@ public class CombatAndroid : BaseEnemy
         base.Initialize();
 
         NextShotTime = Time.time;
+        NextRepositionTime = Time.time;
 
-        PatrolState = new CombatAndroidPatrolState(this);
+        RepositionState = new CombatAndroidRepositionState(this);
         IdleState = new CombatAndroidIdleState(this);
         ChaseState = new CombatAndroidChaseState(this);
         AttackState = new CombatAndroidAttackState(this);
@@ -103,6 +107,8 @@ public class CombatAndroid : BaseEnemy
             }
         }
 
+        foreach (ParticleSystem fx in _shootParticles) fx.Play();
+
         // Sound effects. -Shad //
         WeaponAudio.PlayOnce(WeaponData.ShootSound);
 
@@ -112,7 +118,7 @@ public class CombatAndroid : BaseEnemy
     private void AndroidAnimation()
     {
         AndroidAnimator.SetFloat("Movement", _agent.velocity.magnitude);
-        AndroidAnimator.SetBool("Attack", StateMachine.CurrentState == AttackState);
+        AndroidAnimator.SetBool("Attack", StateMachine.CurrentState == AttackState && StateMachine.CurrentState != RepositionState);
         AndroidAnimator.SetBool("Dead", StateMachine.CurrentState == DeadState);
     }
 }

@@ -9,8 +9,6 @@ public class PlayerSlideState : PlayerGroundedState
     {
         PlayerMovement.SetCrouchSize(true);
 
-        Debug.Log("Slide Boost!");
-
         PlayerMovement.TempDirectionVector = GetDirectionVector();
 
         PlayerMovement.SlideVector.z = PlayerMovement.MoveVector.magnitude * PlayerMovement.PlayerData.SlideSpeedMultiplier;

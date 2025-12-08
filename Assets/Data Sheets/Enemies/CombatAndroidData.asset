@@ -18,11 +18,13 @@ MonoBehaviour:
   _maxArmor: 25
   _equippedWeapon: {fileID: 11400000, guid: f84e9605db1810042a2e91c33a6b6741, type: 2}
   _equippedAmmo: {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
-  _engageDistance: 12
-  _attackDistance: 7
-  _attackFrequency: 5
-  _patrolPositioningFrequency: 5
-  _patrolDistance: 15
+  _engageDistance: 50
+  _attackDelay: 0.25
+  _attackEndDelay: 0.25
+  _attackDistance: 15
+  _attackMaxAmount: 3
+  _repositionDistance: 4
+  _repositionCooldown: 3
   _patrolSpeed: 2
   _walkSpeed: 4
   ShootSound: {fileID: 0}

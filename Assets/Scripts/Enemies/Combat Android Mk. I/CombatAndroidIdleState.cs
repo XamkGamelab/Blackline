@@ -6,15 +6,6 @@ public class CombatAndroidIdleState : BaseEnemyIdleState
 
     public CombatAndroidIdleState(BaseEnemy enemy) : base(enemy) { }
 
-    private float _patrolTimer = 0f;
-
-    public override void Enter()
-    {
-        Debug.Log($"{CombatAndroid.gameObject.name} entered Idle State.");
-
-        _patrolTimer = 0f;
-    }
-
     public override void HandleUpdate()
     {
         base.HandleUpdate();
@@ -22,13 +13,6 @@ public class CombatAndroidIdleState : BaseEnemyIdleState
         if (PlayerDistance() < CombatAndroid.DataSheet.EngageDistance)
         {
             CombatAndroid.StateMachine.UpdateState(CombatAndroid.ChaseState);
-        }
-
-        _patrolTimer += Time.deltaTime;
-
-        if (_patrolTimer >= CombatAndroid.DataSheet.PatrolPositioningFrequency)
-        {
-            CombatAndroid.StateMachine.UpdateState(CombatAndroid.PatrolState);
         }
     }
 

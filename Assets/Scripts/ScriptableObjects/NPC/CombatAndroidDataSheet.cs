@@ -8,17 +8,23 @@ public class CombatAndroidDataSheet : BaseEnemyDataSheet
     private float _engageDistance;
     public float EngageDistance => _engageDistance;
     [SerializeField]
+    private float _attackDelay;
+    public float AttackDelay => _attackDelay;
+    [SerializeField]
+    private float _attackEndDelay;
+    public float AttackEndDelay => _attackEndDelay;
+    [SerializeField]
     private float _attackDistance;
     public float AttackDistance => _attackDistance;
     [SerializeField]
-    private float _attackFrequency;
-    public float AttackFrequency => _attackFrequency;
+    private int _attackMaxAmount;
+    public int AttackMaxAmount => _attackMaxAmount;
     [SerializeField]
-    private float _patrolPositioningFrequency;
-    public float PatrolPositioningFrequency => _patrolPositioningFrequency;
+    private float _repositionDistance;
+    public float RepositionDistance => _repositionDistance;
     [SerializeField]
-    private float _patrolDistance;
-    public float PatrolDistance => _patrolDistance;
+    private float _repositionCooldown;
+    public float RepositionCooldown => _repositionCooldown;
 
     [Space]
 
@@ -31,5 +37,5 @@ public class CombatAndroidDataSheet : BaseEnemyDataSheet
     public float WalkSpeed => _walkSpeed;
 
     [Header("SFX")]
-    public AudioClip ShootSound;    
+    public AudioClip AlertSound;    
 }
