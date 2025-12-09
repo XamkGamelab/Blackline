@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RecoilEffect : MonoBehaviour
+public class ShakeEffect : MonoBehaviour
 {
     [SerializeField]
     private PlayerMovement _playerMovement;
@@ -8,19 +8,25 @@ public class RecoilEffect : MonoBehaviour
     private PlayerLook _playerLook;
     [SerializeField]
     private PlayerInventory _playerInventory;
+    [SerializeField]
+    private PlayerHealth _playerHealth;
 
     private Vector3 _currentRotation, _targetRotation;
 
     private void Start()
     {
         _playerInventory.WeaponEquipEvent += OnWeaponSwitched;
-        _playerInventory.EquippedWeapon.WeaponPrimaryEvent += RecoilCam;
+        _playerInventory.EquippedWeapon.WeaponPrimaryEvent += ShakeCamera;
+        
+        _playerHealth.DamageTakenEvent += ShakeCamera;
     }
 
     private void OnDestroy()
     {
         _playerInventory.WeaponEquipEvent -= OnWeaponSwitched;
-        _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= RecoilCam;
+        _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= ShakeCamera;
+
+        _playerHealth.DamageTakenEvent -= ShakeCamera;
     }
 
     private void Update()
@@ -31,7 +37,7 @@ public class RecoilEffect : MonoBehaviour
         transform.localRotation = Quaternion.Euler(_currentRotation);        
     }
 
-    public void RecoilCam()
+    public void ShakeCamera()
     {
         if(_playerInventory.EquippedWeapon is RaycastWeapon raycastWeapon)
         {
@@ -50,7 +56,7 @@ public class RecoilEffect : MonoBehaviour
 
     public void OnWeaponSwitched()
     {
-        foreach (BaseWeapon key in _playerInventory.OwnedWeapons.Keys) key.WeaponPrimaryEvent -= RecoilCam;
-        _playerInventory.EquippedWeapon.WeaponPrimaryEvent += RecoilCam;
+        foreach (BaseWeapon key in _playerInventory.OwnedWeapons.Keys) key.WeaponPrimaryEvent -= ShakeCamera;
+        _playerInventory.EquippedWeapon.WeaponPrimaryEvent += ShakeCamera;
     }
 }

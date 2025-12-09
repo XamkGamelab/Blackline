@@ -1,15 +1,33 @@
 using UnityEngine;
+using Zenject;
 
 public class BulletImpactFX : MonoBehaviour, IPoolable
 {
     [SerializeField]
     private ParticleSystem _particleSystem;
+    
+    private BasePool<BulletImpactFX> _impactFXPool;
 
-    private BasePool<BulletImpactFX> _pool;
+    [SerializeField]
+    private PuddleType _puddleType;
+    [SerializeField]
+    private bool _puddleOnCollision;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _puddleRatio;
+
+    //[Inject(Id = _puddleType)]
+    private BasePool<PuddleFX> _puddleFXPool;
+
+    [Inject]
+    private void Construct(PuddleFX _puddleFXPool)
+    {
+
+    }
 
     public void SetPool<T>(BasePool<T> pool) where T : Component, IPoolable
     {
-        _pool = pool as BasePool<BulletImpactFX>;
+        _impactFXPool = pool as BasePool<BulletImpactFX>;
     }
 
     public void OnSpawned()
@@ -17,9 +35,14 @@ public class BulletImpactFX : MonoBehaviour, IPoolable
 
     }
 
+    public void OnParticleCollision(GameObject other)
+    {
+        
+    }
+
     public void OnParticleSystemStopped()
     {
-        _pool.Despawn(this);
+        _impactFXPool.Despawn(this);
     }
 
     public void OnDespawned()
@@ -27,4 +50,11 @@ public class BulletImpactFX : MonoBehaviour, IPoolable
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;
     }
+}
+
+public enum PuddleType
+{
+    None,
+    Android,
+    Flesh
 }

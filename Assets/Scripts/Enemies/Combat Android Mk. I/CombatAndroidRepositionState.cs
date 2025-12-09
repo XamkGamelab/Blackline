@@ -28,7 +28,7 @@ public class CombatAndroidRepositionState : CombatAndroidConstantState
     private Vector3 RandomPoint()
     {
         Vector2 randomDir = Random.insideUnitCircle.normalized * Enemy.DataSheet.RepositionDistance;
-        Vector3 randomPos = Enemy.transform.position + new Vector3(randomDir.x, 0f, randomDir.y);
+        Vector3 randomPos = Enemy.transform.position + (Enemy.transform.forward * Enemy.DataSheet.RepositionDistance) + new Vector3(randomDir.x, 0f, randomDir.y);
 
         NavMeshHit hit;
         if (NavMesh.SamplePosition(randomPos, out hit, Enemy.Agent.height * 2f, NavMesh.AllAreas))
@@ -37,6 +37,6 @@ public class CombatAndroidRepositionState : CombatAndroidConstantState
         }
 
         // If somehow invalid, retry:
-        return randomPos;
+        return Enemy.transform.position;
     }
 }

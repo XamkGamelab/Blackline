@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab180d40e3d4df4d9b6439a6ab20c17, type: 3}
-  m_Name: SmallCaliberIncindiaryAmmoData
+  m_Script: {fileID: 11500000, guid: 30110cd071597b44099184ce59319b3a, type: 3}
+  m_Name: RevolverAmmoData
   m_EditorClassIdentifier: 
   _projectilesPerShot: 1
-  _ammoName: Light Incindiary Ammo
-  _damage: 25
-  _armorPenetration: 0
-  _projectileRange: 0.5
+  _ammoName: Revolver Ammo
+  _damage: 35
+  _armorPenetration: 0.5
+  _projectileRange: 1
   _projectileSpeed: 15
-  _damageType: 1
+  _damageType: 0
   Source: {fileID: 0}
-  _burnDuration: 5
-  _damageOverTime: 2

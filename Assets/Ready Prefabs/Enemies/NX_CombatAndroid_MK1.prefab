@@ -10005,13 +10005,14 @@ MonoBehaviour:
   _baseEnemyDataSheet: {fileID: 11400000, guid: 426f1a6f8a00e6f4b96bf2b84da4d820, type: 2}
   _surfaceMaterial: 3
   _agent: {fileID: 1687557992295630663}
-  AndroidAnimator: {fileID: 9164621865415487403}
-  WeaponRaycastLayers:
+  _androidAnimator: {fileID: 9164621865415487403}
+  _weaponObject: {fileID: 8878142718436377177}
+  _weaponRaycastLayers:
     serializedVersion: 2
-    m_Bits: 0
-  BulletSpawnPoint: {fileID: 7418831016700776623}
-  AmmoType: {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
-  WeaponAudio: {fileID: 1390600395480843404}
+    m_Bits: 73
+  _bulletSpawnPoint: {fileID: 7418831016700776623}
+  _ammoType: {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
+  _weaponAudio: {fileID: 1390600395480843404}
   _shootParticles:
   - {fileID: 240225411709335748}
   - {fileID: 7498079324694409299}
@@ -10086,7 +10087,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -10269,6 +10270,11 @@ Transform:
 --- !u!4 &3012745230817686993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3e91820019158224a8a73ca81745081e, type: 3}
+  m_PrefabInstance: {fileID: 3334302744962830906}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8878142718436377177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -3066760659715649437, guid: 3e91820019158224a8a73ca81745081e, type: 3}
   m_PrefabInstance: {fileID: 3334302744962830906}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &9164621865415487403 stripped

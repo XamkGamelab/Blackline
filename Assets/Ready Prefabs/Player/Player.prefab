@@ -7820,6 +7820,7 @@ MonoBehaviour:
   _playerMovement: {fileID: 5975463453229123509}
   _playerLook: {fileID: 1040064535150633544}
   _playerInventory: {fileID: 1375705519305384345}
+  _playerHealth: {fileID: 7753459448987666313}
 --- !u!1 &8419838080503843751
 GameObject:
   m_ObjectHideFlags: 0
