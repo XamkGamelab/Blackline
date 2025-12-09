@@ -16457,7 +16457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868dc1dc8cef5a640bbbed3ece4eb32c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 5004203295657643214, guid: 792c377440616e14c8d3fe748e24dbc2, type: 3}
+  _prefab: {fileID: 7932911417350304584, guid: 792c377440616e14c8d3fe748e24dbc2, type: 3}
   _poolSize: 500
 --- !u!1 &970826216
 GameObject:
@@ -17194,7 +17194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
       propertyPath: m_IsActive
@@ -19430,7 +19430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
       propertyPath: m_IsActive
@@ -34649,6 +34649,10 @@ PrefabInstance:
     - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
       propertyPath: m_Name
       value: NX_CombatAndroid_MK1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6969168897687503362, guid: 4d842d8802b5aae4a90bb291f1ba01fa, type: 3}
       propertyPath: m_IsActive

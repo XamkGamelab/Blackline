@@ -1,51 +1,28 @@
 using UnityEngine;
-using Zenject;
 
 public class BulletImpactFX : MonoBehaviour, IPoolable
 {
     [SerializeField]
-    private ParticleSystem _particleSystem;
+    protected ParticleSystem _particleSystem;
     
-    private BasePool<BulletImpactFX> _impactFXPool;
-
-    [SerializeField]
-    private PuddleType _puddleType;
-    [SerializeField]
-    private bool _puddleOnCollision;
-    [SerializeField]
-    [Range(0f, 1f)]
-    private float _puddleRatio;
-
-    //[Inject(Id = _puddleType)]
-    private BasePool<PuddleFX> _puddleFXPool;
-
-    [Inject]
-    private void Construct(PuddleFX _puddleFXPool)
-    {
-
-    }
+    protected BasePool<BulletImpactFX> _impactFXPool;
 
     public void SetPool<T>(BasePool<T> pool) where T : Component, IPoolable
     {
         _impactFXPool = pool as BasePool<BulletImpactFX>;
     }
 
-    public void OnSpawned()
+    public virtual void OnSpawned()
     {
 
     }
 
-    public void OnParticleCollision(GameObject other)
-    {
-        
-    }
-
-    public void OnParticleSystemStopped()
+    public virtual void OnParticleSystemStopped()
     {
         _impactFXPool.Despawn(this);
     }
 
-    public void OnDespawned()
+    public virtual void OnDespawned()
     {
         transform.position = Vector3.zero;
         transform.rotation = Quaternion.identity;

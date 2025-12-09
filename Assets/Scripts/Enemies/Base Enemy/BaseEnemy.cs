@@ -48,8 +48,6 @@ public abstract class BaseEnemy : MonoBehaviour, IDamageble
 
     public void ApplyDamage(float damage, float armorPenetration)
     {
-        print($"{gameObject.name} says ouch!");
-
         _currentHealth -= DamageData.HealthDamage(damage, armorPenetration);
         _currentArmor -= DamageData.ArmorDamage(damage);
 

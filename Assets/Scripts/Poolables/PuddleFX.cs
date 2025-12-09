@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class PuddleFX : MonoBehaviour, IPoolable
 {
-    private BasePool<BulletImpactFX> _pool;
+    private BasePool<PuddleFX> _pool;
 
     public void SetPool<T>(BasePool<T> pool) where T : Component, IPoolable
     {
-        _pool = pool as BasePool<BulletImpactFX>;
+        _pool = pool as BasePool<PuddleFX>;
     }
 
     public void OnSpawned()
     {
-
+        print("Puddle Spawned");
     }
 
     public void OnDespawned()

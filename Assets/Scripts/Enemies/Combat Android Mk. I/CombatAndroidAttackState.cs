@@ -12,8 +12,6 @@ public class CombatAndroidAttackState : CombatAndroidConstantState
         _attackDelayTimer = 0f;
         _attackEndTimer = 0f;
         _attackCounter = Random.Range(1, Enemy.DataSheet.AttackMaxAmount);
-
-        Debug.Log("Attacking...");
     }
 
     public override void HandleUpdate()

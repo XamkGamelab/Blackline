@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Zenject;
 
 public class SurfaceImpactLibrary : MonoBehaviour
 {
@@ -8,14 +7,6 @@ public class SurfaceImpactLibrary : MonoBehaviour
 
     [SerializeField]
     private List<SurfaceImpactData> _surfaceImpactData;
-
-    private BulletImpactFXPool _fleshImpactFXPool;
-
-    [Inject]
-    public void Construct(BulletImpactFXPool impactFXPool)
-    {
-        _fleshImpactFXPool = impactFXPool;
-    }
 
     private void Awake() => Instance = this;
 
