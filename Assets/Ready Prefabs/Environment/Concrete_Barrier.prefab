@@ -52,6 +52,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Concrete_Barrier
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2debf00cd86806f45a1ad369eebe2823, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2debf00cd86806f45a1ad369eebe2823, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -102,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54c45a934670c745a9338529ab391b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _surfaceMaterial: 1
+  _surfaceMaterial: 0
