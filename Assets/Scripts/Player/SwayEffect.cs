@@ -18,6 +18,8 @@ public class SwayEffect : MonoBehaviour
     private float _currentSlideAngle, _targetSlideAngle;
     private void Update()
     {
+        if (_playerMovement.CurrentState == _playerMovement.DeadState) return;
+
         // Rotation sway. -Shad //
         _lookRawX = Input.GetAxisRaw("Mouse X") * _playerInventory.EquippedWeapon.WeaponData.SwayAmountRot;
         _lookRawY = Input.GetAxisRaw("Mouse Y") * _playerInventory.EquippedWeapon.WeaponData.SwayAmountRot;

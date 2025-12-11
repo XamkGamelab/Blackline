@@ -24,6 +24,7 @@ MonoBehaviour:
   _runningCameraFOV: 90
   _cameraDefaultPosY: 1.6
   _cameraCrouchPosY: 0.8
+  _cameraDeadPosY: 0.4
   _charControlDefaultCenterY: 1
   _charControlDefaultHeight: 2
   _charControlCrouchCenterY: 0.5

@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerPosition
     public PlayerSlideState SlideState;
     public PlayerJumpState JumpState;
     public PlayerFallingState FallingState;
+    public PlayerDeadState DeadState;
 
     // Public, but hidden references. //
     public CharacterController CharacterController => _characterController;
@@ -70,6 +71,7 @@ public class PlayerMovement : MonoBehaviour, IPlayerPosition
         SlideState = new PlayerSlideState(this);
         JumpState = new PlayerJumpState(this);
         FallingState = new PlayerFallingState(this);
+        DeadState = new PlayerDeadState(this);
 
         UpdateState(IdleState);
     }
