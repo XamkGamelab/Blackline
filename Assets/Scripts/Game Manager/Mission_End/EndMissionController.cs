@@ -71,7 +71,7 @@ public class EndMissionController : MonoBehaviour
     private void ShowEndMission()
     {
         missionEnded = true;
-
+        Cursor.lockState = CursorLockMode.None;
         // Pause the game
         Time.timeScale = 0f;
 
