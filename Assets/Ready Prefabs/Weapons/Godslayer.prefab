@@ -53,7 +53,7 @@ MonoBehaviour:
   _swingRaycastPosition: {fileID: 727954004412043643}
   _raycastLayers:
     serializedVersion: 2
-    m_Bits: 137
+    m_Bits: 393
 --- !u!114 &1257127471894879830
 MonoBehaviour:
   m_ObjectHideFlags: 0

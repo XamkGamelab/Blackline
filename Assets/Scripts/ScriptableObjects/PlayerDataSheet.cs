@@ -19,6 +19,9 @@ public class PlayerDataSheet : CharacterDataSheet
     [SerializeField]
     private float _cameraCrouchPosY;
     public float CameraCrouchPosY => _cameraCrouchPosY;
+    [SerializeField]
+    private float _cameraDeadPosY;
+    public float CameraDeadPosY => _cameraDeadPosY;
 
     [Header("Player Character Controller")]
     [SerializeField]

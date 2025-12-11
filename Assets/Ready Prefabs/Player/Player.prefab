@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7d721b07a66cc43acad9d75ef38afc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 5975463453229123509}
   _surfaceMaterial: 2
 --- !u!114 &2166152218740418279
 MonoBehaviour:

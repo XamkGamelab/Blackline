@@ -289,7 +289,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.4
       minScalar: 0.25
       maxCurve:
         serializedVersion: 2
@@ -4829,8 +4829,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSystem: {fileID: 3527582038466020671}
-  _puddleOnCollision: 1
-  _puddleRatio: 1
+  _puddleOnCollision: 0
+  _puddleRatio: 0
 --- !u!199 &3656358681907071644
 ParticleSystemRenderer:
   serializedVersion: 6

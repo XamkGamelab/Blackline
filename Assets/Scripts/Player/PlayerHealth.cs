@@ -5,6 +5,8 @@ using Zenject;
 public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
 {
     [SerializeField]
+    private PlayerMovement _playerMovement; // Fucking dependancy hack. Fuck this fuck you. -Shad //
+    [SerializeField]
     private SurfaceMaterial _surfaceMaterial;
     public SurfaceMaterial SurfaceMaterial => _surfaceMaterial;
       
@@ -45,6 +47,8 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
     {
         CurrentHealth -= DamageData.HealthDamage(damage, armorPenetration);
         CurrentArmor -= DamageData.ArmorDamage(damage);
+
+        if (CurrentHealth <= 0f) _playerMovement.UpdateState(_playerMovement.DeadState);
 
         DamageTakenEvent?.Invoke();
     }

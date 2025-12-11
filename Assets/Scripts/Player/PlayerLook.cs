@@ -43,6 +43,8 @@ public class PlayerLook : MonoBehaviour
     private float _camLookX, _camLookY;    
     private void CameraLogic()
     {
+        if (_playerMovement.CurrentState == _playerMovement.DeadState) return;
+
         // Limit the up and down axis to -90 & 90 degrees. //
         _camLookX = Mathf.Clamp(_camLookX, -90f, 90f);
 
@@ -58,24 +60,34 @@ public class PlayerLook : MonoBehaviour
     private float _targetFOV, refSmoothFOV = 0f;
     private void Cinematics()
     {
-        if (_playerInventory.EquippedWeapon.Aiming)
+        if(_playerMovement.CurrentState == _playerMovement.DeadState)
         {
-            _targetFOV = _playerDataSheet.WalkingCameraFOV / _playerInventory.EquippedWeapon.WeaponData.AimZoom;
+            print("Dead.");
+
+            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDeadPosY, 0f), 5f * Time.deltaTime);
+            _cam.fieldOfView = Mathf.SmoothDamp(_cam.fieldOfView, _playerDataSheet.WalkingCameraFOV, ref refSmoothFOV, 0.1f);
         }
         else
         {
-            _targetFOV = _playerDataSheet.WalkingCameraFOV;
-        }
+            if (_playerInventory.EquippedWeapon.Aiming)
+            {
+                _targetFOV = _playerDataSheet.WalkingCameraFOV / _playerInventory.EquippedWeapon.WeaponData.AimZoom;
+            }
+            else
+            {
+                _targetFOV = _playerDataSheet.WalkingCameraFOV;
+            }
 
-        _cam.fieldOfView = Mathf.SmoothDamp(_cam.fieldOfView, _targetFOV, ref refSmoothFOV, 0.1f);        
+            _cam.fieldOfView = Mathf.SmoothDamp(_cam.fieldOfView, _targetFOV, ref refSmoothFOV, 0.1f);
 
-        if (_playerMovement.CurrentState == _playerMovement.CrouchState || _playerMovement.CurrentState == _playerMovement.SlideState)
-        {
-            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraCrouchPosY, 0f), 5f * Time.deltaTime);
-        }
-        else
-        {
-            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDefaultPosY, 0f), 5f * Time.deltaTime);
+            if (_playerMovement.CurrentState == _playerMovement.CrouchState || _playerMovement.CurrentState == _playerMovement.SlideState)
+            {
+                _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraCrouchPosY, 0f), 5f * Time.deltaTime);
+            }
+            else
+            {
+                _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDefaultPosY, 0f), 5f * Time.deltaTime);
+            }
         }
     }
 }
