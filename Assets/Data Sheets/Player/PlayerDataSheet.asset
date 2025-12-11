@@ -33,9 +33,9 @@ MonoBehaviour:
   _movementSmoothingTimeGrounded: 0.15
   _movementSmoothingTimeAirborne: 1.25
   _slideSpeedMultiplier: 1
-  _slideSmoothingTime: 1
+  _slideSmoothingTime: 0.1
   _slideCooldown: 1
   _bunnyHopSpeedMultiplier: 0.7
-  _bunnyHopSmoothingTimeGrounded: 0.25
+  _bunnyHopSmoothingTimeGrounded: 1
   _bunnyHopSmoothingTimeAirborne: 1
   _perks: []

@@ -33,7 +33,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
     {
         PlayerMovement.BunnyhopVector = PlayerMovement.BunnyhopVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if(PlayerMovement.BunnyhopVector.magnitude > 0f) PlayerMovement.BunnyhopVector = Vector3.SmoothDamp(PlayerMovement.BunnyhopVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.BunnyHopSmoothingTimeGrounded);        
+        if(PlayerMovement.BunnyhopVector.magnitude > 0f) PlayerMovement.BunnyhopVector = Vector3.SmoothDamp(PlayerMovement.BunnyhopVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.BunnyHopSmoothingTimeGrounded);
 
         PlayerMovement.BunnyhopVector = Vector3.ClampMagnitude(PlayerMovement.BunnyhopVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.BunnyHopSpeedMultiplier);
     }
@@ -43,7 +43,7 @@ public abstract class PlayerGroundedState : PlayerBaseState
     {
         PlayerMovement.SlideVector = PlayerMovement.SlideVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if (PlayerMovement.SlideVector.magnitude > 0f) PlayerMovement.SlideVector = Vector3.SmoothDamp(PlayerMovement.SlideVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.SlideSmoothingTime);
+        if (PlayerMovement.SlideVector.magnitude > 0f) PlayerMovement.SlideVector = Vector3.SmoothDamp(PlayerMovement.SlideVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.SlideSmoothingTime);        
 
         PlayerMovement.SlideVector = Vector3.ClampMagnitude(PlayerMovement.SlideVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.SlideSpeedMultiplier);
     }

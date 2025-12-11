@@ -83,19 +83,31 @@ public class PlayerMovement : MonoBehaviour, IPlayerPosition
 
         _finalSumVector = MoveVector + GravityVector + BunnyhopVector + SlideVector;
 
+        print($"MoveVector: {MoveVector.magnitude}");
+        print($"GravityVector: {GravityVector.magnitude}");
+        print($"BunnyhopVector: {BunnyhopVector.magnitude}");
+        print($"SlideVector: {SlideVector.magnitude}");
+        print($"State: {CurrentState}");
+
         CharacterController.Move(_finalSumVector * Time.deltaTime);
 
-        if (_crouching)
+        if (_crouching && CurrentState != DeadState)
         {
             _targetCenterY = Mathf.Lerp(_targetCenterY, PlayerData.CharControlCrouchCenterY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
             _targetHeight = Mathf.Lerp(_targetHeight, PlayerData.CharControlCrouchHeight, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
             _targetCamHeight = Mathf.Lerp(_targetCamHeight, PlayerData.CameraCrouchPosY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
         }
-        else
+        else if(!_crouching && CurrentState != DeadState)
         {
             _targetCenterY = Mathf.Lerp(_targetCenterY, PlayerData.CharControlDefaultCenterY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
             _targetHeight = Mathf.Lerp(_targetHeight, PlayerData.CharControlDefaultHeight, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
             _targetCamHeight = Mathf.Lerp(_targetCamHeight, PlayerData.CameraDefaultPosY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _targetCenterY = Mathf.Lerp(_targetCenterY, PlayerData.CharControlCrouchCenterY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+            _targetHeight = Mathf.Lerp(_targetHeight, PlayerData.CharControlCrouchHeight, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
+            _targetCamHeight = Mathf.Lerp(_targetCamHeight, PlayerData.CameraDeadPosY, PlayerData.CrouchTransitionSpeed * Time.deltaTime);
         }
 
         CharacterController.center = new(0f, _targetCenterY, 0f);

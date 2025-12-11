@@ -60,17 +60,7 @@ public class PlayerLook : MonoBehaviour
     private float _targetFOV, refSmoothFOV = 0f;
     private void Cinematics()
     {
-        if(_playerMovement.CurrentState == _playerMovement.DeadState)
-        {
-            print("Dead.");
-
-            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDeadPosY, 0f), 5f * Time.deltaTime);
-            _cam.fieldOfView = Mathf.SmoothDamp(_cam.fieldOfView, _playerDataSheet.WalkingCameraFOV, ref refSmoothFOV, 0.1f);
-
-            return;
-        }
-
-        if (_playerInventory.EquippedWeapon.Aiming)
+        if (_playerInventory.EquippedWeapon.Aiming && _playerMovement.CurrentState != _playerMovement.DeadState)
         {
             _targetFOV = _playerDataSheet.WalkingCameraFOV / _playerInventory.EquippedWeapon.WeaponData.AimZoom;
         }
@@ -83,11 +73,18 @@ public class PlayerLook : MonoBehaviour
 
         if (_playerMovement.CurrentState == _playerMovement.CrouchState || _playerMovement.CurrentState == _playerMovement.SlideState)
         {
-            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraCrouchPosY, 0f), 5f * Time.deltaTime);
+            //_cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraCrouchPosY, 0f), 5f * Time.deltaTime);
+        }
+        else if(_playerMovement.CurrentState != _playerMovement.DeadState)
+        {
+            //_cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDefaultPosY, 0f), 5f * Time.deltaTime);
         }
         else
         {
-            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDefaultPosY, 0f), 5f * Time.deltaTime);
+            print("Dead.");
+
+            _cameraPivot.localPosition = Vector3.Lerp(_cameraPivot.localPosition, new(0f, _playerDataSheet.CameraDeadPosY, 0f), 5f * Time.deltaTime);
+            _cam.fieldOfView = Mathf.SmoothDamp(_cam.fieldOfView, _playerDataSheet.WalkingCameraFOV, ref refSmoothFOV, 0.1f);
         }
     }
 }
