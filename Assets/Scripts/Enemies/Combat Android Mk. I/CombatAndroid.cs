@@ -10,10 +10,10 @@ public class CombatAndroid : BaseEnemy
     public NavMeshAgent Agent => _agent;
     [SerializeField]
     private Animator _androidAnimator;
+    public Collider NavCollider;
 
     [Header("Combat Android Weapon")]
-    [SerializeField]
-    private GameObject _weaponObject;
+    public GameObject WeaponObject;
     [SerializeField]
     private LayerMask _weaponRaycastLayers;
     [SerializeField]

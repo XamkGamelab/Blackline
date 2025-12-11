@@ -10006,10 +10006,11 @@ MonoBehaviour:
   _surfaceMaterial: 3
   _agent: {fileID: 1687557992295630663}
   _androidAnimator: {fileID: 9164621865415487403}
-  _weaponObject: {fileID: 8878142718436377177}
+  NavCollider: {fileID: 2549477498692179837}
+  WeaponObject: {fileID: 8878142718436377177}
   _weaponRaycastLayers:
     serializedVersion: 2
-    m_Bits: 73
+    m_Bits: 329
   _bulletSpawnPoint: {fileID: 7418831016700776623}
   _ammoType: {fileID: 11400000, guid: bc9e57aaf03356845aa328863d2150f8, type: 2}
   _weaponAudio: {fileID: 1390600395480843404}
