@@ -86,10 +86,10 @@ public class PlayerGameUI : MonoBehaviour
     #region Health Methods    
     private void OnDamageTaken()
     {
-        _healthText.text = _playerHealth.CurrentHealth.ToString();
+        _healthText.text = Mathf.RoundToInt(_playerHealth.CurrentHealth).ToString();
         _healthSlider.value = _playerHealth.CurrentHealth / PlayerData.MaxHealth;
 
-        _armorText.text = _playerHealth.CurrentHealth.ToString();
+        _armorText.text = Mathf.RoundToInt(_playerHealth.CurrentArmor).ToString();
         _armorSlider.value = _playerHealth.CurrentArmor / PlayerData.MaxArmor;
     }
     #endregion
