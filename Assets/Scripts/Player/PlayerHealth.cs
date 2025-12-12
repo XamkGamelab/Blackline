@@ -30,6 +30,9 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
     {
         CurrentHealth = PlayerData.MaxHealth;
         CurrentArmor = PlayerData.MaxArmor;
+
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0f, PlayerData.MaxHealth);
+        CurrentArmor = Mathf.Clamp(CurrentArmor, 0f, PlayerData.MaxArmor);
     }
 
     public bool IsBurning { get; private set; }

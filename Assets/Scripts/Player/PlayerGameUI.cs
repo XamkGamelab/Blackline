@@ -15,6 +15,10 @@ public class PlayerGameUI : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField]
+    private GameObject _gameScreenUI;
+    [SerializeField]
+    private GameObject _deathScreenUI;
+    [SerializeField]
     private TextMeshProUGUI _healthText;
     [SerializeField]
     private Slider _healthSlider;
@@ -91,6 +95,12 @@ public class PlayerGameUI : MonoBehaviour
 
         _armorText.text = Mathf.RoundToInt(_playerHealth.CurrentArmor).ToString();
         _armorSlider.value = _playerHealth.CurrentArmor / PlayerData.MaxArmor;
+
+        if(_playerHealth.CurrentHealth <= 0f)
+        {
+            _gameScreenUI.SetActive(false);
+            _deathScreenUI.SetActive(true);
+        }
     }
     #endregion
 }

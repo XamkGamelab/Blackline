@@ -53,8 +53,11 @@ public class PlayerDataSheet : CharacterDataSheet
     private float _slideSpeedMultiplier;
     public float SlideSpeedMultiplier => _slideSpeedMultiplier;
     [SerializeField]
-    private float _slideSmoothingTime;
-    public float SlideSmoothingTime => _slideSmoothingTime;
+    private float _slideOutSmoothingTime;
+    public float SlideOutSmoothingTime => _slideOutSmoothingTime;
+    [SerializeField]
+    private float _slideInSmoothingTime;
+    public float SlideInSmoothingTime => _slideInSmoothingTime;
     [SerializeField]
     private float _slideCooldown;
     public float SlideCooldown => _slideCooldown;

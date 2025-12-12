@@ -40,7 +40,7 @@ public class PlayerDeadState : PlayerBaseState
     {
         PlayerMovement.SlideVector = PlayerMovement.SlideVector.magnitude * PlayerMovement.TempDirectionVector;
 
-        if (PlayerMovement.SlideVector.magnitude > 0f) PlayerMovement.SlideVector = Vector3.SmoothDamp(PlayerMovement.SlideVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.SlideSmoothingTime);
+        if (PlayerMovement.SlideVector.magnitude > 0f) PlayerMovement.SlideVector = Vector3.SmoothDamp(PlayerMovement.SlideVector, Vector3.zero, ref PlayerMovement.RefVector, PlayerMovement.PlayerData.SlideOutSmoothingTime);
 
         PlayerMovement.SlideVector = Vector3.ClampMagnitude(PlayerMovement.SlideVector, PlayerMovement.PlayerData.RunSpeed * PlayerMovement.PlayerData.SlideSpeedMultiplier);
     }

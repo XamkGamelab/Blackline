@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private GameObject pauseMenuUI;
+    [SerializeField]
+    private PlayerHealth _playerHealth;
 
     private GameState _gameState;
 
@@ -16,6 +18,16 @@ public class GameManager : MonoBehaviour
 
     // Hides the Pause Menu on start. Very clever Veeti. -Shad //
     private void Awake() => Initialize();
+
+    private void Start()
+    {
+        _playerHealth.DamageTakenEvent += OnPlayerDamage;
+    }
+
+    private void OnDestroy()
+    {
+        _playerHealth.DamageTakenEvent -= OnPlayerDamage;
+    }
 
     private void Initialize()
     {
@@ -36,14 +48,22 @@ public class GameManager : MonoBehaviour
         GameState state = _gameState == GameState.InGame ? GameState.Paused : GameState.InGame; 
 
         SetGameState(state);
-
-        // Set the boolean to its opposite value. Imagine like *-1. -Shad //
+        
         pauseMenuUI.SetActive(toggle); // Feed the _paused boolean directly to the method. -Shad //
         Time.timeScale = toggle ? 0f : 1f; // Is _paused true? Then set to 0f, else set to 1f. -Shad //
 
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked; // Is _paused? Then free the cursor, else lock it. -Shad //
     }
     #endregion
+
+    private void OnPlayerDamage()
+    {
+        if(_playerHealth.CurrentHealth <= 0f)
+        {
+            SetGameState(GameState.GameOver);
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 
     // Do not set _gameState directly, use this. -Shad //
     public void SetGameState(GameState gameState)

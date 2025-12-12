@@ -6,6 +6,8 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerMovement _playerMovement;
     [SerializeField]
     private PlayerInventory _playerInventory;
+    [SerializeField]
+    private PlayerHealth _playerHealth;
 
     [SerializeField]
     private Animator _playerAnim;
@@ -19,12 +21,14 @@ public class PlayerAnimator : MonoBehaviour
     {
         _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
         _playerInventory.WeaponUnequipEvent += OnWeaponUnequipped;
+        _playerHealth.DamageTakenEvent += OnDamageTaken;
     }
 
     private void OnDisable()
     {
         _playerInventory.WeaponEquipEvent -= OnWeaponEquipped;
         _playerInventory.WeaponUnequipEvent += OnWeaponUnequipped;
+        _playerHealth.DamageTakenEvent -= OnDamageTaken;
     }
 
     private void Start()
@@ -42,7 +46,6 @@ public class PlayerAnimator : MonoBehaviour
 
         _leftHandIK.rotation = _playerInventory.EquippedWeapon.LeftHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.LeftHandIKRotationOffset;
         _rightHandIK.rotation = _playerInventory.EquippedWeapon.RightHandTargetIK.rotation * _playerInventory.EquippedWeapon.WeaponData.RightHandIKRotationOffset;
-
 
         _playerInventory.EquippedWeapon.WeaponAnimator.SetFloat("PlayerSpeed", _playerMovement.MoveVector.magnitude);
         _playerInventory.EquippedWeapon.WeaponAnimator.SetBool("Airborne", _playerMovement.CurrentState is PlayerFallingState);
@@ -63,5 +66,14 @@ public class PlayerAnimator : MonoBehaviour
         _playerAnim.ResetTrigger("Holster");
 
         _playerInventory.EquippedWeapon.WeaponAnimator.SetTrigger("Holster");
+    }
+
+    private void OnDamageTaken()
+    {
+        if(_playerHealth.CurrentHealth <= 0f)
+        {
+            _playerAnim.Play($"ViktorKainFP_Rig|ViktorFP_{_playerInventory.EquippedWeapon.WeaponData.WeaponName}_Holster");
+            _playerInventory.EquippedWeapon.WeaponAnimator.SetTrigger("Holster");
+        }        
     }
 }

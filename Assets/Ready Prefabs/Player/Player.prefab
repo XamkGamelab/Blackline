@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e2c426fcebb19449cc2890d5dfee55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerHealth: {fileID: 7753459448987666313}
   _playerInventory: {fileID: 1375705519305384345}
 --- !u!114 &7753459448987666313
 MonoBehaviour:
@@ -344,6 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerMovement: {fileID: 5975463453229123509}
   _playerInventory: {fileID: 1375705519305384345}
+  _playerHealth: {fileID: 7753459448987666313}
   _playerAnim: {fileID: 1523590761472518540}
   _leftHandIK: {fileID: 3901743559887758015}
   _rightHandIK: {fileID: 234761339247795327}
@@ -361,6 +363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerInventory: {fileID: 1375705519305384345}
   _playerHealth: {fileID: 7753459448987666313}
+  _gameScreenUI: {fileID: 3514080375258714003}
+  _deathScreenUI: {fileID: 0}
   _healthText: {fileID: 4858178655203788254}
   _healthSlider: {fileID: 5043261057210402188}
   _armorText: {fileID: 3712868389160331362}

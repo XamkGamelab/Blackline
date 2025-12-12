@@ -3,10 +3,14 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField]
+    private PlayerHealth _playerHealth;
+    [SerializeField]
     private PlayerInventory _playerInventory;
 
     private void Update()
     {
+        if (_playerHealth.CurrentHealth <= 0f) return;
+
         // This is bad because weapon might be null. But fuck it for now. -Shad //
         if(_playerInventory.EquippedWeapon != null) HandleWeapon(_playerInventory.EquippedWeapon);
 
