@@ -30,6 +30,8 @@ public class PlayerGameUI : MonoBehaviour
     [Space]
 
     [SerializeField]
+    private GameObject _ammoElement;
+    [SerializeField]
     private TextMeshProUGUI _weaponName;
     [SerializeField]
     private TextMeshProUGUI _currentAmmo;
@@ -41,14 +43,19 @@ public class PlayerGameUI : MonoBehaviour
     [Inject]
     private void Construct(PlayerDataSheet playerData) => PlayerData = playerData;
 
-    public void Start()
+    private void Awake()
+    {
+        _ammoElement.SetActive(_playerInventory.EquippedWeapon is RaycastWeapon);
+    }
+
+    private void Start()
     {
         _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
 
         _playerHealth.DamageTakenEvent += OnDamageTaken;
     }
 
-    public void OnDestroy()
+    private void OnDestroy()
     {
         _playerInventory.WeaponEquipEvent -= OnWeaponEquipped;
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= OnWeaponPrimary;
@@ -68,6 +75,10 @@ public class PlayerGameUI : MonoBehaviour
 
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent += OnWeaponPrimary;
         _playerInventory.EquippedWeapon.WeaponReloadedEvent += OnWeaponReloaded;
+
+        _ammoElement.SetActive(_playerInventory.EquippedWeapon is RaycastWeapon);
+
+        OnWeaponReloaded();
     }
 
     private void OnWeaponPrimary()
@@ -83,6 +94,7 @@ public class PlayerGameUI : MonoBehaviour
         if (_playerInventory.EquippedWeapon is RaycastWeapon raycastWeapon)
         {
             _currentAmmo.text = raycastWeapon.LoadedAmmoCount.ToString();
+            _inventoryAmmo.text = _playerInventory.GetAmmoCount(raycastWeapon.CurrentAmmoType).ToString();
         }
     }
     #endregion

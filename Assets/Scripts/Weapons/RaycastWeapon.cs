@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -22,6 +23,7 @@ public class RaycastWeapon : BaseWeapon
 
     // Current ammo type from the inventory. -Shad //
     private BaseAmmoDataSheet _currentAmmoType;   
+    public BaseAmmoDataSheet CurrentAmmoType => _currentAmmoType;
 
     // Raycast Weapon specific states, base states from BaseWeapon. -Shad //
     public RaycastWeaponFiringState FiringState;
@@ -53,7 +55,6 @@ public class RaycastWeapon : BaseWeapon
         StateMachine.UpdateState(DrawState);
 
         _currentAmmoType = _dataSheet.CompatibleAmmo[0];
-        LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
     }
 
     public override void HandleFunctions()
@@ -160,7 +161,13 @@ public class RaycastWeapon : BaseWeapon
 
     public override void ReloadFunction()
     {
-        LoadedAmmoCount = _dataSheet.MaxAmmoInWeapon;
+        int missingAmmo = _dataSheet.MaxAmmoInWeapon - LoadedAmmoCount;
+        int storageAmmo = AmmoProvider.GetAmmoCount(_currentAmmoType);
+        
+        int ammoToLoad = Mathf.Min(missingAmmo, storageAmmo);
+
+        LoadedAmmoCount += ammoToLoad;
+        AmmoProvider.ConsumeAmmo(_currentAmmoType, ammoToLoad);
 
         base.ReloadFunction();
     }

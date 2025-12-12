@@ -73,7 +73,7 @@ public class PlayerAnimator : MonoBehaviour
         if(_playerHealth.CurrentHealth <= 0f)
         {
             _playerAnim.Play($"ViktorKainFP_Rig|ViktorFP_{_playerInventory.EquippedWeapon.WeaponData.WeaponName}_Holster");
-            _playerInventory.EquippedWeapon.WeaponAnimator.SetTrigger("Holster");
+            _playerInventory.EquippedWeapon.WeaponAnimator.Play($"{_playerInventory.EquippedWeapon.WeaponData.WeaponName}_Rig|{_playerInventory.EquippedWeapon.WeaponData.WeaponName}_Holster");
         }        
     }
 }

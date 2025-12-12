@@ -24,11 +24,6 @@ public interface IAmmoProvider
     int GetAmmoCount(BaseAmmoDataSheet ammo);
 }
 
-public interface IPickup
-{
-    void Pickup();
-}
-
 public interface IPlayerPosition
 {
     Transform IPlayerTransform { get; }

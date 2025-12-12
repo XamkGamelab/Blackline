@@ -14,6 +14,9 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     private WeaponAudio _weaponAudio;
     public WeaponAudio WeaponAudio => _weaponAudio;
 
+    [SerializeField]
+    private List<AmmoEntry> _ammoEntry = new List<AmmoEntry>();
+
     private Dictionary<BaseWeapon, int> _ownedWeapons = new();
     public Dictionary<BaseWeapon, int> OwnedWeapons => _ownedWeapons;
 
@@ -46,6 +49,14 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
         {
             BaseWeapon baseWeapon = WeaponHolder.GetChild(i).GetComponent<BaseWeapon>();
             AddWeapon(baseWeapon);
+        }
+
+        foreach(AmmoEntry entry in _ammoEntry)
+        {
+            if (!_ammoStorage.ContainsKey(entry.Ammo))
+            {
+                _ammoStorage.Add(entry.Ammo, entry.AmmoCount);
+            }
         }
 
         SelectWeaponByCategory(WeaponCategory.Melee);
@@ -164,14 +175,21 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
     {
         if (_ammoStorage.TryGetValue(ammo, out int current))
         {
-            current -= amount;
+            _ammoStorage[ammo] -= amount;
 
-            if (current <= 0)
+            if (_ammoStorage[ammo] <= 0)
             {
                 // Remove the ammotype from the storage completely if depleted. -Shad //
                 _ammoStorage.Remove(ammo);
             }
         }
+    }
+
+    [Serializable]
+    public struct AmmoEntry
+    {
+        public BaseAmmoDataSheet Ammo;
+        public int AmmoCount;
     }
     #endregion
 }

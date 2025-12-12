@@ -83,11 +83,11 @@ public class PlayerMovement : MonoBehaviour, IPlayerPosition
 
         _finalSumVector = MoveVector + GravityVector + BunnyhopVector + SlideVector;
 
-        print($"MoveVector: {MoveVector.magnitude}");
+        /*print($"MoveVector: {MoveVector.magnitude}");
         print($"GravityVector: {GravityVector.magnitude}");
         print($"BunnyhopVector: {BunnyhopVector.magnitude}");
         print($"SlideVector: {SlideVector.magnitude}");
-        print($"State: {CurrentState}");
+        print($"State: {CurrentState}");*/
 
         CharacterController.Move(_finalSumVector * Time.deltaTime);
 

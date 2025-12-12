@@ -303,6 +303,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponHolder: {fileID: 9128267565342005394}
   _weaponAudio: {fileID: 8321098882868776210}
+  _ammoEntry:
+  - Ammo: {fileID: 11400000, guid: 4eb8cf6399b5f5e45a47dbd6d96b95b8, type: 2}
+    AmmoCount: 120
 --- !u!114 &9209161900322016935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +372,7 @@ MonoBehaviour:
   _healthSlider: {fileID: 5043261057210402188}
   _armorText: {fileID: 3712868389160331362}
   _armorSlider: {fileID: 6568166001058209588}
+  _ammoElement: {fileID: 2289438389583557539}
   _weaponName: {fileID: 0}
   _currentAmmo: {fileID: 5137966968892485362}
   _inventoryAmmo: {fileID: 7749811505223607754}

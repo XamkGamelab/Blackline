@@ -48,11 +48,24 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
 
     public void ApplyDamage(float damage, float armorPenetration)
     {
-        CurrentHealth -= DamageData.HealthDamage(damage, armorPenetration);
-        CurrentArmor -= DamageData.ArmorDamage(damage);
+        if (CurrentHealth - DamageData.HealthDamage(damage, armorPenetration) <= 0f) CurrentHealth = 0f;
+        else CurrentHealth -= DamageData.HealthDamage(damage, armorPenetration);
+
+        if(CurrentArmor - DamageData.ArmorDamage(damage) <= 0f) CurrentArmor = 0f;
+        else CurrentArmor -= DamageData.ArmorDamage(damage);
 
         if (CurrentHealth <= 0f) _playerMovement.UpdateState(_playerMovement.DeadState);
 
         DamageTakenEvent?.Invoke();
+    }
+
+    public void AddArmor(float added)
+    {
+        CurrentArmor += added;
+    }
+
+    public void AddHealth(float added)
+    {
+        CurrentHealth += added;
     }
 }
