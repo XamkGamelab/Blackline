@@ -59,9 +59,19 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
         DamageTakenEvent?.Invoke();
     }
 
+    public bool CanAddArmor()
+    {
+        return CurrentArmor < PlayerData.MaxArmor;
+    }
+
     public void AddArmor(float added)
     {
         CurrentArmor += added;
+    }
+
+    public bool CanAddHealth()
+    {
+        return CurrentHealth < PlayerData.MaxHealth;
     }
 
     public void AddHealth(float added)

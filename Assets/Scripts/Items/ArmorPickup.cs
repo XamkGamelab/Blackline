@@ -9,6 +9,8 @@ public class ArmorPickup : BaseItemPickup
     {
         if (other.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth))
         {
+            if (!playerHealth.CanAddArmor()) return;
+
             playerHealth.AddArmor(_armorAddAmount);
             gameObject.SetActive(false);
         }

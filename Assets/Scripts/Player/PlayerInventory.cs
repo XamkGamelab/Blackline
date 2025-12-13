@@ -32,6 +32,7 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
 
     public event Action WeaponEquipEvent;
     public event Action WeaponUnequipEvent;
+    public event Action AmmoAdded;
 
     [Inject]
     private void Construct(PlayerDataSheet playerDataSheet)
@@ -169,6 +170,8 @@ public class PlayerInventory : MonoBehaviour, IAmmoProvider
             _ammoStorage[ammo] = amount;
 
         _ammoStorage[ammo] += amount;
+
+        AmmoAdded?.Invoke();
     }
 
     public void ConsumeAmmo(BaseAmmoDataSheet ammo, int amount)

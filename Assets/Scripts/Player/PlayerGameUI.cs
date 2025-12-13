@@ -46,11 +46,13 @@ public class PlayerGameUI : MonoBehaviour
     private void Awake()
     {
         _ammoElement.SetActive(_playerInventory.EquippedWeapon is RaycastWeapon);
+        OnAmmoAdded();
     }
 
     private void Start()
     {
         _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
+        _playerInventory.AmmoAdded += OnAmmoAdded;
 
         _playerHealth.DamageTakenEvent += OnDamageTaken;
     }
@@ -58,6 +60,8 @@ public class PlayerGameUI : MonoBehaviour
     private void OnDestroy()
     {
         _playerInventory.WeaponEquipEvent -= OnWeaponEquipped;
+        _playerInventory.AmmoAdded -= OnAmmoAdded;
+
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= OnWeaponPrimary;
         _playerInventory.EquippedWeapon.WeaponReloadedEvent -= OnWeaponReloaded;
 
@@ -103,15 +107,22 @@ public class PlayerGameUI : MonoBehaviour
     private void OnDamageTaken()
     {
         _healthText.text = Mathf.RoundToInt(_playerHealth.CurrentHealth).ToString();
-        _healthSlider.value = _playerHealth.CurrentHealth / PlayerData.MaxHealth;
-
         _armorText.text = Mathf.RoundToInt(_playerHealth.CurrentArmor).ToString();
-        _armorSlider.value = _playerHealth.CurrentArmor / PlayerData.MaxArmor;
 
         if(_playerHealth.CurrentHealth <= 0f)
         {
             _gameScreenUI.SetActive(false);
             _deathScreenUI.SetActive(true);
+        }
+    }
+    #endregion
+
+    #region Ammo Methods
+    public void OnAmmoAdded()
+    {
+        if (_playerInventory.EquippedWeapon is RaycastWeapon raycastWeapon)
+        {
+            _inventoryAmmo.text = _playerInventory.GetAmmoCount(raycastWeapon.CurrentAmmoType).ToString();
         }
     }
     #endregion

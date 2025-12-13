@@ -9,6 +9,8 @@ public class HealthPickup : BaseItemPickup
     {
         if (other.TryGetComponent<PlayerHealth>(out PlayerHealth playerHealth))
         {
+            if (!playerHealth.CanAddHealth()) return;
+                
             playerHealth.AddHealth(_healthAddAmount);
             gameObject.SetActive(false);
         }
