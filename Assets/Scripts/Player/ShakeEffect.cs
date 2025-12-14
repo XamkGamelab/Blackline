@@ -18,7 +18,7 @@ public class ShakeEffect : MonoBehaviour
         _playerInventory.WeaponEquipEvent += OnWeaponSwitched;
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent += ShakeCamera;
         
-        _playerHealth.DamageTakenEvent += ShakeCamera;
+        _playerHealth.HealthDeltaEvent += ShakeCamera;
     }
 
     private void OnDestroy()
@@ -26,7 +26,7 @@ public class ShakeEffect : MonoBehaviour
         _playerInventory.WeaponEquipEvent -= OnWeaponSwitched;
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= ShakeCamera;
 
-        _playerHealth.DamageTakenEvent -= ShakeCamera;
+        _playerHealth.HealthDeltaEvent -= ShakeCamera;
     }
 
     private void Update()

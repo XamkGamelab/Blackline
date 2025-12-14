@@ -21,12 +21,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        _playerHealth.DamageTakenEvent += OnPlayerDamage;
+        _playerHealth.HealthDeltaEvent += OnPlayerDamage;
     }
 
     private void OnDestroy()
     {
-        _playerHealth.DamageTakenEvent -= OnPlayerDamage;
+        _playerHealth.HealthDeltaEvent -= OnPlayerDamage;
     }
 
     private void Initialize()

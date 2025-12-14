@@ -54,7 +54,7 @@ public class PlayerGameUI : MonoBehaviour
         _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
         _playerInventory.AmmoAdded += OnAmmoAdded;
 
-        _playerHealth.DamageTakenEvent += OnDamageTaken;
+        _playerHealth.HealthDeltaEvent += OnDamageTaken;
     }
 
     private void OnDestroy()
@@ -65,7 +65,7 @@ public class PlayerGameUI : MonoBehaviour
         _playerInventory.EquippedWeapon.WeaponPrimaryEvent -= OnWeaponPrimary;
         _playerInventory.EquippedWeapon.WeaponReloadedEvent -= OnWeaponReloaded;
 
-        _playerHealth.DamageTakenEvent -= OnDamageTaken;
+        _playerHealth.HealthDeltaEvent -= OnDamageTaken;
     }
 
     #region Weapon Methods

@@ -7,6 +7,9 @@ public abstract class BaseItemPickup : MonoBehaviour
     public BaseItemPickupDataSheet ItemDataSheet => _itemDataSheet;
     [SerializeField]
     private Transform _itemPivot;
+    [SerializeField]
+    private AudioClip _onPickupAudio;
+    public AudioClip OnPickupAudio => _onPickupAudio;
 
     public virtual void OnTriggerEnter(Collider other)
     {

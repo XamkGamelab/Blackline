@@ -21,14 +21,14 @@ public class PlayerAnimator : MonoBehaviour
     {
         _playerInventory.WeaponEquipEvent += OnWeaponEquipped;
         _playerInventory.WeaponUnequipEvent += OnWeaponUnequipped;
-        _playerHealth.DamageTakenEvent += OnDamageTaken;
+        _playerHealth.HealthDeltaEvent += OnDamageTaken;
     }
 
     private void OnDisable()
     {
         _playerInventory.WeaponEquipEvent -= OnWeaponEquipped;
         _playerInventory.WeaponUnequipEvent += OnWeaponUnequipped;
-        _playerHealth.DamageTakenEvent -= OnDamageTaken;
+        _playerHealth.HealthDeltaEvent -= OnDamageTaken;
     }
 
     private void Start()

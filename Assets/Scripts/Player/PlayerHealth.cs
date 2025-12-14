@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
     public float CurrentHealth { get; private set; }
     public float CurrentArmor { get; private set; }
 
-    public event Action DamageTakenEvent;
+    public event Action HealthDeltaEvent;
 
     private PlayerDataSheet PlayerData;
 
@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
 
         if (CurrentHealth <= 0f) _playerMovement.UpdateState(_playerMovement.DeadState);
 
-        DamageTakenEvent?.Invoke();
+        HealthDeltaEvent?.Invoke();
     }
 
     public bool CanAddArmor()
@@ -67,6 +67,8 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
     public void AddArmor(float added)
     {
         CurrentArmor += added;
+
+        HealthDeltaEvent?.Invoke();
     }
 
     public bool CanAddHealth()
@@ -77,5 +79,7 @@ public class PlayerHealth : MonoBehaviour, IDamageble, IFlammable, IPlayerHealth
     public void AddHealth(float added)
     {
         CurrentHealth += added;
+
+        HealthDeltaEvent?.Invoke();
     }
 }

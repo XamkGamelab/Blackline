@@ -11,6 +11,9 @@ public class CombatAndroid : BaseEnemy
     [SerializeField]
     private Animator _androidAnimator;
     public Collider NavCollider;
+    [SerializeField]
+    private Transform _raycastCheckPos;
+    public Transform RaycastCheckPos => _raycastCheckPos;
 
     [Header("Combat Android Weapon")]
     public GameObject WeaponObject;

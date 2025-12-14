@@ -18,10 +18,26 @@ public class CombatAndroidAttackState : CombatAndroidConstantState
     {
         base.HandleUpdate();
 
-        Vector3 target = Enemy.PlayerPosition.IPlayerTransform.position;
-        target.y = Enemy.transform.position.y;        
+        Vector3 playerPos = Enemy.PlayerPosition.IPlayerTransform.position;
+        playerPos.y = Enemy.transform.position.y;
+        Vector3 directionToPlayer = (playerPos - Enemy.RaycastCheckPos.position + new Vector3(0f, 1.5f, 0f));
 
-        Enemy.transform.LookAt(target, Vector3.up);
+        Enemy.transform.LookAt(playerPos, Vector3.up);
+
+        if (Physics.Raycast(Enemy.RaycastCheckPos.position, directionToPlayer, out RaycastHit hit))
+        {
+            if (!hit.collider.TryGetComponent<IPlayerHealth>(out IPlayerHealth playerHealth))
+            {
+                Enemy.StateMachine.UpdateState(Enemy.RepositionState);
+            }
+        }
+
+        Debug.DrawRay(
+            Enemy.RaycastCheckPos.position,
+            directionToPlayer * 30f,
+            Color.red,
+            15f
+            );
 
         if (PlayerDistance() > Enemy.DataSheet.AttackDistance)
         {
